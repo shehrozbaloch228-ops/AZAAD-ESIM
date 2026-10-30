@@ -2,12 +2,14 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <title>Azaad eSIM – Data Only eSIM for Non-PTA Phones</title>
+  <title>Azaad eSIM – International Data Roaming eSIM for Smartphones</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Azaad eSIM – data-only roaming eSIM profiles for non-PTA smartphones in Pakistan. Best for non-PTA phones, bypassing PTA network registration and DIRBS restrictions.">
+  <meta name="description" content="Azaad eSIM provides data-only roaming eSIM profiles for smartphones in Pakistan. Access international data routing that operates independently of local network registration.">
+  <link rel="canonical" href="https://azaadesim.duckdns.org/">
+  <meta name="theme-color" content="#0a0a0a">
   
-  <meta property="og:title" content="Azaad eSIM – Data Only eSIM for Non-PTA Phones">
-  <meta property="og:description" content="Data-only roaming eSIM profiles for non-PTA smartphones in Pakistan. Bypass PTA network registration and DIRBS restrictions.">
+  <meta property="og:title" content="Azaad eSIM – Data Only Roaming eSIM">
+  <meta property="og:description" content="Data-only roaming eSIM profiles for smartphones. Maintain internet access with independent international data routing.">
   <meta property="og:type" content="website">
   
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0' stop-color='%2306f9a8'/%3E%3Cstop offset='1' stop-color='%23006438'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect x='0' y='0' width='64' height='64' rx='16' fill='%230a0a0a'/%3E%3Crect x='10' y='14' width='44' height='36' rx='10' fill='url(%23g)' opacity='0.85'/%3E%3Crect x='16' y='20' width='32' height='24' rx='6' fill='%230a0a0a' opacity='0.95'/%3E%3Ccircle cx='44' cy='22' r='4' fill='%2306f9a8'/%3E%3Cpath d='M22 26h8v2h-8zm0 6h14v2H22zm0 6h10v2H22z' fill='%23e5fffb'/%3E%3C/svg%3E">
@@ -26,8 +28,22 @@
             emeraldSoft: '#4ade80',
           },
           boxShadow: {
-            glow: '0 0 40px rgba(6, 249, 168, 0.35)',
-            innerGlow: 'inset 0 0 40px rgba(6, 249, 168, 0.18)',
+            glow: '0 0 35px rgba(6, 249, 168, 0.25)',
+            innerGlow: 'inset 0 0 30px rgba(6, 249, 168, 0.12)',
+          },
+          keyframes: {
+            subtleZoom: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.05)' },
+            },
+            floatSoft: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-15px)' },
+            }
+          },
+          animation: {
+            subtleZoom: 'subtleZoom 8s ease-in-out infinite',
+            floatSoft: 'floatSoft 6s ease-in-out infinite',
           }
         }
       }
@@ -38,7 +54,7 @@
       color-scheme: dark;
     }
     body {
-      letter-spacing: 0.02em;
+      letter-spacing: 0.015em;
       -webkit-font-smoothing: antialiased;
     }
     ::-webkit-scrollbar {
@@ -80,8 +96,8 @@
       position: absolute;
       inset: -6px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(6, 249, 168, 0.6), transparent 60%);
-      opacity: 0.6;
+      background: radial-gradient(circle, rgba(6, 249, 168, 0.5), transparent 60%);
+      opacity: 0.5;
       filter: blur(4px);
       z-index: -1;
     }
@@ -90,9 +106,9 @@
     }
     .plan-card:hover, .plan-card:focus-visible {
       transform: translateY(-4px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 26px rgba(6, 249, 168, 0.4);
-      border-color: rgba(6, 249, 168, 0.45);
-      background: radial-gradient(circle at top left, rgba(6, 249, 168, 0.12), rgba(20, 20, 20, 0.98));
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(6, 249, 168, 0.2);
+      border-color: rgba(6, 249, 168, 0.35);
+      background: radial-gradient(circle at top left, rgba(6, 249, 168, 0.08), rgba(20, 20, 20, 0.98));
       outline: none;
     }
     .modal-visible {
@@ -115,7 +131,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.18), transparent 55%);
+      background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.15), transparent 50%);
       opacity: 0;
       transform: translateX(-40%);
       transition: opacity 240ms ease, transform 240ms ease;
@@ -126,19 +142,19 @@
     }
     .btn-premium:hover, .btn-premium:focus-visible {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(6, 249, 168, 0.35);
+      box-shadow: 0 12px 30px rgba(6, 249, 168, 0.25);
       outline: none;
     }
     .btn-premium:active {
       transform: translateY(0px) scale(0.99);
-      box-shadow: 0 6px 18px rgba(6, 249, 168, 0.25);
+      box-shadow: 0 6px 18px rgba(6, 249, 168, 0.2);
     }
     .glass-shell {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.88), rgba(10, 10, 10, 0.9));
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.88), rgba(10, 10, 10, 0.95));
     }
     @media (min-width: 1024px) {
       .glass-shell {
-        backdrop-filter: blur(24px);
+        backdrop-filter: blur(20px);
       }
     }
     input[type="email"]:invalid:not(:placeholder-shown) {
@@ -160,73 +176,103 @@
       transform: rotate(90deg);
     }
     details[open] {
-      background: radial-gradient(circle at top left, rgba(6, 249, 168, 0.12), rgba(20, 20, 20, 0.96));
-      border-color: rgba(6, 249, 168, 0.45);
+      background: radial-gradient(circle at top left, rgba(6, 249, 168, 0.08), rgba(20, 20, 20, 0.98));
+      border-color: rgba(6, 249, 168, 0.35);
     }
+    
     /* WhatsApp Floating Button */
-.whatsapp-float {
-    position: fixed;
-    right: max(20px, env(safe-area-inset-right));
-    bottom: max(20px, env(safe-area-inset-bottom));
-    z-index: 50;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-
-    background-color: #25D366;
-    color: #ffffff;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-
-    transition: all 0.25s ease;
-}
-
-.whatsapp-float:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
-}
-
-.whatsapp-float svg {
-    width: 32px;
-    height: 32px;
-}
-
-.whatsapp-float:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 4px;
-}
-
-@media (max-width: 640px) {
     .whatsapp-float {
-        width: 54px;
-        height: 54px;
-        right: 16px;
-        bottom: 16px;
+        position: fixed;
+        right: max(20px, env(safe-area-inset-right));
+        bottom: max(20px, env(safe-area-inset-bottom));
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #25D366;
+        color: #ffffff;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        transition: all 0.25s ease;
+    }
+    .whatsapp-float:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+    }
+    .whatsapp-float svg {
+        width: 32px;
+        height: 32px;
+    }
+    .whatsapp-float:focus-visible {
+        outline: 3px solid #ffffff;
+        outline-offset: 4px;
+    }
+    @media (max-width: 640px) {
+        .whatsapp-float {
+            width: 54px;
+            height: 54px;
+            right: 16px;
+            bottom: 16px;
+        }
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+    
+    /* Mobile Menu Transitions */
+    #mobileMenu {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #mobileMenu.menu-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #mobileMenu.menu-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
-    .whatsapp-float svg {
-        width: 29px;
-        height: 29px;
+    /* Tab Button Styles */
+    .tab-btn {
+      transition: all 0.3s ease;
     }
-}
+    .tab-btn.active {
+      background-color: #06f9a8;
+      color: #0a0a0a;
+      box-shadow: 0 4px 15px rgba(6, 249, 168, 0.3);
+    }
+    .tab-btn:not(.active) {
+      color: #94a3b8;
+    }
+    .tab-btn:not(.active):hover {
+      color: #f8fafc;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-\[subtleZoom_8s_ease-in-out_infinite\],
+      .animate-\[floatSoft_6s_ease-in-out_infinite\] {
+        animation: none !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-azaadBgDeep text-slate-100 font-sans overflow-x-hidden">
   <div class="fixed inset-0 -z-10 bg-gradient-to-br from-azaadBgDeep via-black to-azaadBgSoft pointer-events-none"></div>
-  <div class="fixed inset-0 -z-10 opacity-40 mix-blend-screen pointer-events-none">
-    <div class="absolute -top-40 -left-24 w-72 h-72 rounded-full bg-emeraldGlow/25 blur-3xl animate-[subtleZoom_8s_ease-in-out_infinite] pointer-events-none"></div>
+  <div class="fixed inset-0 -z-10 opacity-30 mix-blend-screen pointer-events-none">
+    <div class="absolute -top-40 -left-24 w-72 h-72 rounded-full bg-emeraldGlow/20 blur-3xl animate-[subtleZoom_8s_ease-in-out_infinite] pointer-events-none"></div>
     <div class="absolute top-64 -right-24 w-96 h-96 rounded-full bg-emeraldGlow/15 blur-3xl animate-[floatSoft_6s_ease-in-out_infinite] pointer-events-none"></div>
     <div class="absolute bottom-0 left-1/3 w-[420px] h-[420px] rounded-full bg-emeraldGlow/8 blur-3xl pointer-events-none"></div>
   </div>
 
   <header class="fixed top-0 inset-x-0 z-40">
     <div class="mx-auto max-w-6xl px-4">
-      <div class="mt-3 rounded-2xl bg-black/50 backdrop-blur-xl border border-white/10 shadow-2xl">
+      <div class="mt-3 rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 shadow-xl">
         <div class="flex items-center justify-between px-5 py-3">
           <a href="#hero" class="flex items-center gap-3 group focus-ring">
             <div class="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-emeraldGlow/80 via-emeraldGlow/40 to-emeraldGlow/10 shadow-glow">
@@ -238,287 +284,296 @@
               <span class="absolute -right-[5px] -top-[5px] w-2.5 h-2.5 rounded-full bg-emeraldGlow accent-dot shadow-glow"></span>
             </div>
             <div class="flex flex-col">
-              <span class="text-xs font-semibold tracking-[0.22em] uppercase text-slate-300">Azaad eSIM</span>
-              <span class="text-[0.7rem] text-slate-500 tracking-[0.17em] uppercase">Data Only eSIM</span>
+              <span class="text-xs font-semibold tracking-[0.22em] uppercase text-slate-200">Azaad eSIM</span>
+              <span class="text-[0.7rem] text-slate-400 tracking-[0.17em] uppercase">Data Only eSIM</span>
             </div>
           </a>
+          
           <nav class="hidden md:flex items-center gap-7 text-xs font-medium tracking-[0.18em] uppercase text-slate-300" aria-label="Main navigation">
-            <a href="#plans" class="link-underline hover:text-slate-100 focus-ring">Plans</a>
-            <a href="#features" class="link-underline hover:text-slate-100 focus-ring">Features</a>
-            <a href="#compatibility" class="link-underline hover:text-slate-100 focus-ring">Compatibility</a>
-            <a href="#workflow" class="link-underline hover:text-slate-100 focus-ring">How It Works</a>
-            <a href="#faq" class="link-underline hover:text-slate-100 focus-ring">FAQ</a>
+            <a href="#plans" class="link-underline hover:text-slate-100 focus-ring transition-colors">Plans</a>
+            <a href="#features" class="link-underline hover:text-slate-100 focus-ring transition-colors">Features</a>
+            <a href="#compatibility" class="link-underline hover:text-slate-100 focus-ring transition-colors">Compatibility</a>
+            <a href="#workflow" class="link-underline hover:text-slate-100 focus-ring transition-colors">How It Works</a>
+            <a href="#faq" class="link-underline hover:text-slate-100 focus-ring transition-colors">FAQ</a>
           </nav>
-          <div class="flex items-center gap-3">
+          
+          <div class="hidden md:flex items-center gap-3">
             <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})"
-              class="btn-premium px-4 py-2 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-xs font-semibold tracking-[0.18em] uppercase text-emeraldSoft shadow-innerGlow hover:bg-emeraldGlow/30 focus-ring" type="button">
+              class="btn-premium px-4 py-2 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-xs font-semibold tracking-[0.18em] uppercase text-emeraldSoft shadow-innerGlow hover:bg-emeraldGlow/30 focus-ring transition-colors" type="button">
               <span class="relative flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emeraldGlow accent-dot"></span>
                 <span>Get eSIM</span>
               </span>
             </button>
           </div>
+          
+          <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center p-2 text-slate-300 hover:text-emeraldSoft focus-ring" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="pt-24 pb-16">
-    <section id="hero" class="mx-auto max-w-6xl px-4 mb-16">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-2xl px-6 sm:px-10 py-9 lg:py-12 relative overflow-hidden">
-        <div class="pointer-events-none absolute -left-1/3 top-0 w-2/3 h-64 bg-gradient-to-r from-white/10 via-white/0 to-transparent blur-3xl opacity-0"></div>
+  <div id="mobileMenu" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col menu-hidden" aria-hidden="true">
+    <div class="flex items-center justify-end px-8 py-6 mt-3">
+      <button id="mobileMenuCloseBtn" class="p-2 text-slate-300 hover:text-emeraldSoft focus-ring" aria-label="Close mobile menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col items-center gap-8 mt-12 text-sm font-semibold tracking-[0.2em] uppercase text-slate-300">
+      <a href="#plans" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">Plans</a>
+      <a href="#features" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">Features</a>
+      <a href="#compatibility" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">Compatibility</a>
+      <a href="#workflow" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">How It Works</a>
+      <a href="#faq" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">FAQ</a>
+      <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'}); document.getElementById('mobileMenuCloseBtn').click();"
+        class="btn-premium mt-8 px-8 py-3 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft shadow-innerGlow hover:bg-emeraldGlow/30 focus-ring transition-colors" type="button">
+        Get eSIM
+      </button>
+    </nav>
+  </div>
+
+  <main class="pt-28 pb-16">
+    <section id="hero" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
+      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10 lg:py-14 relative overflow-hidden">
+        <div class="pointer-events-none absolute -left-1/3 top-0 w-2/3 h-64 bg-gradient-to-r from-white/5 via-white/0 to-transparent blur-3xl opacity-0"></div>
         <div class="grid lg:grid-cols-2 gap-10 items-center">
           <div class="space-y-6">
-            <div class="inline-flex items-center gap-3 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 px-3 py-2 shadow-innerGlow">
+            <div class="inline-flex items-center gap-3 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 px-4 py-2 shadow-innerGlow">
               <div class="relative flex items-center justify-center">
                 <span class="w-2.5 h-2.5 rounded-full bg-emeraldGlow accent-dot"></span>
               </div>
               <span class="text-[0.7rem] font-semibold tracking-[0.18em] uppercase text-slate-200">
-                Data Only eSIM • Roaming Profiles
-              </span>
-              <span class="hidden sm:inline-block text-[0.65rem] text-slate-500 tracking-[0.16em] uppercase">
-                Best for Non-PTA Phones
+                Data-Only Roaming Profiles
               </span>
             </div>
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-50 text-balance">
-              Data Only eSIM
-              <span class="block text-emeraldSoft/90">Best for Non-PTA Phones.</span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-50 text-balance leading-tight">
+              Premium Data eSIM
+              <span class="block text-emeraldSoft/90 mt-1">For Modern Smartphones.</span>
             </h1>
             <p class="text-sm sm:text-base text-slate-300 leading-relaxed text-balance">
-              Azaad eSIM is a data-only roaming eSIM profile layer, built for non‑PTA smartphones in Pakistan.
-              These roaming eSIM profiles route traffic as international data, bypassing PTA network registration controls and DIRBS restrictions, while your physical SIM remains dedicated to OTPs and local SMS.
+              Azaad eSIM delivers reliable data-only roaming profiles designed for compatible smartphones in Pakistan. By routing traffic internationally, these eSIMs provide internet connectivity that operates independently of local network registration.
             </p>
             <p class="text-sm sm:text-base text-slate-300 leading-relaxed text-balance">
-              Activate Azaad as a second, data-only line and use it for browsing, apps, and cloud work – no local number, no cellular voice minutes, just a clean roaming route that keeps your non‑PTA device online.
+              Operate Azaad as a secondary data line for apps and browsing. Keep your existing physical SIM active for local carrier services, OTPs, and SMS.
             </p>
-            <div class="flex flex-wrap items-center gap-4 pt-2">
+            <div class="flex flex-wrap items-center gap-4 pt-4">
               <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})"
-                class="btn-premium inline-flex items-center gap-2 rounded-full bg-emeraldGlow text-azaadBgDeep px-5 py-2.5 text-sm font-semibold tracking-[0.18em] uppercase shadow-glow focus-ring" type="button">
+                class="btn-premium inline-flex items-center gap-2 rounded-full bg-emeraldGlow text-azaadBgDeep px-6 py-3 text-sm font-semibold tracking-[0.15em] uppercase shadow-glow focus-ring transition-transform" type="button">
                 <span>View Data Plans</span>
                 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M4 10h9M9 5l5 5-5 5" stroke="#0a0a0a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M4 10h9M9 5l5 5-5 5" stroke="#0a0a0a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
               </button>
               <button onclick="document.getElementById('compatibility').scrollIntoView({behavior:'smooth'})"
-                class="btn-premium inline-flex items-center gap-2 rounded-full bg-transparent border border-white/20 px-5 py-2.5 text-sm font-semibold tracking-[0.18em] uppercase text-slate-200 hover:bg-white/5 focus-ring" type="button">
-                <span>Check Non-PTA Compatibility</span>
+                class="btn-premium inline-flex items-center gap-2 rounded-full bg-transparent border border-white/20 px-6 py-3 text-sm font-semibold tracking-[0.15em] uppercase text-slate-200 hover:bg-white/5 focus-ring transition-colors" type="button">
+                <span>Check Compatibility</span>
                 <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <circle cx="10" cy="10" r="7" stroke="#94a3b8" stroke-width="1.4"></circle>
-                  <path d="M10 6.5v4.5l2.5 2" stroke="#94a3b8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <circle cx="10" cy="10" r="7" stroke="#94a3b8" stroke-width="1.6"></circle>
+                  <path d="M10 6.5v4.5l2.5 2" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
               </button>
             </div>
-            <div class="flex flex-wrap gap-3 pt-4 text-[0.7rem] text-slate-400 tracking-[0.18em] uppercase">
+            <div class="flex flex-wrap gap-4 pt-6 text-[0.7rem] text-slate-400 tracking-[0.15em] uppercase font-medium">
               <span class="inline-flex items-center gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow"></span>
-                Roaming eSIM Profiles
+                Instant Setup
               </span>
               <span class="inline-flex items-center gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow"></span>
-                Bypass PTA Registration & DIRBS
+                Independent Data Routing
               </span>
               <span class="inline-flex items-center gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow"></span>
-                Local SIM Reserved for OTPs
+                No SIM Removal
               </span>
             </div>
           </div>
           <div class="relative lg:block hidden">
-            <div class="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-emeraldGlow/30 blur-3xl pointer-events-none"></div>
-            <div class="relative rounded-3xl bg-black/50 backdrop-blur-xl border border-white/10 p-4 shadow-2xl">
+            <div class="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-emeraldGlow/20 blur-3xl pointer-events-none"></div>
+            <div class="relative rounded-3xl bg-black/60 backdrop-blur-xl border border-white/10 p-5 shadow-2xl">
               <div class="grid gap-3">
-                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/70 to-slate-800/70 border border-white/15 px-4 py-3">
-                  <div class="flex items-center gap-3">
+                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/80 to-slate-800/80 border border-white/10 px-5 py-4">
+                  <div class="flex items-center gap-4">
                     <svg class="w-8 h-8 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                       <rect x="6" y="3" width="12" height="18" rx="3" class="fill-current"></rect>
                       <rect x="8" y="6" width="8" height="11" rx="1.5" fill="#020617"></rect>
                       <circle cx="12" cy="18" r="0.9" fill="#06f9a8"></circle>
                     </svg>
                     <div>
-                      <p class="text-sm font-semibold text-slate-100">Non-PTA iPhone</p>
-                      <p class="text-xs text-slate-400">Roaming data-only eSIM + local SIM.</p>
+                      <p class="text-sm font-semibold text-slate-100">iPhone (eSIM Support)</p>
+                      <p class="text-xs text-slate-400">Roaming data eSIM + local SIM</p>
                     </div>
                   </div>
-                  <span class="text-[0.7rem] font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-3 py-1 tracking-[0.16em] uppercase">
-                    Best for Non-PTA
+                  <span class="text-[0.65rem] font-bold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/30 rounded-full px-3 py-1 tracking-[0.16em] uppercase">
+                    Supported
                   </span>
                 </div>
-                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/70 via-slate-800/70 to-slate-900/70 border border-white/15 px-4 py-3">
-                  <div class="flex items-center gap-3">
+                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/80 via-slate-800/80 to-slate-900/80 border border-white/10 px-5 py-4">
+                  <div class="flex items-center gap-4">
                     <svg class="w-8 h-8 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                       <rect x="5" y="4" width="14" height="16" rx="2.5" class="fill-current"></rect>
                       <rect x="7" y="7" width="10" height="10" rx="2" fill="#020617"></rect>
                       <circle cx="12" cy="12" r="2.4" fill="#06f9a8"></circle>
                     </svg>
                     <div>
-                      <p class="text-sm font-semibold text-slate-100">Non-PTA Galaxy</p>
-                      <p class="text-xs text-slate-400">Roaming eSIM data, local voice.</p>
+                      <p class="text-sm font-semibold text-slate-100">Galaxy (eSIM Support)</p>
+                      <p class="text-xs text-slate-400">Roaming data, local voice</p>
                     </div>
                   </div>
-                  <span class="text-[0.7rem] text-slate-400 uppercase tracking-[0.16em]">
-                    PTA/DIRBS Bypass Layer
+                  <span class="text-[0.65rem] font-bold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/30 rounded-full px-3 py-1 tracking-[0.16em] uppercase">
+                    Supported
                   </span>
                 </div>
-                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/70 to-slate-800/70 border border-white/15 px-4 py-3">
-                  <div class="flex items-center gap-3">
+                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/80 to-slate-800/80 border border-white/10 px-5 py-4">
+                  <div class="flex items-center gap-4">
                     <svg class="w-8 h-8 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                       <rect x="5" y="4" width="14" height="16" rx="3" class="fill-current"></rect>
                       <rect x="7" y="7" width="10" height="10" rx="2" fill="#020617"></rect>
                       <path d="M9 11h6v2H9z" fill="#06f9a8"></path>
                     </svg>
                     <div>
-                      <p class="text-sm font-semibold text-slate-100">Non-PTA Pixel</p>
-                      <p class="text-xs text-slate-400">Label line “Azaad Data Only”.</p>
+                      <p class="text-sm font-semibold text-slate-100">Pixel (eSIM Support)</p>
+                      <p class="text-xs text-slate-400">Data-only independent line</p>
                     </div>
                   </div>
-                  <span class="text-[0.7rem] text-slate-400 uppercase tracking-[0.16em]">
-                    Data Only Roaming
+                  <span class="text-[0.65rem] font-bold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/30 rounded-full px-3 py-1 tracking-[0.16em] uppercase">
+                    Supported
                   </span>
                 </div>
               </div>
-              <div class="mt-4 flex items-center justify-between">
-                <p class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase">
-                  Roaming eSIM • Non-PTA First
-                </p>
-                <span class="inline-flex items-center gap-2 text-[0.65rem] text-emeraldSoft tracking-[0.18em] uppercase">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow"></span>
-                  Data Only Layer
-                </span>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="plans" class="mx-auto max-w-6xl px-4 mb-16">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-2xl px-6 sm:px-10 py-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <div>
+    <section id="plans" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
+      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div class="max-w-xl">
             <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-              Data Only Roaming Plans
+              Data-Only Roaming Plans
             </h2>
-            <p class="mt-2 text-sm text-slate-400 max-w-xl text-balance">
-              Every plan here is a roaming eSIM profile, ideal for non‑PTA phones. Traffic is routed as international data, bypassing PTA network registration and DIRBS restrictions while preserving your local SIM for OTPs.
+            <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
+              Select an international data plan tailored for your device. These profiles provide independent internet routing, ensuring access to apps and web browsing.
             </p>
           </div>
-          <div class="flex items-center gap-4">
-            <span class="text-[0.7rem] uppercase tracking-[0.18em] text-slate-400" id="labelExpiring">Expiring (30 Days)</span>
-            <button id="planToggle" class="relative inline-flex items-center w-16 h-8 rounded-full bg-black/60 border border-white/20 shadow-innerGlow transition-colors duration-200 focus-ring" aria-pressed="false" type="button" aria-labelledby="labelExpiring labelNonExpiring">
-              <span id="planToggleKnob" class="absolute left-1 top-1 w-6 h-6 rounded-full bg-gradient-to-br from-slate-100 to-slate-400 shadow-lg transform transition-transform duration-200 translate-x-0"></span>
-              <span class="absolute left-3 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-slate-500 pointer-events-none">
-            
-              </span>
-              <span class="absolute right-3 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-slate-500 pointer-events-none">
-                
-              </span>
-            </button>
-            <span class="text-[0.7rem] uppercase tracking-[0.18em] text-slate-400" id="labelNonExpiring">Non-Expiring</span>
+          <!-- 3-Way Tab Interface -->
+          <div class="flex items-center p-1 bg-black/50 rounded-full border border-white/10" role="tablist" aria-label="Pricing Categories">
+            <button class="tab-btn active px-4 py-2 rounded-full text-[0.7rem] font-bold uppercase tracking-[0.1em] focus-ring" data-target="standard" role="tab" aria-selected="true">30 Days</button>
+            <button class="tab-btn px-4 py-2 rounded-full text-[0.7rem] font-bold uppercase tracking-[0.1em] focus-ring" data-target="unlimited" role="tab" aria-selected="false">Unlimited</button>
+            <button class="tab-btn px-4 py-2 rounded-full text-[0.7rem] font-bold uppercase tracking-[0.1em] focus-ring" data-target="nonexpiring" role="tab" aria-selected="false">Non-Expiring</button>
           </div>
         </div>
-        <div id="planGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list"></div>
+        <div id="planGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" role="list">
+          <!-- Dynamic Content rendered by JS -->
+        </div>
       </div>
     </section>
 
-    <section id="workflow" class="mx-auto max-w-6xl px-4 mb-16">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-2xl px-6 sm:px-10 py-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <div>
-            <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-              How Azaad eSIM Works
-            </h2>
-            <p class="mt-2 text-sm text-slate-400 max-w-xl text-balance">
-              A simple, three-step flow: choose a data-only roaming plan, confirm your gateway profile, and receive your QR to activate Azaad on your non‑PTA phone.
-            </p>
-          </div>
+    <section id="workflow" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
+      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
+        <div class="max-w-xl mb-10">
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
+            How Azaad eSIM Works
+          </h2>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
+            A simple, secure process to get your compatible phone online in minutes.
+          </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-5">
-          <article class="group rounded-2xl bg-black/70 border border-white/12 p-5 transform transition duration-200 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emeraldGlow/25">
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-emeraldGlow to-emeraldSoft text-azaadBgDeep text-sm font-bold shadow-glow">1</span>
-                <h3 class="text-base font-semibold text-slate-50">Select Plan</h3>
-              </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="group rounded-2xl bg-black/60 border border-white/10 p-6 transition duration-300 hover:border-emeraldGlow/30 hover:bg-black/80 hover:-translate-y-1">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emeraldGlow/10 text-emeraldGlow border border-emeraldGlow/20 text-sm font-bold shadow-glow">1</span>
+              <h3 class="text-base font-semibold text-slate-50">Select a Plan</h3>
             </div>
-            <p class="text-sm text-slate-300 leading-relaxed text-balance">
-              Choose between 30‑day expiring or non‑expiring vault plans, each provisioned as a roaming eSIM profile to keep your non‑PTA phone online without local SIM registration.
+            <p class="text-sm text-slate-400 leading-relaxed text-balance">
+              Browse our data packages and choose the allowance that fits your needs. All plans provide international data routing suitable for compatible devices.
             </p>
           </article>
-          <article class="group rounded-2xl bg-black/70 border border-white/12 p-5 transform transition duration-200 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emeraldGlow/25">
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-slate-700 to-slate-500 text-slate-50 text-sm font-bold shadow-innerGlow">2</span>
-                <h3 class="text-base font-semibold text-slate-50">Profile Review</h3>
-              </div>
+          <article class="group rounded-2xl bg-black/60 border border-white/10 p-6 transition duration-300 hover:border-emeraldGlow/30 hover:bg-black/80 hover:-translate-y-1">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emeraldGlow/10 text-emeraldGlow border border-emeraldGlow/20 text-sm font-bold shadow-glow">2</span>
+              <h3 class="text-base font-semibold text-slate-50">Review Order</h3>
             </div>
-            <p class="text-sm text-slate-300 leading-relaxed text-balance">
-              Use the gateway modal to confirm region, data volume, term, and base SKU before generating a uniquely labeled roaming eSIM profile for your device.
+            <p class="text-sm text-slate-400 leading-relaxed text-balance">
+              Confirm your selection in the summary modal. Provide your details, generate your unique order reference, and forward the request to our WhatsApp team for processing.
             </p>
           </article>
-          <article class="group rounded-2xl bg-black/70 border border-white/12 p-5 transform transition duration-200 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emeraldGlow/25">
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-emeraldSoft to-emeraldGlow text-azaadBgDeep text-sm font-bold shadow-glow">3</span>
-                <h3 class="text-base font-semibold text-slate-50">QR Delivery</h3>
-              </div>
+          <article class="group rounded-2xl bg-black/60 border border-white/10 p-6 transition duration-300 hover:border-emeraldGlow/30 hover:bg-black/80 hover:-translate-y-1">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emeraldGlow text-azaadBgDeep border border-emeraldGlow/20 text-sm font-bold shadow-glow">3</span>
+              <h3 class="text-base font-semibold text-slate-50">Scan & Connect</h3>
             </div>
-            <p class="text-sm text-slate-300 leading-relaxed text-balance">
-              Receive your QR via email, add Azaad as a data-only eSIM line in device settings, and route data through roaming networks while leaving your local SIM focused on OTPs.
+            <p class="text-sm text-slate-400 leading-relaxed text-balance">
+              Once confirmed, receive your official eSIM QR code via WhatsApp/Email. Scan it using your device's cellular settings and enjoy instant internet access.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="compatibility" class="mx-auto max-w-6xl px-4 mb-16">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-2xl px-6 sm:px-10 py-8">
-        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+    <section id="compatibility" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
+      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
           <div class="lg:w-1/2">
-            <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-              Best for Non-PTA Phones
+            <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance mb-4">
+              Device Compatibility & Policy
             </h2>
-            <p class="mt-3 text-sm text-slate-400 text-balance">
-              Azaad eSIM targets non‑PTA iPhones, Samsung Galaxies, and Pixels that support eSIM. Each plan is a roaming data-only profile, keeping your main SIM on local networks while Azaad routes data internationally.
+            <p class="text-sm text-slate-400 leading-relaxed mb-4">
+              Azaad eSIM supports many modern, carrier-unlocked devices equipped with eSIM technology. This generally includes various iPhone models (XR and newer), select Samsung Galaxy S/Z series, and Google Pixels. Compatibility can vary by specific model and regional variant.
             </p>
-            <p class="mt-3 text-sm text-slate-400 text-balance">
-              Because traffic flows as roaming data, these profiles help bypass PTA network registration controls and DIRBS device restrictions, allowing non‑PTA phones to stay usable online while your physical SIM handles identity and OTP flows.
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+              <strong>Important Notice for JV Devices:</strong> Under our business policy, Carrier-Locked or "JV" (Joint Venture) devices are strictly <strong>not supported</strong>. Your device must be factory unlocked to successfully scan and activate our profiles.
             </p>
+            <div class="inline-block">
+              <a href="https://wa.me/923171058812?text=Hi%2C%20I%20want%20to%20check%20if%20my%20device%20is%20compatible%20with%20Azaad%20eSIM." 
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn-premium inline-flex items-center gap-2 rounded-full bg-emeraldGlow/10 border border-emeraldGlow/40 px-5 py-2.5 text-xs font-semibold tracking-[0.15em] uppercase text-emeraldSoft hover:bg-emeraldGlow/20 focus-ring transition-colors">
+                <span>Not Sure? Check With Support</span>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10h9M9 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+            </div>
           </div>
           <div class="lg:w-1/2 grid gap-4">
-            <article class="rounded-2xl bg-black/70 border border-white/12 p-4 flex items-center justify-between hover:border-emeraldGlow/50 transition duration-300">
-              <div class="flex items-center gap-3">
-                <svg class="w-7 h-7 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <rect x="7" y="3" width="10" height="18" rx="3" class="fill-current"></rect>
-                  <circle cx="12" cy="18" r="0.9" fill="#06f9a8"></circle>
+            <article class="rounded-2xl bg-black/60 border border-white/10 p-5 flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <svg class="w-6 h-6 text-slate-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
                 <div>
-                  <p class="text-sm font-semibold text-slate-100">Non-PTA iPhone</p>
-                  <p class="text-sm text-slate-400">Add as “Data Only eSIM”, keep local SIM for calls.</p>
+                  <p class="text-sm font-semibold text-slate-100">Factory Unlocked Required</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Carrier-locked/JV devices cannot install eSIMs.</p>
                 </div>
               </div>
             </article>
-            <article class="rounded-2xl bg-black/70 border border-white/12 p-4 flex items-center justify-between hover:border-emeraldGlow/50 transition duration-300">
-              <div class="flex items-center gap-3">
-                <svg class="w-7 h-7 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <rect x="6" y="4" width="12" height="16" rx="2.5" class="fill-current"></rect>
-                  <circle cx="12" cy="12" r="2.4" fill="#06f9a8"></circle>
+            <article class="rounded-2xl bg-black/60 border border-white/10 p-5 flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <svg class="w-6 h-6 text-slate-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
                 <div>
-                  <p class="text-sm font-semibold text-slate-100">Non-PTA Galaxy</p>
-                  <p class="text-sm text-slate-400">Keep local SIM as “Calls & SMS”.</p>
+                  <p class="text-sm font-semibold text-slate-100">Regional Restrictions</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Some mainland China/HK variants lack eSIM hardware.</p>
                 </div>
               </div>
             </article>
-            <article class="rounded-2xl bg-black/70 border border-white/12 p-4 flex items-center justify-between hover:border-emeraldGlow/50 transition duration-300">
-              <div class="flex items-center gap-3">
-                <svg class="w-7 h-7 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <rect x="6" y="4" width="12" height="16" rx="3" class="fill-current"></rect>
-                  <rect x="8" y="7" width="8" height="10" rx="2" fill="#020617"></rect>
-                  <path d="M9 11h6v2H9z" fill="#06f9a8"></path>
+            <article class="rounded-2xl bg-black/60 border border-white/10 p-5 flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <svg class="w-6 h-6 text-slate-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 13l4 4L19 7" stroke="#06f9a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
                 <div>
-                  <p class="text-sm font-semibold text-slate-100">Non-PTA Pixel (eSIM-ready)</p>
-                  <p class="text-sm text-slate-400">Label the line “Azaad Data Only”.</p>
+                  <p class="text-sm font-semibold text-slate-100">Money-Back Assurance</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Refunds processed if the profile fails on officially supported devices.</p>
                 </div>
               </div>
             </article>
@@ -527,126 +582,136 @@
       </div>
     </section>
 
-    <section id="features" class="mx-auto max-w-6xl px-4 mb-16">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-2xl px-6 sm:px-10 py-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
-          <div>
-            <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-              Data Only, Roaming-Grade Features
-            </h2>
-            <p class="mt-2 text-sm text-slate-400 max-w-xl text-balance">
-              Azaad eSIM is engineered from the ground up as a data-only roaming layer for non‑PTA phones, mirroring travel eSIM stacks while focusing on PTA/DIRBS bypass and local SIM preservation.
-            </p>
-          </div>
+    <section id="features" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
+      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
+        <div class="mb-10 max-w-xl">
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
+            Commercial-Grade Features
+          </h2>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
+            Designed to integrate smoothly with your digital environment, preserving your core communication tools while providing secure routing.
+          </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-5">
-          <article class="rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 hover:border-emeraldGlow/40 transition duration-300">
-            <div class="flex items-center gap-3">
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="rounded-2xl bg-black/60 border border-white/10 p-6 flex flex-col gap-3">
+            <div class="flex items-center gap-3 mb-1">
               <svg class="w-6 h-6 text-emeraldSoft" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5v-9z" stroke="currentColor" stroke-width="1.4"></path>
-                <path d="M7 8h6M7 11h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+                <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5v-9z" stroke="currentColor" stroke-width="1.6"></path>
+                <path d="M7 8h6M7 11h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
               </svg>
-              <h3 class="text-base font-semibold text-slate-50">Data Only eSIM Profiles</h3>
+              <h3 class="text-sm font-semibold text-slate-100 uppercase tracking-widest">Strictly Data-Only</h3>
             </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              All plans are roaming data-only eSIM profiles with no local MSISDN or voice minutes – ideal for keeping non‑PTA devices online via apps, cloud tools, and secure messaging.
+            <p class="text-sm text-slate-400 leading-relaxed">
+              No new phone numbers or cellular minutes. Azaad purely handles internet traffic, ensuring clean operation and simple setup without overriding your primary line.
             </p>
           </article>
-          <article class="rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 hover:border-emeraldGlow/40 transition duration-300">
-            <div class="flex items-center gap-3">
+          <article class="rounded-2xl bg-black/60 border border-white/10 p-6 flex flex-col gap-3">
+            <div class="flex items-center gap-3 mb-1">
               <svg class="w-6 h-6 text-emeraldSoft" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 7.5 10 4l6 3.5v5L10 16l-6-3.5v-5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M10 8v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+                <path d="M4 7.5 10 4l6 3.5v5L10 16l-6-3.5v-5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M10 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
               </svg>
-              <h3 class="text-base font-semibold text-slate-50">PTA & DIRBS Bypass Route</h3>
+              <h3 class="text-sm font-semibold text-slate-100 uppercase tracking-widest">Independent Routing</h3>
             </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Azaad leverages roaming networks rather than local registration paths, helping non‑PTA phones avoid traditional PTA registration and DIRBS blocking while staying data‑connected.
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Traffic is routed via robust roaming infrastructure. This architecture operates independently of local registration databases, allowing compatible devices to maintain internet access.
             </p>
           </article>
-          <article class="rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 hover:border-emeraldGlow/40 transition duration-300">
-            <div class="flex items-center gap-3">
+          <article class="rounded-2xl bg-black/60 border border-white/10 p-6 flex flex-col gap-3">
+            <div class="flex items-center gap-3 mb-1">
               <svg class="w-6 h-6 text-emeraldSoft" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M5 5.5A1.5 1.5 0 0 1 6.5 4h7A1.5 1.5 0 0 1 15 5.5v9a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 5 14.5v-9z" stroke="currentColor" stroke-width="1.4"></path>
-                <path d="M8 7.5h4M8 10h2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+                <path d="M5 5.5A1.5 1.5 0 0 1 6.5 4h7A1.5 1.5 0 0 1 15 5.5v9a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 5 14.5v-9z" stroke="currentColor" stroke-width="1.6"></path>
+                <path d="M8 7.5h4M8 10h2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
               </svg>
-              <h3 class="text-base font-semibold text-slate-50">Local SIM Reserved for OTPs</h3>
+              <h3 class="text-sm font-semibold text-slate-100 uppercase tracking-widest">Retain Local SIM</h3>
             </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Your Pakistani physical SIM stays untouched for OTPs, banking SMS, and calls, while Azaad silently powers data via roaming – the ideal pairing for non‑PTA phones.
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Keep your local physical SIM active for banking OTPs and incoming calls, while configuring Azaad strictly as your device's active cellular data connection.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="mx-auto max-w-6xl px-4 mb-16">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-2xl px-6 sm:px-10 py-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
-          <div>
-            <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-              Frequently Asked Questions
-            </h2>
-            <p class="mt-2 text-sm text-slate-400 max-w-xl text-balance">
-              Clear answers about data-only usage, non‑PTA suitability, and roaming behavior for Azaad eSIM.
-            </p>
-          </div>
+    <section id="faq" class="mx-auto max-w-6xl px-4 mb-8 scroll-mt-28">
+      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
+        <div class="mb-8 max-w-xl">
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
+            Frequently Asked Questions
+          </h2>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
+            Clear, transparent answers about how Azaad eSIM interacts with your device.
+          </p>
         </div>
         <div class="space-y-3">
           
-          <details class="rounded-2xl bg-black/70 border border-white/12 px-4 py-3 cursor-pointer group transition-colors hover:border-emeraldGlow/30">
+          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
             <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-50 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                Are Azaad eSIM plans strictly data-only?
+              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
+                What exactly is Azaad eSIM?
               </span>
-              <svg class="faq-chevron w-4 h-4 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </summary>
-            <div class="mt-3 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-2">
-              Yes. Every Azaad eSIM plan is a data-only roaming profile with no local phone number and no native voice minutes. You’ll rely on apps and cloud services for communication while your physical SIM continues handling local calls and SMS.
+            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
+              Azaad eSIM is an international, data-only profile. It allows compatible smartphones in Pakistan to access internet services through data roaming agreements, routing traffic independently of local carrier restrictions.
             </div>
           </details>
 
-          <details class="rounded-2xl bg-black/70 border border-white/12 px-4 py-3 cursor-pointer group transition-colors hover:border-emeraldGlow/30">
+          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
             <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-50 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                How do these roaming profiles help non-PTA phones?
+              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
+                Can I make regular cellular calls or receive local SMS?
               </span>
-              <svg class="faq-chevron w-4 h-4 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </summary>
-            <div class="mt-3 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-2">
-              Azaad routes data via roaming networks instead of local registration paths, helping non‑PTA devices avoid typical PTA registration and DIRBS enforcement while maintaining data connectivity.
+            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
+              No. Azaad eSIM provides <strong>data only</strong>. It does not come with a local phone number. You must use apps like WhatsApp, FaceTime, or Zoom for calls and messages. Your physical SIM will continue to handle incoming OTPs and standard SMS depending on your device's network status.
             </div>
           </details>
 
-          <details class="rounded-2xl bg-black/70 border border-white/12 px-4 py-3 cursor-pointer group transition-colors hover:border-emeraldGlow/30">
+          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
             <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-50 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                Is Azaad eSIM locked to a single local operator?
+              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
+                Does this register my phone with the PTA?
               </span>
-              <svg class="faq-chevron w-4 h-4 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </summary>
-            <div class="mt-3 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-2">
-              No. Profiles are provisioned as roaming-grade data routes rather than as traditional local SIMs tied to a single operator, which supports the PTA/DIRBS bypass behavior for non‑PTA devices.
+            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
+              No. This service does not pay taxes or officially register your IMEI with the PTA. It acts purely as a roaming layer to provide internet connectivity, without modifying your official registration status.
             </div>
           </details>
 
-          <details class="rounded-2xl bg-black/70 border border-white/12 px-4 py-3 cursor-pointer group transition-colors hover:border-emeraldGlow/30">
+          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
             <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-50 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                Can I upgrade or change my data plan later?
+              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
+                How do I purchase and activate a plan?
               </span>
-              <svg class="faq-chevron w-4 h-4 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </summary>
-            <div class="mt-3 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-2">
-              Yes. You can request additional data or switch between expiring and non‑expiring profiles and receive updated roaming eSIM labels and QR codes as needed.
+            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
+              Select a plan from our pricing section and click 'Complete Order'. This will prepare an order summary and redirect you to WhatsApp. Send the generated message to our support team to complete payment and receive your activation QR code.
+            </div>
+          </details>
+
+          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
+            <summary class="flex items-center justify-between focus-ring outline-none">
+              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
+                What is your refund policy if it does not work?
+              </span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </summary>
+            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
+              We offer a reliable money-back guarantee. If you own a supported, factory-unlocked device and the eSIM fails to establish a data connection due to technical errors on our end, our support team will process a prompt refund.
             </div>
           </details>
 
@@ -655,70 +720,90 @@
     </section>
   </main>
 
-  <div id="gatewayModalBackdrop" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xl modal-hidden" aria-hidden="true">
-    <div class="mx-4 max-w-md w-full rounded-3xl bg-black/80 border border-white/15 shadow-2xl p-6 relative" role="dialog" aria-modal="true" aria-labelledby="gatewayTitle">
-      <button id="gatewayClose" class="absolute top-4 right-4 text-slate-400 hover:text-slate-200 focus-ring p-1" type="button" aria-label="Close checkout dialog">
+  <!-- Complete Order Checkout Modal -->
+  <div id="gatewayModalBackdrop" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md modal-hidden" aria-hidden="true">
+    <!-- max-h-[90vh] ensures mobile screens can scroll inside the modal -->
+    <div class="mx-4 max-w-md w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0a0a0a] border border-white/15 shadow-2xl p-6 md:p-8 relative" role="dialog" aria-modal="true" aria-labelledby="gatewayTitle">
+      <button id="gatewayClose" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors focus-ring p-1 rounded-full bg-white/5" type="button" aria-label="Close checkout dialog">
         <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M5 5l10 10M15 5l-10 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+          <path d="M5 5l10 10M15 5l-10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
         </svg>
       </button>
-      <div class="mb-4">
-        <p class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase mb-1">
-          Roaming eSIM Gateway
+      <div class="mb-6 border-b border-white/10 pb-4">
+        <p class="text-[0.65rem] font-bold text-emeraldSoft tracking-[0.2em] uppercase mb-1">
+          Secure Checkout
         </p>
-        <h3 id="gatewayTitle" class="text-lg font-semibold text-slate-50">
-          Confirm Your Azaad Data Only eSIM
+        <h3 id="gatewayTitle" class="text-xl font-semibold text-white">
+          Review Your Order
         </h3>
       </div>
-      <div class="space-y-3 text-sm text-slate-300 mb-6">
-        <div class="flex justify-between border-b border-white/10 pb-1">
-          <span class="text-slate-400">Region</span>
-          <span>Pakistan (Roaming Data Route)</span>
+      <div class="space-y-4 text-sm text-slate-300 mb-6 bg-white/5 p-4 rounded-xl border border-white/5">
+        <div class="flex justify-between items-center">
+          <span class="text-slate-400">Package</span>
+          <span class="font-medium text-white">Azaad Data eSIM</span>
         </div>
-        <div class="flex justify-between border-b border-white/10 pb-1">
-          <span class="text-slate-400">Volume</span>
-          <span id="gatewayVolume">—</span>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-400">Data Allowance</span>
+          <span id="gatewayVolume" class="font-medium text-white">—</span>
         </div>
-        <div class="flex justify-between border-b border-white/10 pb-1">
-          <span class="text-slate-400">Term</span>
-          <span id="gatewayTerm">—</span>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-400">Validity</span>
+          <span id="gatewayTerm" class="font-medium text-white">—</span>
         </div>
-        <div class="flex justify-between border-b border-white/10 pb-1">
-          <span class="text-slate-400">Base SKU</span>
-          <span id="gatewaySku" class="font-mono text-xs">—</span>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-400">Order Reference</span>
+          <span id="gatewaySku" class="font-mono text-xs text-slate-200 bg-white/10 px-2 py-0.5 rounded tracking-widest">—</span>
         </div>
-        <div class="flex justify-between pb-1">
-          <span class="text-slate-400">Total</span>
-          <span id="gatewayTotal" class="text-emeraldSoft font-semibold">—</span>
+        <div class="flex justify-between items-center pt-3 border-t border-white/10">
+          <span class="text-slate-300 font-medium">Total Price</span>
+          <span id="gatewayTotal" class="text-emeraldGlow font-bold text-lg">—</span>
         </div>
       </div>
       
       <form id="gatewayForm">
         <div class="mb-4">
-          <label for="gatewayEmail" class="block text-xs text-slate-400 tracking-[0.16em] uppercase mb-2">
-            Delivery Email (Required)
+          <label for="gatewayName" class="block text-xs font-semibold text-slate-300 tracking-[0.1em] uppercase mb-2">
+            Full Name <span class="text-slate-500 font-normal normal-case tracking-normal">(Optional)</span>
           </label>
-          <input id="gatewayEmail" type="email" required placeholder="you@securemail.com"
-                 class="w-full rounded-xl bg-black/70 border border-white/15 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emeraldGlow/60 focus:border-emeraldGlow/60 transition duration-200">
-          <p class="mt-2 text-xs text-slate-500">
-            Your roaming eSIM QR and activation details will be sent to this email once your data-only order is processed.
-          </p>
+          <input id="gatewayName" type="text" placeholder="John Doe"
+                 class="w-full rounded-xl bg-black border border-white/20 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emeraldGlow/50 focus:border-emeraldGlow/50 transition duration-200">
         </div>
-        <div class="space-y-3">
+        <div class="mb-6">
+          <label for="gatewayEmail" class="block text-xs font-semibold text-slate-300 tracking-[0.1em] uppercase mb-2">
+            Customer Email <span class="text-emeraldSoft">*</span>
+          </label>
+          <input id="gatewayEmail" type="email" required placeholder="name@example.com"
+                 class="w-full rounded-xl bg-black border border-white/20 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emeraldGlow/50 focus:border-emeraldGlow/50 transition duration-200">
+        </div>
+        <div class="space-y-4 pt-2">
           <button id="gatewayProceed" type="submit"
-                  class="btn-premium w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emeraldGlow text-azaadBgDeep px-4 py-3 text-sm font-semibold tracking-[0.18em] uppercase shadow-glow focus-ring">
-            <span>Proceed via WhatsApp</span>
+                  class="btn-premium w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emeraldGlow text-azaadBgDeep px-4 py-3.5 text-sm font-bold tracking-[0.15em] uppercase shadow-glow focus-ring transition-transform">
+            <span>Complete Order</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </button>
-          <p class="text-xs text-slate-500 text-center leading-relaxed">
-            By proceeding, you confirm these are roaming, data-only profiles optimized for non‑PTA phones.
-          </p>
+          <div class="text-center rounded-lg bg-emeraldGlow/5 border border-emeraldGlow/10 p-3">
+            <p class="text-[0.7rem] text-slate-400 leading-relaxed">
+              Opening WhatsApp does not automatically charge you. <strong class="text-slate-200">You must send the message to our team to confirm your order.</strong>
+            </p>
+          </div>
+          <div id="whatsappFallback" class="hidden mt-2 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-center">
+            <p class="text-[0.7rem] text-amber-200/80 mb-2">Popup blocked by browser?</p>
+            <a id="fallbackWhatsAppLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-amber-300 focus-ring">
+              Click here to continue
+              <svg class="w-3 h-3" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10h9M9 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
         </div>
       </form>
     </div>
   </div>
 
-  <footer class="relative mt-8 border-t border-white/10 bg-azaadBgDeep pt-16 pb-8 overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-emeraldGlow/50 to-transparent pointer-events-none"></div>
+  <footer class="relative mt-12 border-t border-white/10 bg-azaadBgDeep pt-16 pb-8 overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-emeraldGlow/30 to-transparent pointer-events-none"></div>
 
     <div class="mx-auto max-w-6xl px-6 sm:px-10">
       <div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
@@ -732,505 +817,279 @@
                 <circle cx="21.5" cy="11.5" r="2"></circle>
               </svg>
             </div>
-            <span class="text-xs font-semibold tracking-[0.2em] text-slate-200 uppercase">Azaad eSIM</span>
+            <span class="text-xs font-semibold tracking-[0.2em] text-slate-100 uppercase">Azaad eSIM</span>
           </a>
-          <p class="text-[0.7rem] leading-relaxed text-slate-400">
-            Data-only roaming profiles. Engineered to bypass DIRBS restrictions for non-PTA smartphones in Pakistan.
+          <p class="text-xs leading-relaxed text-slate-400">
+            Premium data-only roaming profiles. Engineered to provide independent connectivity for smartphones securely.
           </p>
         </div>
 
         <div class="lg:col-span-1">
-          <h3 class="text-[0.65rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Sitemap</h3>
-          <ul class="flex flex-col gap-3 text-xs text-slate-400">
+          <h3 class="text-[0.7rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Sitemap</h3>
+          <ul class="flex flex-col gap-3 text-sm text-slate-400">
             <li><a href="#plans" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Data Plans</a></li>
             <li><a href="#features" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Features</a></li>
-            <li><a href="#compatibility" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Device Compatibility</a></li>
-            <li><a href="#workflow" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Activation Flow</a></li>
+            <li><a href="#compatibility" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Compatibility</a></li>
+            <li><a href="#workflow" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Activation Process</a></li>
             <li><a href="#faq" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">FAQ</a></li>
           </ul>
         </div>
 
         <div class="lg:col-span-1">
-          <h3 class="text-[0.65rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Support</h3>
-          <ul class="flex flex-col gap-4 text-xs text-slate-400">
+          <h3 class="text-[0.7rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Support & Contact</h3>
+          <ul class="flex flex-col gap-4 text-sm text-slate-400">
             <li>
-              <span class="block text-[0.65rem] text-slate-500 tracking-wider uppercase mb-1">WhatsApp Concierge</span>
-              <a
-    href="https://wa.me/923171058812?text=Hi%2C%20I%27m%20interested%20in%20Azaad%20eSIM.%20Please%20guide%20me."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="text-emeraldSoft hover:text-emeraldGlow transition-colors"
->
-    Chat with us on WhatsApp
-</a>
+              <span class="block text-xs font-semibold text-slate-500 tracking-wider uppercase mb-1">Direct Assistance</span>
+              <a href="https://wa.me/923171058812?text=Hi%2C%20I%20need%20help%20with%20Azaad%20eSIM."
+                 target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 text-emeraldSoft hover:text-emeraldGlow transition-colors focus-ring">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm0 21.82A9.82 9.82 0 1 1 21.82 12 9.831 9.831 0 0 1 12 21.82z"/>
+                </svg>
+                Chat with our Support Team
+              </a>
             </li>
             <li>
-              <span class="block text-[0.65rem] text-slate-500 tracking-wider uppercase mb-1">Secure Delivery</span>
-              <a href="mailto:support@azaadesim.com" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">info@azaadesim.com</a>
+              <span class="block text-xs font-semibold text-slate-500 tracking-wider uppercase mb-1">Email inquiries</span>
+              <a href="mailto:support@azaadesim.com" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">support@azaadesim.com</a>
             </li>
           </ul>
         </div>
 
         <div class="lg:col-span-1">
-          <h3 class="text-[0.65rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Regulatory Notice</h3>
-          <p class="text-[0.65rem] leading-relaxed text-slate-500">
-            Azaad eSIM provides routing for roaming data. It does not replace official PTA device registration or emergency cellular networks. Retain a local physical SIM for banking OTPs and identity verification. Service provided as-is.
+          <h3 class="text-[0.7rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Regulatory Notice</h3>
+          <p class="text-[0.7rem] leading-relaxed text-slate-500">
+            Azaad eSIM strictly provides international data routing. It does not replace official PTA registration for cellular voice networks. Retain a local physical SIM for official verification workflows. Services are provided in compliance with our data-only usage policy.
           </p>
         </div>
 
       </div>
 
-      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-        <p class="text-[0.6rem] text-slate-500 uppercase tracking-[0.15em]">
+      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
+        <p class="text-xs text-slate-500 uppercase tracking-[0.1em]">
           &copy; 2026 Azaad eSIM. All rights reserved.
         </p>
         <div class="flex gap-4">
-          <span class="text-[0.6rem] text-slate-500 uppercase tracking-[0.15em] flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow/50"></span>
-            Non-PTA Data Layer
+          <span class="text-xs text-slate-500 uppercase tracking-[0.1em] flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow/60"></span>
+            International Data Layer
           </span>
         </div>
       </div>
     </div>
   </footer>
 
-  <template id="expiringTemplate">
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="1" data-term="30 Days" data-total="1050" data-sku="AZ-30D-1GB" tabindex="0" role="button" aria-label="Select 1 GB plan for 30 Days">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">1 GB</h3>
-          <p class="text-sm text-slate-400">Entry burst for roaming data.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          30 Days
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 1,050</span>
-        <span class="text-emeraldSoft text-xs">Rs 1,050 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Single-session social, maps, email.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
+  <!-- Floating WhatsApp Chat Button -->
+  <a
+      href="https://wa.me/923171058812?text=Hi%2C%20I%27m%20interested%20in%20purchasing%20an%20Azaad%20eSIM.%20Please%20guide%20me."
+      class="whatsapp-float focus-ring"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with Azaad eSIM on WhatsApp"
+      title="Chat with us on WhatsApp"
+  >
+      <svg
+          viewBox="0 0 32 32"
+          fill="currentColor"
+          aria-hidden="true"
+      >
+          <path d="M16.04 3.2c-7.07 0-12.82 5.75-12.82 12.82 0 2.26.59 4.47 1.71 6.42L3.2 28.8l6.5-1.7a12.7 12.7 0 0 0 6.34 1.68h.01c7.07 0 12.82-5.75 12.82-12.82 0-3.43-1.33-6.66-3.76-9.08a12.75 12.75 0 0 0-9.07-3.76zm0 23.39h-.01c-1.98 0-3.92-.53-5.61-1.53l-.4-.24-3.86 1.01 1.03-3.76-.26-.39a10.57 10.57 0 0 1-1.62-5.66c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.12 7.52c0 5.87-4.77 10.64-10.63 10.64zm5.84-7.97c-.32-.16-1.89-.93-2.18-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.36-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.64 0 1.56 1.13 3.07 1.29 3.28.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.45.2 2 .12.61-.09 1.89-.77 2.16-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/>
+      </svg>
+  </a>
 
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="3" data-term="30 Days" data-total="1250" data-sku="AZ-30D-3GB" tabindex="0" role="button" aria-label="Select 3 GB plan for 30 Days">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">3 GB</h3>
-          <p class="text-sm text-slate-400">Weekend roaming companion.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          30 Days
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 1,250</span>
-        <span class="text-emeraldSoft text-xs">Rs 417 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Messaging-first, navigation, streaming bursts.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="5" data-term="30 Days" data-total="1450" data-sku="AZ-30D-5GB" tabindex="0" role="button" aria-label="Select 5 GB plan for 30 Days">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">5 GB</h3>
-          <p class="text-sm text-slate-400">Comfort roaming data cushion.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          30 Days
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 1,450</span>
-        <span class="text-emeraldSoft text-xs">Rs 290 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Video, cloud sync, navigation comfort.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="10" data-term="30 Days" data-total="2290" data-sku="AZ-30D-10GB" tabindex="0" role="button" aria-label="Select 10 GB plan for 30 Days">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">10 GB</h3>
-          <p class="text-sm text-slate-400">Frequent traveller’s roaming buffer.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          30 Days
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 2,290</span>
-        <span class="text-emeraldSoft text-xs">Rs 229 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Work calls via apps, HD streaming, backup tethering.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="20" data-term="30 Days" data-total="3750" data-sku="AZ-30D-20GB" tabindex="0" role="button" aria-label="Select 20 GB plan for 30 Days">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">20 GB</h3>
-          <p class="text-sm text-slate-400">Borderless remote work week.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          30 Days
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 3,750</span>
-        <span class="text-emeraldSoft text-xs">Rs 188 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Remote work, content upload, multi-device roaming.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="50" data-term="30 Days" data-total="8300" data-sku="AZ-30D-50GB" tabindex="0" role="button" aria-label="Select 50 GB plan for 30 Days">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">50 GB</h3>
-          <p class="text-sm text-slate-400">High-output roaming data stack.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          30 Days
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 8,300</span>
-        <span class="text-emeraldSoft text-xs">Rs 166 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Multi-line, shared hotspot, creative roaming workflows.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="100" data-term="30 Days" data-total="14450" data-sku="AZ-30D-100GB" tabindex="0" role="button" aria-label="Select 100 GB plan for 30 Days">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">100 GB</h3>
-          <p class="text-sm text-slate-400">Studio-grade roaming connectivity.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          30 Days
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 14,450</span>
-        <span class="text-emeraldSoft text-xs">Rs 144 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Founders, teams, cross-device roaming, heavy upload.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-  </template>
-
-  <template id="nonExpiringTemplate">
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="1" data-term="No Expiration" data-total="1250" data-sku="AZ-NE-1GB" tabindex="0" role="button" aria-label="Select 1 GB Non-Expiring plan">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">1 GB Vault</h3>
-          <p class="text-sm text-slate-400">Quiet standby roaming layer.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          Non-Expiring
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 1,250</span>
-        <span class="text-emeraldSoft text-xs">Rs 1,250 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Emergency eSIM reserve, always ready.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="3" data-term="No Expiration" data-total="1650" data-sku="AZ-NE-3GB" tabindex="0" role="button" aria-label="Select 3 GB Non-Expiring plan">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">3 GB Vault</h3>
-          <p class="text-sm text-slate-400">Irregular but essential roaming days.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          Non-Expiring
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 1,650</span>
-        <span class="text-emeraldSoft text-xs">Rs 550 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Ideal for founders, consultants, sporadic non‑PTA trips.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="5" data-term="No Expiration" data-total="1850" data-sku="AZ-NE-5GB" tabindex="0" role="button" aria-label="Select 5 GB Non-Expiring plan">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">5 GB Vault</h3>
-          <p class="text-sm text-slate-400">Persistent roaming comfort cushion.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          Non-Expiring
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 1,850</span>
-        <span class="text-emeraldSoft text-xs">Rs 370 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          For backups, consultancy, roaming content workflows.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="10" data-term="No Expiration" data-total="2700" data-sku="AZ-NE-10GB" tabindex="0" role="button" aria-label="Select 10 GB Non-Expiring plan">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">10 GB Vault</h3>
-          <p class="text-sm text-slate-400">Serious long-haul roaming security.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          Non-Expiring
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 2,700</span>
-        <span class="text-emeraldSoft text-xs">Rs 270 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Long-haul security, B2B roaming back-up pipe.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="20" data-term="No Expiration" data-total="4550" data-sku="AZ-NE-20GB" tabindex="0" role="button" aria-label="Select 20 GB Non-Expiring plan">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">20 GB Vault</h3>
-          <p class="text-sm text-slate-400">Cloud-heavy roaming collaboration.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          Non-Expiring
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 4,550</span>
-        <span class="text-emeraldSoft text-xs">Rs 228 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Project teams, distributed studio roaming use.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="50" data-term="No Expiration" data-total="10300" data-sku="AZ-NE-50GB" tabindex="0" role="button" aria-label="Select 50 GB Non-Expiring plan">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">50 GB Vault</h3>
-          <p class="text-sm text-slate-400">Enterprise-grade roaming pipe.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          Non-Expiring
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 10,300</span>
-        <span class="text-emeraldSoft text-xs">Rs 206 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Teams, creative agencies, multi-country roaming workflows.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-
-    <article class="plan-card rounded-2xl bg-black/70 border border-white/12 p-5 flex flex-col gap-3 cursor-pointer"
-             data-volume="100" data-term="No Expiration" data-total="16500" data-sku="AZ-NE-100GB" tabindex="0" role="button" aria-label="Select 100 GB Non-Expiring plan">
-      <div class="flex justify-between items-start pointer-events-none">
-        <div>
-          <h3 class="text-base font-semibold text-slate-50">100 GB Vault</h3>
-          <p class="text-sm text-slate-400">Gold-standard roaming vault.</p>
-        </div>
-        <span class="text-xs font-semibold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/40 rounded-full px-2 py-1 tracking-[0.14em] uppercase">
-          Non-Expiring
-        </span>
-      </div>
-      <div class="flex justify-between items-center text-sm pointer-events-none mt-1">
-        <span class="text-slate-300">Rs 16,500</span>
-        <span class="text-emeraldSoft text-xs">Rs 165 / GB</span>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <span class="text-[0.65rem] text-slate-500 tracking-[0.18em] uppercase pointer-events-none">
-          Strategic portfolio, board-level roaming, global ops.
-        </span>
-        <button class="open-gateway inline-flex items-center justify-center w-7 h-7 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft" type="button" tabindex="-1" aria-hidden="true">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
-            <path d="M6 4h9v9M6 13l9-9" stroke="#06f9a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </button>
-      </div>
-    </article>
-  </template>
-
+  <!-- Application Logic -->
   <script>
     (function () {
-      const planToggle = document.getElementById('planToggle');
-      const planToggleKnob = document.getElementById('planToggleKnob');
-      const planGrid = document.getElementById('planGrid');
-      const expiringTemplate = document.getElementById('expiringTemplate');
-      const nonExpiringTemplate = document.getElementById('nonExpiringTemplate');
+      // 1. Database of all 15 plans
+      const planData = {
+        standard: [
+          { volume: '1 GB', term: '30 Days', price: 1020, label: 'Light usage, emails, and basic maps.', badge: null },
+          { volume: '3 GB', term: '30 Days', price: 1225, label: 'Standard browsing and messaging.', badge: null },
+          { volume: '5 GB', term: '30 Days', price: 1430, label: 'Frequent browsing and social media.', badge: 'Most Popular' },
+          { volume: '10 GB', term: '30 Days', price: 2250, label: 'Moderate video streaming and tethering.', badge: null },
+          { volume: '20 GB', term: '30 Days', price: 3685, label: 'Remote work, files, and daily streaming.', badge: null },
+          { volume: '50 GB', term: '30 Days', price: 8200, label: 'Heavy daily usage and tethering.', badge: null },
+          { volume: '100 GB', term: '30 Days', price: 14350, label: 'Maximum data for extended workflows.', badge: null }
+        ],
+        unlimited: [
+          { volume: 'Unlimited', term: '10 Days', price: 11900, label: 'Worry-free unrestricted data for short trips.', badge: 'Premium' }
+        ],
+        nonexpiring: [
+          { volume: '1 GB', term: 'No Expiration', price: 1225, label: 'Ideal for emergencies and light usage.', badge: null },
+          { volume: '3 GB', term: 'No Expiration', price: 1635, label: 'Occasional travel and standard messaging.', badge: null },
+          { volume: '5 GB', term: 'No Expiration', price: 1840, label: 'Reliable allowance without expiration pressure.', badge: 'Flexible' },
+          { volume: '10 GB', term: 'No Expiration', price: 2660, label: 'Suitable for extended travel and regular use.', badge: null },
+          { volume: '20 GB', term: 'No Expiration', price: 4505, label: 'Extensive data pool for prolonged needs.', badge: null },
+          { volume: '50 GB', term: 'No Expiration', price: 10250, label: 'Large reserve for teams and heavy users.', badge: null },
+          { volume: '100 GB', term: 'No Expiration', price: 16400, label: 'Ultimate long-term data vault.', badge: null }
+        ]
+      };
 
+      const planGrid = document.getElementById('planGrid');
+      const tabBtns = document.querySelectorAll('.tab-btn');
+
+      // 2. DOM Elements for Modal
       const gatewayModalBackdrop = document.getElementById('gatewayModalBackdrop');
       const gatewayClose = document.getElementById('gatewayClose');
       const gatewayVolume = document.getElementById('gatewayVolume');
       const gatewayTerm = document.getElementById('gatewayTerm');
       const gatewaySku = document.getElementById('gatewaySku');
       const gatewayTotal = document.getElementById('gatewayTotal');
+      const gatewayName = document.getElementById('gatewayName');
       const gatewayEmail = document.getElementById('gatewayEmail');
       const gatewayForm = document.getElementById('gatewayForm');
+      const whatsappFallback = document.getElementById('whatsappFallback');
+      const fallbackWhatsAppLink = document.getElementById('fallbackWhatsAppLink');
+      
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
 
-      let showingNonExpiring = false;
+      let currentCategory = 'standard';
+      let lastFocusedElement = null;
+      let scrollLockCount = 0;
 
-      function renderPlans() {
+      // 3. Scroll Locking
+      function lockScroll() {
+        scrollLockCount++;
+        document.body.style.overflow = 'hidden';
+      }
+      function unlockScroll() {
+        scrollLockCount--;
+        if (scrollLockCount <= 0) {
+          scrollLockCount = 0;
+          document.body.style.overflow = '';
+        }
+      }
+
+      // 4. Render Engine
+      function formatPrice(num) {
+        return num.toLocaleString('en-US');
+      }
+
+      function calculatePerGB(price, volumeStr) {
+        if (volumeStr === 'Unlimited') return 'Unlimited';
+        const gb = parseInt(volumeStr);
+        if (isNaN(gb) || gb === 0) return '';
+        return 'Rs ' + formatPrice(Math.round(price / gb)) + ' / GB';
+      }
+
+      function renderPlans(category) {
         planGrid.innerHTML = '';
-        const templateToUse = showingNonExpiring ? nonExpiringTemplate : expiringTemplate;
-        const fragment = templateToUse.content.cloneNode(true);
-        planGrid.appendChild(fragment);
+        const plans = planData[category] || [];
+        
+        plans.forEach(plan => {
+          const perGbText = calculatePerGB(plan.price, plan.volume);
+          const badgeHTML = plan.badge 
+            ? `<div class="absolute -top-3 left-6"><span class="bg-emeraldGlow text-azaadBgDeep text-[0.6rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-glow">${plan.badge}</span></div>` 
+            : '';
+          const cardClass = plan.badge ? 'border-emeraldGlow/30 shadow-innerGlow' : 'border-white/10';
+
+          const cardHTML = `
+            <article class="plan-card rounded-2xl bg-black/60 border ${cardClass} p-6 flex flex-col gap-4 cursor-pointer relative"
+                     data-volume="${plan.volume}" data-term="${plan.term}" data-total="${plan.price}" tabindex="0" role="button" aria-label="Select ${plan.volume} plan">
+              ${badgeHTML}
+              <div class="flex justify-between items-start pointer-events-none mt-1">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-50">${plan.volume}</h3>
+                  <p class="text-sm text-slate-400 mt-1">${plan.label}</p>
+                </div>
+                <span class="text-[0.65rem] font-bold ${category === 'unlimited' ? 'text-azaadBgDeep bg-emeraldGlow' : 'text-slate-300 bg-white/10 border border-white/20'} rounded-full px-2.5 py-1 tracking-[0.15em] uppercase text-center min-w-[70px]">
+                  ${category === 'standard' ? '30 Days' : (category === 'unlimited' ? '10 Days' : 'Non-Expiring')}
+                </span>
+              </div>
+              <div class="flex justify-between items-center mt-2 border-t border-white/5 pt-3 pointer-events-none">
+                <span class="text-lg font-semibold text-slate-100">Rs ${formatPrice(plan.price)}</span>
+                <span class="text-emeraldSoft text-xs font-medium">${perGbText}</span>
+              </div>
+              <div class="flex items-center justify-between mt-1 pointer-events-none">
+                <span class="text-[0.65rem] text-slate-500 tracking-[0.1em] uppercase font-medium">Select Plan</span>
+                <div class="inline-flex items-center justify-center w-8 h-8 rounded-full ${plan.badge ? 'bg-emeraldGlow text-azaadBgDeep shadow-glow' : 'bg-white/5 border border-white/20 text-slate-300'}">
+                  <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M6 4h9v9M6 13l9-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </div>
+            </article>
+          `;
+          planGrid.insertAdjacentHTML('beforeend', cardHTML);
+        });
+      }
+
+      // 5. Navigation Logic
+      function toggleMobileMenu() {
+        const isHidden = mobileMenu.classList.contains('menu-hidden');
+        if (isHidden) {
+          lastFocusedElement = document.activeElement;
+          mobileMenu.classList.remove('menu-hidden');
+          mobileMenu.classList.add('menu-visible');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+          lockScroll();
+          setTimeout(() => mobileMenuCloseBtn.focus(), 50);
+        } else {
+          mobileMenu.classList.remove('menu-visible');
+          mobileMenu.classList.add('menu-hidden');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          unlockScroll();
+          if (lastFocusedElement) lastFocusedElement.focus();
+        }
+      }
+      
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+      mobileMenuCloseBtn.addEventListener('click', toggleMobileMenu);
+      document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', toggleMobileMenu));
+
+      // Tabs Event Listeners
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          tabBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          const target = e.currentTarget;
+          target.classList.add('active');
+          target.setAttribute('aria-selected', 'true');
+          currentCategory = target.dataset.target;
+          renderPlans(currentCategory);
+        });
+      });
+
+      // 6. Checkout Flow
+      function generateUniqueReference() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let out = 'REF-';
+        for (let i = 0; i < 6; i++) out += chars.charAt(Math.floor(Math.random() * chars.length));
+        return out;
       }
 
       function openGatewayForCard(card) {
         if (!card) return;
-        gatewayVolume.textContent = card.dataset.volume + ' GB';
+        lastFocusedElement = document.activeElement;
+        
+        gatewayVolume.textContent = card.dataset.volume;
         gatewayTerm.textContent = card.dataset.term;
-        gatewaySku.textContent = card.dataset.sku;
-        gatewayTotal.textContent = 'Rs ' + card.dataset.total;
-
-        document.body.style.overflow = 'hidden';
+        gatewayTotal.textContent = 'Rs ' + formatPrice(Number(card.dataset.total));
+        gatewaySku.textContent = generateUniqueReference();
+        whatsappFallback.classList.add('hidden'); // Reset fallback on new open
+        
         gatewayModalBackdrop.classList.remove('modal-hidden');
         gatewayModalBackdrop.classList.add('modal-visible');
         gatewayModalBackdrop.setAttribute('aria-hidden', 'false');
+        lockScroll();
         
-        setTimeout(() => gatewayEmail.focus(), 50);
+        setTimeout(() => gatewayName.focus(), 50);
       }
 
       function closeGateway() {
         gatewayModalBackdrop.classList.remove('modal-visible');
         gatewayModalBackdrop.classList.add('modal-hidden');
         gatewayModalBackdrop.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        unlockScroll();
+        if (lastFocusedElement) lastFocusedElement.focus();
       }
-
-      planToggle.addEventListener('click', () => {
-        showingNonExpiring = !showingNonExpiring;
-        planToggle.setAttribute('aria-pressed', showingNonExpiring ? 'true' : 'false');
-        planToggleKnob.classList.remove('translate-x-0', 'translate-x-8');
-        planToggleKnob.classList.add(showingNonExpiring ? 'translate-x-8' : 'translate-x-0');
-        renderPlans();
-      });
 
       planGrid.addEventListener('click', (event) => {
         const card = event.target.closest('.plan-card');
@@ -1252,77 +1111,76 @@
         if (e.target === gatewayModalBackdrop) closeGateway();
       });
 
+      // Accessibility Trap
       const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeGateway();
+        if (e.key === 'Escape') {
+          if (!gatewayModalBackdrop.classList.contains('modal-hidden')) closeGateway();
+          else if (!mobileMenu.classList.contains('menu-hidden')) toggleMobileMenu();
+        }
         
-        const isTabPressed = e.key === 'Tab';
-        if (!isTabPressed || gatewayModalBackdrop.classList.contains('modal-hidden')) return;
-        
-        const focusableContent = gatewayModalBackdrop.querySelectorAll(focusableElements);
-        const firstFocusableElement = focusableContent[0];
-        const lastFocusableElement = focusableContent[focusableContent.length - 1];
+        if (e.key !== 'Tab') return;
 
-        if (e.shiftKey) {
-          if (document.activeElement === firstFocusableElement) {
+        let activeOverlay = null;
+        if (!gatewayModalBackdrop.classList.contains('modal-hidden')) activeOverlay = gatewayModalBackdrop;
+        else if (!mobileMenu.classList.contains('menu-hidden')) activeOverlay = mobileMenu;
+
+        if (activeOverlay) {
+          const focusableContent = Array.from(activeOverlay.querySelectorAll(focusableElements)).filter(el => {
+            return !el.closest('.hidden'); // Ignore hidden fallback links
+          });
+          if (focusableContent.length === 0) return;
+          
+          const firstFocusableElement = focusableContent[0];
+          const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+          if (e.shiftKey && document.activeElement === firstFocusableElement) {
             lastFocusableElement.focus();
             e.preventDefault();
-          }
-        } else {
-          if (document.activeElement === lastFocusableElement) {
+          } else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
             firstFocusableElement.focus();
             e.preventDefault();
           }
         }
       });
 
-      function generateUniqueSuffix() {
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let out = '';
-        for (let i = 0; i < 5; i++) out += chars.charAt(Math.floor(Math.random() * chars.length));
-        return out;
-      }
-
+      // Submit logic
       gatewayForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        const name = gatewayName.value.trim();
         const email = gatewayEmail.value.trim();
-        const fullSku = (gatewaySku.textContent || '') + '-' + generateUniqueSuffix();
+        const reference = gatewaySku.textContent;
 
         const messageLines = [
-          'Premium Concierge Request:',
-          'Region: Pakistan (Roaming Data Route)',
-          'Volume: ' + (gatewayVolume.textContent || ''),
-          'Term: ' + (gatewayTerm.textContent || ''),
-          'Total: ' + (gatewayTotal.textContent || ''),
-          'SKU: ' + fullSku,
-          'Delivery Email: ' + email
-        ];
+          '*NEW AZAAD eSIM ORDER REQUEST*',
+          '--------------------------------',
+          'Package: Azaad Data eSIM',
+          'Data Volume: ' + gatewayVolume.textContent,
+          'Validity: ' + gatewayTerm.textContent,
+          'Total Amount: ' + gatewayTotal.textContent,
+          'Reference Code: ' + reference,
+          name ? 'Customer Name: ' + name : null,
+          'Customer Email: ' + email,
+          '--------------------------------',
+          'Please guide me on payment and activation.'
+        ].filter(Boolean); // Filter out nulls
         
-        const encoded = encodeURIComponent(messageLines.join('\n'));
-        window.open('https://wa.me/923171058812?text=' + encoded, '_blank', 'noopener,noreferrer');
+        const wpUrl = 'https://wa.me/923171058812?text=' + encodeURIComponent(messageLines.join('\n'));
+        const wpWindow = window.open(wpUrl, '_blank', 'noopener,noreferrer');
+        
+        // Handle popup blocker fallback
+        if (!wpWindow || wpWindow.closed || typeof wpWindow.closed === 'undefined') {
+          whatsappFallback.classList.remove('hidden');
+          fallbackWhatsAppLink.href = wpUrl;
+        }
       });
 
-      window.addEventListener('DOMContentLoaded', renderPlans);
+      // Initialize
+      window.addEventListener('DOMContentLoaded', () => {
+        renderPlans('standard');
+      });
     })();
   </script>
-  <!-- Floating WhatsApp Chat Button -->
-<a
-    href="https://wa.me/923171058812?text=Hi%2C%20I%27m%20interested%20in%20purchasing%20an%20Azaad%20eSIM.%20Please%20guide%20me."
-    class="whatsapp-float"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Chat with Azaad eSIM on WhatsApp"
-    title="Chat with us on WhatsApp"
->
-    <svg
-        viewBox="0 0 32 32"
-        fill="currentColor"
-        aria-hidden="true"
-    >
-        <path d="M16.04 3.2c-7.07 0-12.82 5.75-12.82 12.82 0 2.26.59 4.47 1.71 6.42L3.2 28.8l6.5-1.7a12.7 12.7 0 0 0 6.34 1.68h.01c7.07 0 12.82-5.75 12.82-12.82 0-3.43-1.33-6.66-3.76-9.08a12.75 12.75 0 0 0-9.07-3.76zm0 23.39h-.01c-1.98 0-3.92-.53-5.61-1.53l-.4-.24-3.86 1.01 1.03-3.76-.26-.39a10.57 10.57 0 0 1-1.62-5.66c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.12 7.52c0 5.87-4.77 10.64-10.63 10.64zm5.84-7.97c-.32-.16-1.89-.93-2.18-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.36-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.64 0 1.56 1.13 3.07 1.29 3.28.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.45.2 2 .12.61-.09 1.89-.77 2.16-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/>
-    </svg>
-</a>
-<!-- End Floating WhatsApp Button -->
 </body>
 </html>
