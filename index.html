@@ -1,1186 +1,1152 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Azaad eSIM – International Data Roaming eSIM for Smartphones</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Azaad eSIM provides data-only roaming eSIM profiles for smartphones in Pakistan. Access international data routing that operates independently of local network registration.">
-  <link rel="canonical" href="https://azaadesim.duckdns.org/">
-  <meta name="theme-color" content="#0a0a0a">
-  
-  <meta property="og:title" content="Azaad eSIM – Data Only Roaming eSIM">
-  <meta property="og:description" content="Data-only roaming eSIM profiles for smartphones. Maintain internet access with independent international data routing.">
-  <meta property="og:type" content="website">
-  
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0' stop-color='%2306f9a8'/%3E%3Cstop offset='1' stop-color='%23006438'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect x='0' y='0' width='64' height='64' rx='16' fill='%230a0a0a'/%3E%3Crect x='10' y='14' width='44' height='36' rx='10' fill='url(%23g)' opacity='0.85'/%3E%3Crect x='16' y='20' width='32' height='24' rx='6' fill='%230a0a0a' opacity='0.95'/%3E%3Ccircle cx='44' cy='22' r='4' fill='%2306f9a8'/%3E%3Cpath d='M22 26h8v2h-8zm0 6h14v2H22zm0 6h10v2H22z' fill='%23e5fffb'/%3E%3C/svg%3E">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['system-ui', 'Inter', 'sans-serif'],
-          },
-          colors: {
-            azaadBgDeep: '#0a0a0a',
-            azaadBgSoft: '#141414',
-            emeraldGlow: '#06f9a8',
-            emeraldSoft: '#4ade80',
-          },
-          boxShadow: {
-            glow: '0 0 35px rgba(6, 249, 168, 0.25)',
-            innerGlow: 'inset 0 0 30px rgba(6, 249, 168, 0.12)',
-          },
-          keyframes: {
-            subtleZoom: {
-              '0%, 100%': { transform: 'scale(1)' },
-              '50%': { transform: 'scale(1.05)' },
-            },
-            floatSoft: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-15px)' },
-            }
-          },
-          animation: {
-            subtleZoom: 'subtleZoom 8s ease-in-out infinite',
-            floatSoft: 'floatSoft 6s ease-in-out infinite',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    :root {
-      color-scheme: dark;
-    }
-    body {
-      letter-spacing: 0.015em;
-      -webkit-font-smoothing: antialiased;
-    }
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #050505;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #06f9a8, #1f2933);
-      border-radius: 999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #22c55e, #111827);
-    }
-    .link-underline {
-      position: relative;
-    }
-    .link-underline::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.35rem;
-      width: 0;
-      height: 1px;
-      background: linear-gradient(90deg, #06f9a8, #4ade80);
-      transition: width 260ms ease;
-      opacity: 0.75;
-    }
-    .link-underline:hover::after, .link-underline:focus-visible::after {
-      width: 100%;
-    }
-    .accent-dot {
-      position: relative;
-    }
-    .accent-dot::before {
-      content: "";
-      position: absolute;
-      inset: -6px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(6, 249, 168, 0.5), transparent 60%);
-      opacity: 0.5;
-      filter: blur(4px);
-      z-index: -1;
-    }
-    .plan-card {
-      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
-    }
-    .plan-card:hover, .plan-card:focus-visible {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(6, 249, 168, 0.2);
-      border-color: rgba(6, 249, 168, 0.35);
-      background: radial-gradient(circle at top left, rgba(6, 249, 168, 0.08), rgba(20, 20, 20, 0.98));
-      outline: none;
-    }
-    .modal-visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .modal-hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .modal-backdrop {
-      transition: opacity 220ms ease;
-    }
-    .btn-premium {
-      position: relative;
-      overflow: hidden;
-      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-    }
-    .btn-premium::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.15), transparent 50%);
-      opacity: 0;
-      transform: translateX(-40%);
-      transition: opacity 240ms ease, transform 240ms ease;
-    }
-    .btn-premium:hover::after, .btn-premium:focus-visible::after {
-      opacity: 1;
-      transform: translateX(10%);
-    }
-    .btn-premium:hover, .btn-premium:focus-visible {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(6, 249, 168, 0.25);
-      outline: none;
-    }
-    .btn-premium:active {
-      transform: translateY(0px) scale(0.99);
-      box-shadow: 0 6px 18px rgba(6, 249, 168, 0.2);
-    }
-    .glass-shell {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.88), rgba(10, 10, 10, 0.95));
-    }
-    @media (min-width: 1024px) {
-      .glass-shell {
-        backdrop-filter: blur(20px);
-      }
-    }
-    input[type="email"]:invalid:not(:placeholder-shown) {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.6);
-    }
-    .focus-ring:focus-visible {
-      outline: 2px solid #06f9a8;
-      outline-offset: 2px;
-      border-radius: 4px;
-    }
-    details > summary {
-      list-style: none;
-    }
-    details > summary::-webkit-details-marker {
-      display: none;
-    }
-    details[open] summary .faq-chevron {
-      transform: rotate(90deg);
-    }
-    details[open] {
-      background: radial-gradient(circle at top left, rgba(6, 249, 168, 0.08), rgba(20, 20, 20, 0.98));
-      border-color: rgba(6, 249, 168, 0.35);
-    }
-    
-    /* WhatsApp Floating Button */
-    .whatsapp-float {
-        position: fixed;
-        right: max(20px, env(safe-area-inset-right));
-        bottom: max(20px, env(safe-area-inset-bottom));
-        z-index: 30;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: #25D366;
-        color: #ffffff;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        transition: all 0.25s ease;
-    }
-    .whatsapp-float:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
-    }
-    .whatsapp-float svg {
-        width: 32px;
-        height: 32px;
-    }
-    .whatsapp-float:focus-visible {
-        outline: 3px solid #ffffff;
-        outline-offset: 4px;
-    }
-    @media (max-width: 640px) {
-        .whatsapp-float {
-            width: 54px;
-            height: 54px;
-            right: 16px;
-            bottom: 16px;
-        }
-        .whatsapp-float svg {
-            width: 28px;
-            height: 28px;
-        }
-    }
-    
-    /* Mobile Menu Transitions */
-    #mobileMenu {
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-    #mobileMenu.menu-hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-    #mobileMenu.menu-visible {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azaad eSIM | Data-Only eSIM for Non-PTA Phones in Pakistan</title>
+<meta name="description" content="Data-only eSIM packages for compatible Non-PTA phones in Pakistan. No phone number, calls or SMS. Check your phone first, then order on WhatsApp.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+<!-- CONFIRM WITH OWNER: this canonical URL uses a duckdns.org subdomain. Replace it with your real domain when you have one. -->
+<link rel="canonical" href="https://azaadesim.duckdns.org/">
 
-    /* Tab Button Styles */
-    .tab-btn {
-      transition: all 0.3s ease;
-    }
-    .tab-btn.active {
-      background-color: #06f9a8;
-      color: #0a0a0a;
-      box-shadow: 0 4px 15px rgba(6, 249, 168, 0.3);
-    }
-    .tab-btn:not(.active) {
-      color: #94a3b8;
-    }
-    .tab-btn:not(.active):hover {
-      color: #f8fafc;
-      background-color: rgba(255, 255, 255, 0.1);
-    }
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Azaad eSIM">
+<meta property="og:locale" content="en_PK">
+<meta property="og:title" content="Azaad eSIM | Data-Only eSIM for Non-PTA Phones in Pakistan">
+<meta property="og:description" content="Data-only eSIM packages for compatible Non-PTA phones in Pakistan. No phone number, calls or SMS. Check your phone first, then order on WhatsApp.">
+<!-- CONFIRM WITH OWNER: og:url and og:image are left out until you have a final domain and a share image. -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Azaad eSIM | Data-Only eSIM for Non-PTA Phones in Pakistan">
+<meta name="twitter:description" content="Data-only eSIM packages for compatible Non-PTA phones in Pakistan. No phone number, calls or SMS. Check your phone first, then order on WhatsApp.">
 
-    @media (prefers-reduced-motion: reduce) {
-      .animate-\[subtleZoom_8s_ease-in-out_infinite\],
-      .animate-\[floatSoft_6s_ease-in-out_infinite\] {
-        animation: none !important;
-      }
-    }
-  </style>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 4H21L28 11V28H4Z' fill='%2334d3a4'/%3E%3Cpath d='M10 24L16 10L22 24M12.5 19H19.5' fill='none' stroke='%231f2427' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Azaad eSIM","contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+923171058812","description":"Orders and support on WhatsApp"}}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is Azaad eSIM?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Azaad eSIM is a data-only eSIM package for compatible Non-PTA phones in Pakistan. It gives your phone mobile internet. It does not come with a phone number."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will it work on my phone?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Your phone needs to support eSIM, be factory unlocked, and not be a JV (carrier-locked) device. Whether it works also depends on the device and network, so check before you buy. If you are not sure, send us your phone model on WhatsApp."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I make calls or send SMS with it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The eSIM is data only, so there is no phone number, calling or SMS. You can use apps such as WhatsApp, FaceTime or Zoom over the data connection."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do I keep my own SIM?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Keep your physical SIM for your own number, calls and OTP messages. Use the Azaad eSIM only for mobile data."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does this register my phone with PTA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Azaad eSIM does not register your phone with PTA and does not change its PTA status. It is a data-only service and does not replace PTA registration."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I order and pay?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Choose a plan and tap Order. The order screen shows our SadaPay account details. Transfer the total amount, then tap Confirm Order & Send Screenshot on WhatsApp and attach your payment screenshot in the chat. Our team confirms your order and sends your QR code."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I get the QR code?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "After your payment is checked and your order is confirmed, we send your eSIM QR code by WhatsApp or email. Scan it from your phone's eSIM settings to install the eSIM."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What if it does not work?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "We have a money-back guarantee. If your phone is supported and factory unlocked, and the eSIM does not connect because of a technical error on our side, our team will refund you."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is a JV phone?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "JV phones are carrier-locked phones. We do not support them. Carrier-locked phones usually cannot install eSIM profiles from other providers. Your phone must be factory unlocked and support eSIM."
+   }
+  }
+ ]
+}
+</script>
+
+<script>document.documentElement.className += " js";</script>
+<!-- Tailwind CSS via CDN (pinned version), as requested. It needs JavaScript to style the page and adds a network request. -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+<style type="text/tailwindcss">
+@theme {
+  --color-void: #0a0a0a;
+  --color-surface: #141414;
+  --color-panel: #1f2427;
+  --color-line: #2e373b;
+  --color-neon: #06f9a8;
+  --color-mint: #34d3a4;
+  --color-deep: #0b6b52;
+  --color-ink: #eef2f1;
+  --color-mute: #a9b5b9;
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+</style>
+<style>
+:root { color-scheme: dark; --header-h: 64px; --err: #ff8a8a; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: #0a0a0a; color: #eef2f1; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.6; }
+body.dialog-open { overflow: hidden; }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; font-weight: 700; color: #fff; }
+h1 { font-size: clamp(2rem, 6vw, 3.25rem); letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font-size: clamp(1.6rem, 4.2vw, 2.25rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.125rem; }
+p { margin: 0 0 12px; }
+a { color: #34d3a4; }
+main:focus { outline: none; }
+:focus-visible { outline: 3px solid #06f9a8; outline-offset: 3px; border-radius: 4px; }
+section[id], footer[id], div[id].anchor { scroll-margin-top: calc(var(--header-h) + 8px); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: #fff; color: #0a0a0a; padding: 10px 14px; border-radius: 8px; }
+.skip:focus { top: 12px; }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(16px); } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes phone-in { from { opacity: 0; transform: translateY(20px) scale(.97); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(6, 249, 168, .55), 0 0 18px rgba(6, 249, 168, .45); } 70% { box-shadow: 0 0 0 18px rgba(6, 249, 168, 0), 0 0 18px rgba(6, 249, 168, .45); } 100% { box-shadow: 0 0 0 0 rgba(6, 249, 168, 0), 0 0 18px rgba(6, 249, 168, .45); } }
+
+@keyframes orb-drift-1 { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-9%, 12%, 0) scale(1.12); } }
+@keyframes orb-drift-2 { from { transform: translate3d(0, 0, 0) scale(1.05); } to { transform: translate3d(14%, -10%, 0) scale(.92); } }
+@keyframes orb-pulse { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.16); } }
+@property --angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes spin-angle { to { --angle: 360deg; } }
+@keyframes popular-pulse { 0%, 100% { box-shadow: 0 0 18px rgba(6, 249, 168, .22), 0 0 0 rgba(52, 211, 164, 0); } 50% { box-shadow: 0 0 36px rgba(6, 249, 168, .45), 0 0 72px rgba(52, 211, 164, .16); } }
+
+.section { padding: 64px 0; }
+.section-intro { max-width: 640px; color: #a9b5b9; margin-bottom: 28px; font-size: 1.0625rem; }
+.eyebrow { color: #06f9a8; font-weight: 600; font-size: .9375rem; margin-bottom: 8px; }
+
+/* Glass surfaces */
+.glass { background: rgba(31, 36, 39, .55); border: 1px solid rgba(255, 255, 255, .09); border-radius: 16px; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .glass { background: #1b2023; } }
+
+/* Scroll reveal: hidden only while JavaScript runs */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .55s ease, transform .55s ease; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+.reveal:nth-child(2) { transition-delay: .07s; }
+.reveal:nth-child(3) { transition-delay: .14s; }
+.reveal:nth-child(4) { transition-delay: .21s; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 22px; border-radius: 12px; border: 1.5px solid transparent; font: inherit; font-weight: 600; line-height: 1.25; text-align: center; text-decoration: none; cursor: pointer; transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(1px); }
+.btn--neon { background: #06f9a8; color: #04130d; box-shadow: 0 0 0 rgba(6, 249, 168, 0); }
+.btn--neon:hover { background: #3dffbf; box-shadow: 0 6px 26px rgba(6, 249, 168, .35); }
+.btn--outline { border-color: #34d3a4; color: #34d3a4; background: transparent; }
+.btn--outline:hover { background: rgba(52, 211, 164, .12); box-shadow: 0 6px 22px rgba(6, 249, 168, .15); }
+.btn--block { width: 100%; }
+.btn--sm { min-height: 44px; padding: 8px 18px; }
+
+/* Logo */
+.logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; min-height: 44px; }
+.logo-mark { --logo-bg: #34d3a4; --logo-fg: #0a0a0a; width: 30px; height: 30px; flex: none; }
+.wordmark { font-size: 1.25rem; font-weight: 700; }
+.wordmark span { font-weight: 300; color: #06f9a8; }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 40; background: rgba(10, 10, 10, .82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.header-row { display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); }
+.menu-btn { min-height: 44px; padding: 8px 16px; background: transparent; color: #eef2f1; border: 1px solid #4d5b61; border-radius: 10px; font: inherit; font-weight: 600; cursor: pointer; transition: transform .15s ease, border-color .15s ease; }
+.menu-btn:hover { border-color: #34d3a4; }
+.menu-btn:active { transform: translateY(1px); }
+.site-nav { position: absolute; left: 0; right: 0; top: 100%; background: #0f1214; border-bottom: 1px solid rgba(255, 255, 255, .08); padding: 8px 20px 20px; visibility: hidden; opacity: 0; transform: translateY(-8px); transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s; }
+.site-nav.open { visibility: visible; opacity: 1; transform: none; transition-delay: 0s; }
+.site-nav ul { list-style: none; margin: 0; padding: 0; }
+.site-nav a:not(.btn) { display: block; padding: 12px 0; color: #eef2f1; text-decoration: none; border-bottom: 1px solid #2a3235; min-height: 44px; }
+.site-nav a:not(.btn):hover { color: #06f9a8; }
+.site-nav .nav-cta { padding-top: 16px; }
+@media (min-width: 1024px) {
+  .menu-btn { display: none; }
+  .site-nav { position: static; background: none; border: 0; padding: 0; visibility: visible; opacity: 1; transform: none; transition: none; }
+  .site-nav ul { display: flex; align-items: center; gap: 22px; }
+  .site-nav a:not(.btn) { border: 0; padding: 12px 0; min-height: 0; font-size: .95rem; position: relative; }
+  .site-nav a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: #06f9a8; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+  .site-nav a:not(.btn):hover::after { transform: scaleX(1); }
+  .site-nav .nav-cta { padding: 0; }
+  .site-nav .btn { min-height: 44px; padding: 8px 18px; }
+}
+html:not(.js) .menu-btn { display: none; }
+html:not(.js) .header-row { flex-wrap: wrap; padding-bottom: 8px; }
+html:not(.js) .site-nav { position: static; visibility: visible; opacity: 1; transform: none; border: 0; padding: 0; width: 100%; background: none; }
+html:not(.js) .site-nav ul { display: flex; flex-wrap: wrap; gap: 0 20px; }
+html:not(.js) .site-nav a:not(.btn) { border: 0; padding: 12px 0; }
+html:not(.js) .site-nav .nav-cta { padding-top: 0; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding: 44px 0 56px; background: #0a0a0a; }
+.hero-grid { display: grid; gap: 40px; align-items: center; position: relative; z-index: 1; }
+.hero-orbs { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.orb { position: absolute; border-radius: 50%; will-change: transform; }
+.orb--1 { width: min(680px, 130vw); height: min(680px, 130vw); right: -14%; top: -22%; background: radial-gradient(circle, rgba(6, 249, 168, .2) 0%, rgba(6, 249, 168, .07) 42%, transparent 68%); animation: orb-drift-1 26s ease-in-out infinite alternate; }
+.orb--2 { width: min(540px, 110vw); height: min(540px, 110vw); left: -14%; bottom: -34%; background: radial-gradient(circle, rgba(52, 211, 164, .13) 0%, rgba(52, 211, 164, .04) 45%, transparent 68%); animation: orb-drift-2 32s ease-in-out infinite alternate; }
+.orb--3 { width: min(360px, 80vw); height: min(360px, 80vw); right: 10%; top: 18%; background: radial-gradient(circle, rgba(11, 107, 82, .38) 0%, transparent 66%); animation: orb-pulse 9s ease-in-out infinite; }
+.hero-copy > * { animation: fade-up .6s ease both; }
+.hero-copy > :nth-child(2) { animation-delay: .08s; }
+.hero-copy > :nth-child(3) { animation-delay: .16s; }
+.hero-copy > :nth-child(4) { animation-delay: .24s; }
+.hero p.lead { color: #b9c4c7; font-size: 1.125rem; max-width: 560px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0; }
+.hero-actions .btn { flex: 1 1 100%; }
+.facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.facts li { padding: 8px 14px; border-radius: 999px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .1); font-size: .9375rem; color: #eef2f1; }
+.hero-art { display: none; position: relative; width: 340px; height: 440px; justify-self: center; animation: phone-in .8s ease .15s both; }
+.hero-art svg.phone { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 250px; height: auto; filter: drop-shadow(0 20px 50px rgba(6, 249, 168, .18)); }
+.art-arc, .art-dot, .art-chip { animation: fade-in .5s ease both; }
+.art-arc--1 { animation-delay: .6s; } .art-arc--2 { animation-delay: .75s; } .art-dot { animation-delay: .9s; } .art-chip { animation-delay: 1.05s; }
+.float-chip { position: absolute; padding: 10px 14px; font-size: .9375rem; font-weight: 600; display: flex; align-items: center; gap: 8px; animation: float 6s ease-in-out infinite; box-shadow: 0 10px 30px rgba(0, 0, 0, .4), 0 0 24px rgba(6, 249, 168, .12); }
+.float-chip i { width: 8px; height: 8px; border-radius: 50%; background: #06f9a8; box-shadow: 0 0 10px #06f9a8; display: inline-block; }
+.float-chip--1 { left: -6px; top: 70px; }
+.float-chip--2 { right: -14px; top: 190px; animation-delay: -2s; }
+.float-chip--3 { left: 6px; bottom: 36px; animation-delay: -4s; }
+@media (min-width: 560px) { .hero-actions .btn { flex: 0 0 auto; } }
+@media (min-width: 960px) { .hero { padding: 80px 0; } .hero-grid { grid-template-columns: 1.35fr 1fr; gap: 48px; } .hero-art { display: block; } }
+
+/* How it works */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: step; }
+@media (min-width: 640px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+.steps li { counter-increment: step; padding: 24px 22px; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.steps li:hover { transform: translateY(-5px); border-color: rgba(6, 249, 168, .45); box-shadow: 0 14px 34px rgba(6, 249, 168, .1); }
+.steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(6, 249, 168, .12); border: 1px solid rgba(6, 249, 168, .5); color: #06f9a8; font-weight: 700; margin-bottom: 14px; }
+.steps p { margin: 0; color: #a9b5b9; }
+
+/* Plans */
+.tabs { display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px; margin-bottom: 24px; }
+.tab { min-height: 44px; padding: 8px 18px; border: 0; border-radius: 10px; background: transparent; color: #cdd6d9; font: inherit; font-weight: 600; cursor: pointer; transition: background-color .2s ease, color .2s ease, box-shadow .2s ease; }
+.tab:hover { color: #fff; background: rgba(255, 255, 255, .06); }
+.tab:active { transform: translateY(1px); }
+.tab[aria-selected="true"] { background: #06f9a8; color: #04130d; box-shadow: 0 4px 18px rgba(6, 249, 168, .3); }
+.notice { color: #a9b5b9; margin-bottom: 20px; }
+.panel-head { margin-bottom: 18px; }
+.panel-title { font-size: 1.125rem; font-weight: 700; margin: 0 0 2px; color: #fff; }
+.panel-head p:last-child { color: #a9b5b9; margin: 0; }
+.plan-grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.plan-grid[data-group="unlimited"] { grid-template-columns: minmax(0, 1fr); max-width: 340px; }
+@media (min-width: 640px) { .plan-grid { gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .plan-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.plan { position: relative; display: flex; flex-direction: column; padding: 16px; animation: fade-up .45s ease both; animation-delay: calc(var(--i, 0) * 60ms); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+@media (min-width: 640px) { .plan { padding: 20px; } }
+.plan:hover { transform: translateY(-5px); border-color: rgba(6, 249, 168, .5); box-shadow: 0 16px 38px rgba(6, 249, 168, .12); }
+.plan-badge { min-height: 26px; margin-bottom: 8px; }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 999px; background: #34d3a4; color: #04130d; font-size: .8125rem; font-weight: 700; line-height: 1.5; }
+.plan h3 { font-size: clamp(1.4rem, 5vw, 1.75rem); margin: 0; }
+.plan .validity { margin: 0 0 14px; color: #a9b5b9; font-size: .9375rem; }
+.plan .price { font-size: clamp(1.2rem, 4.6vw, 1.5rem); font-weight: 700; margin: 0; line-height: 1.2; color: #06f9a8; }
+.plan .pergb { margin: 0 0 16px; color: #a9b5b9; font-size: .9375rem; min-height: 1.5em; }
+.plan .btn { margin-top: auto; width: 100%; }
+.plans-note { margin-top: 22px; max-width: 760px; color: #a9b5b9; font-size: .9375rem; }
+
+.plan--popular { border-color: transparent; background: rgba(22, 28, 30, .88); animation: fade-up .45s ease both, popular-pulse 3.2s ease-in-out .7s infinite; animation-delay: calc(var(--i, 0) * 60ms), .7s; }
+.plan--popular::before { content: ""; position: absolute; inset: -2px; padding: 2px; border-radius: 18px; pointer-events: none; background: conic-gradient(from var(--angle), rgba(6, 249, 168, 0) 0deg, #06f9a8 70deg, #34d3a4 140deg, rgba(52, 211, 164, 0) 220deg, rgba(6, 249, 168, 0) 360deg); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); animation: spin-angle 4s linear infinite; }
+.plan--popular:hover { box-shadow: 0 18px 44px rgba(6, 249, 168, .28); }
+.badge--hot { background: linear-gradient(90deg, #06f9a8, #34d3a4); box-shadow: 0 0 14px rgba(6, 249, 168, .5); }
+
+/* Compare table */
+.cmp { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 16px; table-layout: fixed; }
+.cmp caption { text-align: left; padding: 0 0 12px; color: #a9b5b9; font-size: .9375rem; caption-side: bottom; padding-top: 12px; }
+.cmp th, .cmp td { padding: 16px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.cmp thead th { font-size: 1rem; color: #fff; background: rgba(255, 255, 255, .04); }
+.cmp thead th.is-us { background: rgba(6, 249, 168, .12); color: #06f9a8; border-bottom-color: rgba(6, 249, 168, .4); }
+.cmp tbody th { color: #fff; font-weight: 600; width: 26%; }
+.cmp td.is-us { background: rgba(6, 249, 168, .05); color: #eef2f1; }
+.cmp td.is-them { color: #b9c4c7; }
+.cmp tbody tr:last-child th, .cmp tbody tr:last-child td { border-bottom: 0; }
+.cmp tbody tr { transition: background-color .2s ease; }
+.cmp tbody tr:hover td, .cmp tbody tr:hover th { background-color: rgba(255, 255, 255, .03); }
+@media (max-width: 719px) {
+  .cmp, .cmp tbody, .cmp tr, .cmp th, .cmp td { display: block; width: 100%; }
+  .cmp thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .cmp tbody tr { border-bottom: 1px solid rgba(255, 255, 255, .1); padding-bottom: 6px; }
+  .cmp tbody tr:last-child { border-bottom: 0; }
+  .cmp tbody th { width: 100%; padding: 16px 18px 4px; border: 0; font-size: 1.0625rem; }
+  .cmp td { border: 0; padding: 8px 18px; }
+  .cmp td::before { content: attr(data-label); display: block; font-size: .8125rem; font-weight: 700; color: #a9b5b9; margin-bottom: 2px; }
+  .cmp td.is-us::before { color: #06f9a8; }
+}
+
+/* Compatibility */
+.compat-grid { display: grid; gap: 20px; }
+@media (min-width: 900px) { .compat-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
+.alert { padding: 24px; border-color: rgba(6, 249, 168, .45); background: linear-gradient(135deg, rgba(6, 249, 168, .12), rgba(31, 36, 39, .55)); box-shadow: 0 0 40px rgba(6, 249, 168, .1); }
+.alert-code { display: inline-block; margin: 6px 0 14px; padding: 10px 22px; border-radius: 12px; background: #0a0a0a; border: 1px dashed #06f9a8; color: #06f9a8; font: 700 clamp(1.8rem, 8vw, 2.5rem) ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .04em; }
+.alert ol { margin: 0 0 12px; padding-left: 22px; list-style: decimal; }
+.alert li { margin-bottom: 8px; }
+.small { font-size: .9375rem; color: #a9b5b9; }
+.checklist { margin: 0 0 16px; padding-left: 22px; list-style: disc; }
+.checklist li { margin-bottom: 6px; }
+.checklist li::marker { color: #06f9a8; }
+.compat-card { padding: 24px; }
+
+/* FAQ */
+.faq-layout { display: grid; gap: 24px; }
+.faq-side p { color: #a9b5b9; }
+@media (min-width: 900px) { .faq-layout { grid-template-columns: 1fr 2fr; gap: 56px; align-items: start; } .faq-side { position: sticky; top: calc(var(--header-h) + 24px); } }
+.faq { border-top: 1px solid #2e373b; }
+.faq details { border-bottom: 1px solid #2e373b; interpolate-size: allow-keywords; }
+.faq details::details-content { block-size: 0; overflow: hidden; transition: block-size .28s ease, content-visibility .28s allow-discrete; }
+.faq details[open]::details-content { block-size: auto; }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 12px 0; cursor: pointer; font-weight: 600; color: #fff; list-style: none; transition: color .2s ease; }
+.faq summary:hover { color: #06f9a8; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-size: 1.6rem; line-height: 1; color: #06f9a8; flex: none; transition: transform .25s ease; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { margin: 0 0 14px; color: #a9b5b9; }
+
+/* Footer */
+.site-footer { border-top: 1px solid rgba(255, 255, 255, .08); background: #0a0a0a; padding: 56px 0 104px; }
+.support-block { display: grid; gap: 20px; padding: 28px; margin-bottom: 40px; border-color: rgba(6, 249, 168, .35); background: linear-gradient(135deg, rgba(6, 249, 168, .1), rgba(31, 36, 39, .55)); box-shadow: 0 0 44px rgba(6, 249, 168, .08); }
+.support-block h2 { margin-bottom: 8px; }
+.support-block p { margin: 0; color: #b9c4c7; }
+.support-actions { display: grid; gap: 12px; justify-items: start; }
+.support-actions .number { color: #fff; font-size: 1.125rem; font-weight: 700; }
+@media (min-width: 760px) { .support-block { grid-template-columns: 1.4fr 1fr; align-items: center; gap: 40px; } }
+.footer-grid { display: grid; gap: 28px; }
+@media (min-width: 800px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; } .site-footer { padding-bottom: 48px; } }
+.site-footer h2 { font-size: 1rem; margin-bottom: 8px; color: #fff; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li a, .site-footer .chat-link { display: inline-block; padding: 10px 0; color: #eef2f1; }
+.site-footer li a:hover, .site-footer .chat-link:hover { color: #06f9a8; }
+.site-footer .chat-link { color: #34d3a4; }
+.site-footer p { margin-bottom: 8px; color: #a9b5b9; }
+.footer-bottom { border-top: 1px solid #2a3235; margin-top: 28px; padding-top: 20px; font-size: .9375rem; }
+
+/* Floating WhatsApp button */
+.wa-float { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 30; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px rgba(6, 249, 168, .45); animation: pulse-ring 2.6s ease-out infinite; transition: transform .2s ease; }
+.wa-float:hover { transform: translateY(-3px) scale(1.04); }
+.wa-float svg { width: 30px; height: 30px; }
+.wa-float:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+body.dialog-open .wa-float { display: none; }
+
+.toast { position: fixed; left: 50%; top: max(14px, env(safe-area-inset-top)); z-index: 90; display: flex; align-items: center; gap: 10px; max-width: calc(100vw - 32px); padding: 12px 20px 12px 14px; border-radius: 999px; color: #fff; font-weight: 600; background: rgba(20, 20, 20, .94); border: 1px solid rgba(6, 249, 168, .55); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 14px 40px rgba(0, 0, 0, .55), 0 0 26px rgba(6, 249, 168, .25); pointer-events: none; opacity: 0; visibility: hidden; transform: translate(-50%, -150%); transition: transform .38s cubic-bezier(.2, .8, .2, 1), opacity .3s ease, visibility 0s linear .38s; }
+.toast.is-show { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition-delay: 0s; }
+.toast svg { width: 22px; height: 22px; flex: none; color: #06f9a8; }
+
+/* Order dialog */
+.backdrop { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(0, 0, 0, .78); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility 0s linear .25s; }
+.backdrop.is-open { visibility: visible; opacity: 1; transition-delay: 0s; }
+.dialog { width: 100%; max-width: 500px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow-y: auto; padding: 22px; background: rgba(20, 20, 20, .96); border: 1px solid rgba(255, 255, 255, .12); border-radius: 18px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 40px rgba(6, 249, 168, .08); transform: translateY(16px) scale(.97); transition: transform .26s ease; }
+.backdrop.is-open .dialog { transform: none; }
+.sheet-handle { display: none; }
+@media (max-width: 639px) {
+  .backdrop { align-items: flex-end; padding: 0; }
+  .dialog { max-width: none; max-height: 92vh; max-height: 92dvh; border-radius: 24px 24px 0 0; border-bottom: 0; padding: 0 20px calc(22px + env(safe-area-inset-bottom)); transform: translateY(100%); transition: transform .34s cubic-bezier(.32, .72, 0, 1); overscroll-behavior: contain; box-shadow: 0 -20px 60px rgba(0, 0, 0, .6), 0 0 40px rgba(6, 249, 168, .08); }
+  .sheet-handle { display: flex; align-items: center; justify-content: center; height: 30px; margin: 0 -20px 8px; cursor: grab; touch-action: none; position: sticky; top: 0; z-index: 3; background: #141414; }
+  .sheet-handle::before { content: ""; width: 44px; height: 5px; border-radius: 999px; background: rgba(255, 255, 255, .3); }
+}
+.dialog:focus { outline: none; }
+.dialog-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.dialog-head h2 { font-size: 1.25rem; margin: 0; flex: 1; }
+.close-btn { min-height: 44px; padding: 8px 16px; border: 1px solid #4d5b61; border-radius: 10px; background: transparent; color: #eef2f1; font: inherit; font-weight: 600; cursor: pointer; transition: border-color .15s ease, transform .15s ease; }
+.close-btn:hover { border-color: #34d3a4; }
+.close-btn:active { transform: translateY(1px); }
+.summary { margin: 0 0 16px; border: 1px solid #2e373b; border-radius: 12px; overflow: hidden; }
+.summary div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #2e373b; }
+.summary div:last-child { border-bottom: 0; font-weight: 700; background: rgba(6, 249, 168, .08); }
+.summary dt { color: #a9b5b9; }
+.summary dd { margin: 0; text-align: right; }
+.summary div:last-child dd { color: #06f9a8; }
+.reminder { background: rgba(255, 196, 61, .1); border: 1px solid rgba(255, 196, 61, .4); color: #ffe3a0; border-radius: 12px; padding: 10px 14px; }
+.pay-card { position: relative; overflow: hidden; margin: 0 0 18px; padding: 18px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, .16); background: linear-gradient(135deg, rgba(6, 249, 168, .24) 0%, rgba(20, 20, 20, .7) 46%, rgba(52, 211, 164, .16) 100%); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: 0 16px 44px rgba(0, 0, 0, .5), 0 0 34px rgba(6, 249, 168, .1), inset 0 1px 0 rgba(255, 255, 255, .16); }
+.pay-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 12% 0%, rgba(255, 255, 255, .13), transparent 46%), radial-gradient(circle at 100% 100%, rgba(6, 249, 168, .12), transparent 50%); }
+.pay-card > * { position: relative; }
+.pay-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.pay-top h3 { font-size: 1rem; margin: 0; color: #fff; }
+.pay-kicker { margin: 0 0 2px; font-size: .8125rem; color: #06f9a8; font-weight: 600; }
+.pay-chip { width: 44px; height: 34px; flex: none; }
+.pay-fields { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+.pay-field { min-width: 0; }
+.pay-field--wide { grid-column: 1 / -1; }
+.pay-field dt { color: #b4c0c4; font-size: .8125rem; margin-bottom: 2px; }
+.pay-field dd { margin: 0; font-weight: 600; color: #fff; overflow-wrap: anywhere; }
+.pay-copy { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pay-num { font: 600 1.3rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .06em; color: #fff; overflow-wrap: anywhere; }
+.pay-num--iban { font-size: 1rem; letter-spacing: .03em; }
+.copy-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; min-width: 44px; padding: 6px 14px; border: 1px solid rgba(52, 211, 164, .7); border-radius: 12px; background: rgba(10, 10, 10, .35); color: #34d3a4; font: inherit; font-weight: 600; cursor: pointer; transition: background-color .2s ease, transform .15s ease; }
+.copy-btn:hover { background: rgba(52, 211, 164, .16); }
+.copy-btn:active { transform: translateY(1px); }
+.copy-btn svg { width: 16px; height: 16px; flex: none; }
+.pay-tear { position: relative; margin: 16px -18px 14px; border-top: 1.5px dashed rgba(255, 255, 255, .22); }
+.pay-tear::before, .pay-tear::after { content: ""; position: absolute; top: 0; width: 18px; height: 18px; border-radius: 50%; background: #141414; transform: translateY(-50%); }
+.pay-tear::before { left: -9px; }
+.pay-tear::after { right: -9px; }
+.pay-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.pay-total span { color: #b4c0c4; font-size: .9375rem; }
+.pay-total strong { color: #06f9a8; font-size: 1.5rem; }
+@media (max-width: 479px) { .pay-fields { grid-template-columns: 1fr; } .pay-copy { flex-direction: column; align-items: flex-start; gap: 8px; } .pay-num { font-size: 1.2rem; } .pay-num--iban { font-size: .9375rem; letter-spacing: .02em; } .copy-btn { white-space: nowrap; } }
+.pay-help { margin: 0; color: #e3eaec; font-size: .9375rem; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-weight: 600; margin-bottom: 6px; color: #fff; }
+.field .opt { font-weight: 400; color: #a9b5b9; }
+.field input[type="text"], .field input[type="email"] { width: 100%; min-height: 48px; padding: 10px 12px; font: inherit; color: #fff; background: #0a0a0a; border: 1px solid #56656b; border-radius: 10px; transition: border-color .2s ease, box-shadow .2s ease; }
+.field input[type="text"]:focus, .field input[type="email"]:focus { border-color: #06f9a8; box-shadow: 0 0 0 3px rgba(6, 249, 168, .2); outline: none; }
+.field input[aria-invalid="true"] { border-color: #ff8a8a; border-width: 2px; }
+.check { display: flex; gap: 12px; align-items: flex-start; }
+.check input { width: 24px; height: 24px; margin: 2px 0 0; flex: none; accent-color: #06f9a8; }
+.check label { margin: 0; font-weight: 400; color: #eef2f1; }
+.error { color: #ff8a8a; font-size: .9375rem; margin: 6px 0 0; }
+.dialog-note { font-size: .9375rem; color: #a9b5b9; margin: 12px 0 0; }
+.status { margin: 12px 0 0; padding: 12px 14px; background: rgba(6, 249, 168, .1); border: 1px solid rgba(6, 249, 168, .35); border-radius: 12px; color: #eef2f1; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
 </head>
-<body class="bg-azaadBgDeep text-slate-100 font-sans overflow-x-hidden">
-  <div class="fixed inset-0 -z-10 bg-gradient-to-br from-azaadBgDeep via-black to-azaadBgSoft pointer-events-none"></div>
-  <div class="fixed inset-0 -z-10 opacity-30 mix-blend-screen pointer-events-none">
-    <div class="absolute -top-40 -left-24 w-72 h-72 rounded-full bg-emeraldGlow/20 blur-3xl animate-[subtleZoom_8s_ease-in-out_infinite] pointer-events-none"></div>
-    <div class="absolute top-64 -right-24 w-96 h-96 rounded-full bg-emeraldGlow/15 blur-3xl animate-[floatSoft_6s_ease-in-out_infinite] pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/3 w-[420px] h-[420px] rounded-full bg-emeraldGlow/8 blur-3xl pointer-events-none"></div>
-  </div>
+<body id="top">
 
-  <header class="fixed top-0 inset-x-0 z-40">
-    <div class="mx-auto max-w-6xl px-4">
-      <div class="mt-3 rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 shadow-xl">
-        <div class="flex items-center justify-between px-5 py-3">
-          <a href="#hero" class="flex items-center gap-3 group focus-ring">
-            <div class="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-emeraldGlow/80 via-emeraldGlow/40 to-emeraldGlow/10 shadow-glow">
-              <svg viewBox="0 0 32 32" class="w-5 h-5 text-azaadBgDeep" aria-hidden="true">
-                <rect x="4" y="7" width="24" height="18" rx="6" class="fill-current opacity-90"></rect>
-                <rect x="8" y="11" width="16" height="10" rx="4" fill="#0a0a0a" opacity="0.9"></rect>
-                <circle cx="21.5" cy="11.5" r="2" fill="#06f9a8"></circle>
-              </svg>
-              <span class="absolute -right-[5px] -top-[5px] w-2.5 h-2.5 rounded-full bg-emeraldGlow accent-dot shadow-glow"></span>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-xs font-semibold tracking-[0.22em] uppercase text-slate-200">Azaad eSIM</span>
-              <span class="text-[0.7rem] text-slate-400 tracking-[0.17em] uppercase">Data Only eSIM</span>
-            </div>
-          </a>
-          
-          <nav class="hidden md:flex items-center gap-7 text-xs font-medium tracking-[0.18em] uppercase text-slate-300" aria-label="Main navigation">
-            <a href="#plans" class="link-underline hover:text-slate-100 focus-ring transition-colors">Plans</a>
-            <a href="#features" class="link-underline hover:text-slate-100 focus-ring transition-colors">Features</a>
-            <a href="#compatibility" class="link-underline hover:text-slate-100 focus-ring transition-colors">Compatibility</a>
-            <a href="#workflow" class="link-underline hover:text-slate-100 focus-ring transition-colors">How It Works</a>
-            <a href="#faq" class="link-underline hover:text-slate-100 focus-ring transition-colors">FAQ</a>
-          </nav>
-          
-          <div class="hidden md:flex items-center gap-3">
-            <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})"
-              class="btn-premium px-4 py-2 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-xs font-semibold tracking-[0.18em] uppercase text-emeraldSoft shadow-innerGlow hover:bg-emeraldGlow/30 focus-ring transition-colors" type="button">
-              <span class="relative flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emeraldGlow accent-dot"></span>
-                <span>Get eSIM</span>
-              </span>
-            </button>
-          </div>
-          
-          <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center p-2 text-slate-300 hover:text-emeraldSoft focus-ring" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobileMenu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo-mark" viewBox="0 0 32 32">
+    <path d="M4 4H21L28 11V28H4Z" fill="var(--logo-bg)"/>
+    <path d="M10 24L16 10L22 24M12.5 19H19.5" fill="none" stroke="var(--logo-fg)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
 
-  <div id="mobileMenu" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col menu-hidden" aria-hidden="true">
-    <div class="flex items-center justify-end px-8 py-6 mt-3">
-      <button id="mobileMenuCloseBtn" class="p-2 text-slate-300 hover:text-emeraldSoft focus-ring" aria-label="Close mobile menu">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
-    <nav class="flex flex-col items-center gap-8 mt-12 text-sm font-semibold tracking-[0.2em] uppercase text-slate-300">
-      <a href="#plans" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">Plans</a>
-      <a href="#features" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">Features</a>
-      <a href="#compatibility" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">Compatibility</a>
-      <a href="#workflow" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">How It Works</a>
-      <a href="#faq" class="mobile-link hover:text-emeraldSoft transition-colors focus-ring">FAQ</a>
-      <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'}); document.getElementById('mobileMenuCloseBtn').click();"
-        class="btn-premium mt-8 px-8 py-3 rounded-full bg-emeraldGlow/20 border border-emeraldGlow/50 text-emeraldSoft shadow-innerGlow hover:bg-emeraldGlow/30 focus-ring transition-colors" type="button">
-        Get eSIM
-      </button>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-row mx-auto w-full max-w-6xl px-5">
+    <a class="logo" href="#top">
+      <svg class="logo-mark" aria-hidden="true" focusable="false"><use href="#logo-mark"/></svg>
+      <span class="wordmark">Azaad <span>eSIM</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav class="site-nav" id="siteNav" aria-label="Main">
+      <ul>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#plans">Plans</a></li>
+        <li><a href="#compare">Compare</a></li>
+        <li><a href="#compatibility">Compatibility</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#support">Support</a></li>
+        <li class="nav-cta"><a class="btn btn--neon" href="https://wa.me/923171058812?text=Hi%2C%20I%27m%20interested%20in%20purchasing%20an%20Azaad%20eSIM.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">Order via WhatsApp</a></li>
+      </ul>
     </nav>
   </div>
+</header>
 
-  <main class="pt-28 pb-16">
-    <section id="hero" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10 lg:py-14 relative overflow-hidden">
-        <div class="pointer-events-none absolute -left-1/3 top-0 w-2/3 h-64 bg-gradient-to-r from-white/5 via-white/0 to-transparent blur-3xl opacity-0"></div>
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
-          <div class="space-y-6">
-            <div class="inline-flex items-center gap-3 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 px-4 py-2 shadow-innerGlow">
-              <div class="relative flex items-center justify-center">
-                <span class="w-2.5 h-2.5 rounded-full bg-emeraldGlow accent-dot"></span>
-              </div>
-              <span class="text-[0.7rem] font-semibold tracking-[0.18em] uppercase text-slate-200">
-                Data-Only Roaming Profiles
-              </span>
-            </div>
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-50 text-balance leading-tight">
-              Premium Data eSIM
-              <span class="block text-emeraldSoft/90 mt-1">For Modern Smartphones.</span>
-            </h1>
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed text-balance">
-              Azaad eSIM delivers reliable data-only roaming profiles designed for compatible smartphones in Pakistan. By routing traffic internationally, these eSIMs provide internet connectivity that operates independently of local network registration.
-            </p>
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed text-balance">
-              Operate Azaad as a secondary data line for apps and browsing. Keep your existing physical SIM active for local carrier services, OTPs, and SMS.
-            </p>
-            <div class="flex flex-wrap items-center gap-4 pt-4">
-              <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})"
-                class="btn-premium inline-flex items-center gap-2 rounded-full bg-emeraldGlow text-azaadBgDeep px-6 py-3 text-sm font-semibold tracking-[0.15em] uppercase shadow-glow focus-ring transition-transform" type="button">
-                <span>View Data Plans</span>
-                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M4 10h9M9 5l5 5-5 5" stroke="#0a0a0a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              </button>
-              <button onclick="document.getElementById('compatibility').scrollIntoView({behavior:'smooth'})"
-                class="btn-premium inline-flex items-center gap-2 rounded-full bg-transparent border border-white/20 px-6 py-3 text-sm font-semibold tracking-[0.15em] uppercase text-slate-200 hover:bg-white/5 focus-ring transition-colors" type="button">
-                <span>Check Compatibility</span>
-                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <circle cx="10" cy="10" r="7" stroke="#94a3b8" stroke-width="1.6"></circle>
-                  <path d="M10 6.5v4.5l2.5 2" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              </button>
-            </div>
-            <div class="flex flex-wrap gap-4 pt-6 text-[0.7rem] text-slate-400 tracking-[0.15em] uppercase font-medium">
-              <span class="inline-flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow"></span>
-                Instant Setup
-              </span>
-              <span class="inline-flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow"></span>
-                Independent Data Routing
-              </span>
-              <span class="inline-flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow"></span>
-                No SIM Removal
-              </span>
-            </div>
-          </div>
-          <div class="relative lg:block hidden">
-            <div class="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-emeraldGlow/20 blur-3xl pointer-events-none"></div>
-            <div class="relative rounded-3xl bg-black/60 backdrop-blur-xl border border-white/10 p-5 shadow-2xl">
-              <div class="grid gap-3">
-                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/80 to-slate-800/80 border border-white/10 px-5 py-4">
-                  <div class="flex items-center gap-4">
-                    <svg class="w-8 h-8 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <rect x="6" y="3" width="12" height="18" rx="3" class="fill-current"></rect>
-                      <rect x="8" y="6" width="8" height="11" rx="1.5" fill="#020617"></rect>
-                      <circle cx="12" cy="18" r="0.9" fill="#06f9a8"></circle>
-                    </svg>
-                    <div>
-                      <p class="text-sm font-semibold text-slate-100">iPhone (eSIM Support)</p>
-                      <p class="text-xs text-slate-400">Roaming data eSIM + local SIM</p>
-                    </div>
-                  </div>
-                  <span class="text-[0.65rem] font-bold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/30 rounded-full px-3 py-1 tracking-[0.16em] uppercase">
-                    Supported
-                  </span>
-                </div>
-                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/80 via-slate-800/80 to-slate-900/80 border border-white/10 px-5 py-4">
-                  <div class="flex items-center gap-4">
-                    <svg class="w-8 h-8 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <rect x="5" y="4" width="14" height="16" rx="2.5" class="fill-current"></rect>
-                      <rect x="7" y="7" width="10" height="10" rx="2" fill="#020617"></rect>
-                      <circle cx="12" cy="12" r="2.4" fill="#06f9a8"></circle>
-                    </svg>
-                    <div>
-                      <p class="text-sm font-semibold text-slate-100">Galaxy (eSIM Support)</p>
-                      <p class="text-xs text-slate-400">Roaming data, local voice</p>
-                    </div>
-                  </div>
-                  <span class="text-[0.65rem] font-bold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/30 rounded-full px-3 py-1 tracking-[0.16em] uppercase">
-                    Supported
-                  </span>
-                </div>
-                <div class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900/80 to-slate-800/80 border border-white/10 px-5 py-4">
-                  <div class="flex items-center gap-4">
-                    <svg class="w-8 h-8 text-slate-200" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <rect x="5" y="4" width="14" height="16" rx="3" class="fill-current"></rect>
-                      <rect x="7" y="7" width="10" height="10" rx="2" fill="#020617"></rect>
-                      <path d="M9 11h6v2H9z" fill="#06f9a8"></path>
-                    </svg>
-                    <div>
-                      <p class="text-sm font-semibold text-slate-100">Pixel (eSIM Support)</p>
-                      <p class="text-xs text-slate-400">Data-only independent line</p>
-                    </div>
-                  </div>
-                  <span class="text-[0.65rem] font-bold text-emeraldSoft bg-emeraldGlow/10 border border-emeraldGlow/30 rounded-full px-3 py-1 tracking-[0.16em] uppercase">
-                    Supported
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+<main id="main" tabindex="-1">
+
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="hero-orbs" aria-hidden="true"><span class="orb orb--1"></span><span class="orb orb--2"></span><span class="orb orb--3"></span></div>
+    <div class="hero-grid mx-auto w-full max-w-6xl px-5">
+      <div class="hero-copy">
+        <h1 id="hero-title">Data-Only eSIM for Non-PTA Phones in Pakistan</h1>
+        <p class="lead">Azaad eSIM gives your compatible phone a mobile data connection. It has no phone number, calls or SMS, so you keep your own SIM for those. Check your phone, pick a plan and order on WhatsApp.</p>
+        <div class="hero-actions">
+          <a class="btn btn--neon" href="#plans">View Data Plans</a>
+          <a class="btn btn--outline" href="#compatibility">Check Compatibility</a>
         </div>
+        <ul class="facts">
+          <li>Data only</li>
+          <li>Keep your own SIM</li>
+          <li>Check your phone before you buy</li>
+        </ul>
       </div>
-    </section>
-
-    <section id="plans" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-          <div class="max-w-xl">
-            <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-              Data-Only Roaming Plans
-            </h2>
-            <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
-              Select an international data plan tailored for your device. These profiles provide independent internet routing, ensuring access to apps and web browsing.
-            </p>
-          </div>
-          <!-- 3-Way Tab Interface -->
-          <div class="flex items-center p-1 bg-black/50 rounded-full border border-white/10" role="tablist" aria-label="Pricing Categories">
-            <button class="tab-btn active px-4 py-2 rounded-full text-[0.7rem] font-bold uppercase tracking-[0.1em] focus-ring" data-target="standard" role="tab" aria-selected="true">30 Days</button>
-            <button class="tab-btn px-4 py-2 rounded-full text-[0.7rem] font-bold uppercase tracking-[0.1em] focus-ring" data-target="unlimited" role="tab" aria-selected="false">Unlimited</button>
-            <button class="tab-btn px-4 py-2 rounded-full text-[0.7rem] font-bold uppercase tracking-[0.1em] focus-ring" data-target="nonexpiring" role="tab" aria-selected="false">Non-Expiring</button>
-          </div>
-        </div>
-        <div id="planGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" role="list">
-          <!-- Dynamic Content rendered by JS -->
-        </div>
-      </div>
-    </section>
-
-    <section id="workflow" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
-        <div class="max-w-xl mb-10">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-            How Azaad eSIM Works
-          </h2>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
-            A simple, secure process to get your compatible phone online in minutes.
-          </p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          <article class="group rounded-2xl bg-black/60 border border-white/10 p-6 transition duration-300 hover:border-emeraldGlow/30 hover:bg-black/80 hover:-translate-y-1">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emeraldGlow/10 text-emeraldGlow border border-emeraldGlow/20 text-sm font-bold shadow-glow">1</span>
-              <h3 class="text-base font-semibold text-slate-50">Select a Plan</h3>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed text-balance">
-              Browse our data packages and choose the allowance that fits your needs. All plans provide international data routing suitable for compatible devices.
-            </p>
-          </article>
-          <article class="group rounded-2xl bg-black/60 border border-white/10 p-6 transition duration-300 hover:border-emeraldGlow/30 hover:bg-black/80 hover:-translate-y-1">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emeraldGlow/10 text-emeraldGlow border border-emeraldGlow/20 text-sm font-bold shadow-glow">2</span>
-              <h3 class="text-base font-semibold text-slate-50">Review Order</h3>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed text-balance">
-              Confirm your selection in the summary modal. Provide your details, generate your unique order reference, and forward the request to our WhatsApp team for processing.
-            </p>
-          </article>
-          <article class="group rounded-2xl bg-black/60 border border-white/10 p-6 transition duration-300 hover:border-emeraldGlow/30 hover:bg-black/80 hover:-translate-y-1">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emeraldGlow text-azaadBgDeep border border-emeraldGlow/20 text-sm font-bold shadow-glow">3</span>
-              <h3 class="text-base font-semibold text-slate-50">Scan & Connect</h3>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed text-balance">
-              Once confirmed, receive your official eSIM QR code via WhatsApp/Email. Scan it using your device's cellular settings and enjoy instant internet access.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="compatibility" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
-        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
-          <div class="lg:w-1/2">
-            <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance mb-4">
-              Device Compatibility & Policy
-            </h2>
-            <p class="text-sm text-slate-400 leading-relaxed mb-4">
-              Azaad eSIM supports many modern, carrier-unlocked devices equipped with eSIM technology. This generally includes various iPhone models (XR and newer), select Samsung Galaxy S/Z series, and Google Pixels. Compatibility can vary by specific model and regional variant.
-            </p>
-            <p class="text-sm text-slate-400 leading-relaxed mb-6">
-              <strong>Important Notice for JV Devices:</strong> Under our business policy, Carrier-Locked or "JV" (Joint Venture) devices are strictly <strong>not supported</strong>. Your device must be factory unlocked to successfully scan and activate our profiles.
-            </p>
-            <div class="inline-block">
-              <a href="https://wa.me/923171058812?text=Hi%2C%20I%20want%20to%20check%20if%20my%20device%20is%20compatible%20with%20Azaad%20eSIM." 
-                 target="_blank" rel="noopener noreferrer"
-                 class="btn-premium inline-flex items-center gap-2 rounded-full bg-emeraldGlow/10 border border-emeraldGlow/40 px-5 py-2.5 text-xs font-semibold tracking-[0.15em] uppercase text-emeraldSoft hover:bg-emeraldGlow/20 focus-ring transition-colors">
-                <span>Not Sure? Check With Support</span>
-                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M4 10h9M9 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="lg:w-1/2 grid gap-4">
-            <article class="rounded-2xl bg-black/60 border border-white/10 p-5 flex items-center justify-between">
-              <div class="flex items-center gap-4">
-                <svg class="w-6 h-6 text-slate-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-                <div>
-                  <p class="text-sm font-semibold text-slate-100">Factory Unlocked Required</p>
-                  <p class="text-xs text-slate-400 mt-0.5">Carrier-locked/JV devices cannot install eSIMs.</p>
-                </div>
-              </div>
-            </article>
-            <article class="rounded-2xl bg-black/60 border border-white/10 p-5 flex items-center justify-between">
-              <div class="flex items-center gap-4">
-                <svg class="w-6 h-6 text-slate-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-                <div>
-                  <p class="text-sm font-semibold text-slate-100">Regional Restrictions</p>
-                  <p class="text-xs text-slate-400 mt-0.5">Some mainland China/HK variants lack eSIM hardware.</p>
-                </div>
-              </div>
-            </article>
-            <article class="rounded-2xl bg-black/60 border border-white/10 p-5 flex items-center justify-between">
-              <div class="flex items-center gap-4">
-                <svg class="w-6 h-6 text-slate-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 13l4 4L19 7" stroke="#06f9a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-                <div>
-                  <p class="text-sm font-semibold text-slate-100">Money-Back Assurance</p>
-                  <p class="text-xs text-slate-400 mt-0.5">Refunds processed if the profile fails on officially supported devices.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="features" class="mx-auto max-w-6xl px-4 mb-16 scroll-mt-28">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
-        <div class="mb-10 max-w-xl">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-            Commercial-Grade Features
-          </h2>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
-            Designed to integrate smoothly with your digital environment, preserving your core communication tools while providing secure routing.
-          </p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          <article class="rounded-2xl bg-black/60 border border-white/10 p-6 flex flex-col gap-3">
-            <div class="flex items-center gap-3 mb-1">
-              <svg class="w-6 h-6 text-emeraldSoft" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5v-9z" stroke="currentColor" stroke-width="1.6"></path>
-                <path d="M7 8h6M7 11h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
-              </svg>
-              <h3 class="text-sm font-semibold text-slate-100 uppercase tracking-widest">Strictly Data-Only</h3>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed">
-              No new phone numbers or cellular minutes. Azaad purely handles internet traffic, ensuring clean operation and simple setup without overriding your primary line.
-            </p>
-          </article>
-          <article class="rounded-2xl bg-black/60 border border-white/10 p-6 flex flex-col gap-3">
-            <div class="flex items-center gap-3 mb-1">
-              <svg class="w-6 h-6 text-emeraldSoft" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 7.5 10 4l6 3.5v5L10 16l-6-3.5v-5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M10 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
-              </svg>
-              <h3 class="text-sm font-semibold text-slate-100 uppercase tracking-widest">Independent Routing</h3>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed">
-              Traffic is routed via robust roaming infrastructure. This architecture operates independently of local registration databases, allowing compatible devices to maintain internet access.
-            </p>
-          </article>
-          <article class="rounded-2xl bg-black/60 border border-white/10 p-6 flex flex-col gap-3">
-            <div class="flex items-center gap-3 mb-1">
-              <svg class="w-6 h-6 text-emeraldSoft" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M5 5.5A1.5 1.5 0 0 1 6.5 4h7A1.5 1.5 0 0 1 15 5.5v9a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 5 14.5v-9z" stroke="currentColor" stroke-width="1.6"></path>
-                <path d="M8 7.5h4M8 10h2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
-              </svg>
-              <h3 class="text-sm font-semibold text-slate-100 uppercase tracking-widest">Retain Local SIM</h3>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed">
-              Keep your local physical SIM active for banking OTPs and incoming calls, while configuring Azaad strictly as your device's active cellular data connection.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="mx-auto max-w-6xl px-4 mb-8 scroll-mt-28">
-      <div class="glass-shell rounded-3xl border border-white/10 shadow-xl px-6 sm:px-10 py-10">
-        <div class="mb-8 max-w-xl">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-50 text-balance">
-            Frequently Asked Questions
-          </h2>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed text-balance">
-            Clear, transparent answers about how Azaad eSIM interacts with your device.
-          </p>
-        </div>
-        <div class="space-y-3">
-          
-          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
-            <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                What exactly is Azaad eSIM?
-              </span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </summary>
-            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
-              Azaad eSIM is an international, data-only profile. It allows compatible smartphones in Pakistan to access internet services through data roaming agreements, routing traffic independently of local carrier restrictions.
-            </div>
-          </details>
-
-          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
-            <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                Can I make regular cellular calls or receive local SMS?
-              </span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </summary>
-            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
-              No. Azaad eSIM provides <strong>data only</strong>. It does not come with a local phone number. You must use apps like WhatsApp, FaceTime, or Zoom for calls and messages. Your physical SIM will continue to handle incoming OTPs and standard SMS depending on your device's network status.
-            </div>
-          </details>
-
-          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
-            <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                Does this register my phone with the PTA?
-              </span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </summary>
-            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
-              No. This service does not pay taxes or officially register your IMEI with the PTA. It acts purely as a roaming layer to provide internet connectivity, without modifying your official registration status.
-            </div>
-          </details>
-
-          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
-            <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                How do I purchase and activate a plan?
-              </span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </summary>
-            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
-              Select a plan from our pricing section and click 'Complete Order'. This will prepare an order summary and redirect you to WhatsApp. Send the generated message to our support team to complete payment and receive your activation QR code.
-            </div>
-          </details>
-
-          <details class="rounded-2xl bg-black/60 border border-white/10 px-5 py-4 cursor-pointer group transition-colors hover:border-emeraldGlow/20">
-            <summary class="flex items-center justify-between focus-ring outline-none">
-              <span class="text-sm font-semibold text-slate-100 text-left group-hover:text-emeraldSoft transition-colors duration-200">
-                What is your refund policy if it does not work?
-              </span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M7 5l6 5-6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </summary>
-            <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3">
-              We offer a reliable money-back guarantee. If you own a supported, factory-unlocked device and the eSIM fails to establish a data connection due to technical errors on our end, our support team will process a prompt refund.
-            </div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Complete Order Checkout Modal -->
-  <div id="gatewayModalBackdrop" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md modal-hidden" aria-hidden="true">
-    <!-- max-h-[90vh] ensures mobile screens can scroll inside the modal -->
-    <div class="mx-4 max-w-md w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0a0a0a] border border-white/15 shadow-2xl p-6 md:p-8 relative" role="dialog" aria-modal="true" aria-labelledby="gatewayTitle">
-      <button id="gatewayClose" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors focus-ring p-1 rounded-full bg-white/5" type="button" aria-label="Close checkout dialog">
-        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M5 5l10 10M15 5l-10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      <div class="hero-art" aria-hidden="true">
+        <svg class="phone" viewBox="0 0 250 440" focusable="false">
+          <rect x="10" y="10" width="230" height="420" rx="34" fill="#1b2023" stroke="#3a454a" stroke-width="3"/>
+          <rect x="24" y="30" width="202" height="380" rx="22" fill="#0d1113"/>
+          <rect x="97" y="38" width="56" height="8" rx="4" fill="#2a3337"/>
+          <g fill="none" stroke="#06f9a8" stroke-width="7" stroke-linecap="round">
+            <path class="art-arc art-arc--1" d="M78 168a66 66 0 0 1 94 0"/>
+            <path class="art-arc art-arc--2" d="M96 192a40 40 0 0 1 58 0"/>
+          </g>
+          <circle class="art-dot" cx="125" cy="216" r="7" fill="#06f9a8"/>
+          <g class="art-chip">
+            <path d="M88 268H150L172 290V348H88Z" fill="#34d3a4"/>
+            <path d="M108 330L130 288L152 330M115 316H145" fill="none" stroke="#0a0a0a" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <rect x="70" y="372" width="110" height="6" rx="3" fill="#2a3337"/>
         </svg>
-      </button>
-      <div class="mb-6 border-b border-white/10 pb-4">
-        <p class="text-[0.65rem] font-bold text-emeraldSoft tracking-[0.2em] uppercase mb-1">
-          Secure Checkout
-        </p>
-        <h3 id="gatewayTitle" class="text-xl font-semibold text-white">
-          Review Your Order
-        </h3>
+        <div class="glass float-chip float-chip--1"><i></i>eSIM active</div>
+        <div class="glass float-chip float-chip--2"><i></i>Data only</div>
+        <div class="glass float-chip float-chip--3"><i></i>Your SIM keeps your number</div>
       </div>
-      <div class="space-y-4 text-sm text-slate-300 mb-6 bg-white/5 p-4 rounded-xl border border-white/5">
-        <div class="flex justify-between items-center">
-          <span class="text-slate-400">Package</span>
-          <span class="font-medium text-white">Azaad Data eSIM</span>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works" aria-labelledby="how-title">
+    <div class="mx-auto w-full max-w-6xl px-5">
+      <p class="eyebrow">Four steps</p>
+      <h2 id="how-title">How it works</h2>
+      <p class="section-intro">You pay by bank transfer, then confirm on WhatsApp. Our team replies in the same chat.</p>
+      <ol class="steps">
+        <li class="glass reveal">
+          <h3>Choose a plan</h3>
+          <p>Pick the data amount that suits you and tap Order.</p>
+        </li>
+        <li class="glass reveal">
+          <h3>Pay by SadaPay transfer</h3>
+          <!-- CONFIRM WITH OWNER: are other payment methods accepted? Only SadaPay is shown. -->
+          <p>The order screen shows our SadaPay account. Transfer the total amount.</p>
+        </li>
+        <li class="glass reveal">
+          <h3>Confirm on WhatsApp</h3>
+          <p>Send your order message and attach your payment screenshot in the chat.</p>
+        </li>
+        <li class="glass reveal">
+          <h3>Get your QR code</h3>
+          <!-- CONFIRM WITH OWNER: how long the QR code takes to arrive, and whether it comes by WhatsApp, email or both. -->
+          <p>After your order is confirmed we send the QR code. Scan it from your phone's eSIM settings.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="plans" aria-labelledby="plans-title" style="padding-top:8px">
+    <div class="mx-auto w-full max-w-6xl px-5">
+      <p class="eyebrow">Pricing</p>
+      <h2 id="plans-title">Data plans</h2>
+      <p class="notice">Prices are in Pakistani rupees. Not sure your phone works? <a href="#compatibility">Check compatibility first</a>.</p>
+      <div class="tabs glass" role="tablist" aria-label="Plan type">
+        <button class="tab" type="button" role="tab" id="tab-standard" aria-selected="true" aria-controls="plan-panel" data-group="standard" tabindex="0">30-day plans</button>
+        <button class="tab" type="button" role="tab" id="tab-unlimited" aria-selected="false" aria-controls="plan-panel" data-group="unlimited" tabindex="-1">Unlimited (10 days)</button>
+        <button class="tab" type="button" role="tab" id="tab-nonexpiring" aria-selected="false" aria-controls="plan-panel" data-group="nonexpiring" tabindex="-1">Non-expiring</button>
+      </div>
+      <div id="plan-panel" role="tabpanel" aria-labelledby="tab-standard">
+        <noscript><p>The plan list needs JavaScript. <a href="https://wa.me/923171058812?text=Hi%2C%20I%27m%20interested%20in%20purchasing%20an%20Azaad%20eSIM.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> and we will send you the plans and prices.</p></noscript>
+      </div>
+      <!-- CONFIRM WITH OWNER: any fair-use or speed limit on the Unlimited plan. Add it here and on the Unlimited card if one exists. -->
+      <p class="plans-note">All plans are data only: no phone number, calls or SMS. If your phone is supported and factory unlocked and the eSIM fails to connect because of a technical error on our side, our <a href="#faq">money-back guarantee</a> applies.</p>
+    </div>
+  </section>
+
+  <section class="section" id="compare" aria-labelledby="compare-title">
+    <div class="mx-auto w-full max-w-6xl px-5">
+      <p class="eyebrow">Compare</p>
+      <h2 id="compare-title">Azaad eSIM vs. airport physical SIM</h2>
+      <p class="section-intro">A data-only eSIM and a local SIM do different jobs. Here is how they differ.</p>
+      <div class="reveal">
+        <table class="cmp glass">
+          <caption>Airport SIM details vary by provider and rules can change. <!-- CONFIRM WITH OWNER: check the 60-day PTA grace period and the airport SIM claims before publishing. --></caption>
+          <thead>
+            <tr><th scope="col"><span class="sr-only">Feature</span></th><th scope="col" class="is-us">Azaad eSIM</th><th scope="col">Airport physical SIM</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">PTA block risk</th>
+              <td class="is-us" data-label="Azaad eSIM">Not a concern. It is data only, with no local number. It does not register your phone with PTA.</td>
+              <td class="is-them" data-label="Airport physical SIM">A non-PTA phone can be blocked on a local SIM after the grace period (about 60 days).</td>
+            </tr>
+            <tr>
+              <th scope="row">Delivery</th>
+              <td class="is-us" data-label="Azaad eSIM">Digital. We send your QR code after your order is confirmed.</td>
+              <td class="is-them" data-label="Airport physical SIM">Collect in person and wait in line.</td>
+            </tr>
+            <tr>
+              <th scope="row">Keep your home number</th>
+              <td class="is-us" data-label="Azaad eSIM">Yes. Your own SIM stays in the phone.</td>
+              <td class="is-them" data-label="Airport physical SIM">Often no. A local SIM uses a SIM slot, so you may have to take out your home SIM.</td>
+            </tr>
+            <tr>
+              <th scope="row">Calls and SMS</th>
+              <td class="is-us" data-label="Azaad eSIM">Not included. Data only.</td>
+              <td class="is-them" data-label="Airport physical SIM">Included, with a local number.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="compatibility" aria-labelledby="compat-title" style="padding-top:8px">
+    <div class="mx-auto w-full max-w-6xl px-5">
+      <p class="eyebrow">Before you order</p>
+      <h2 id="compat-title">Will it work on your phone?</h2>
+      <p class="section-intro">Check this before you buy. Whether it works depends on your device and network.</p>
+      <div class="compat-grid">
+        <div class="glass alert reveal">
+          <h3>Quick check: dial this code</h3>
+          <p class="alert-code" aria-label="Star hash zero six hash">*#06#</p>
+          <ol>
+            <li>Open the phone dialer and enter the code above. If an <strong>EID</strong> number is listed, your phone has eSIM hardware.</li>
+            <li>Or open Settings and look for "eSIM" or "Add eSIM" in the mobile or SIM settings. The menu name differs between brands.</li>
+            <li>On iPhone, open Settings, General, About. "Carrier Lock" should say "No SIM restrictions".</li>
+          </ol>
+          <p class="small" style="margin:0">An EID only shows that the phone has eSIM hardware. It does not tell you the phone is unlocked.</p>
         </div>
-        <div class="flex justify-between items-center">
-          <span class="text-slate-400">Data Allowance</span>
-          <span id="gatewayVolume" class="font-medium text-white">—</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="text-slate-400">Validity</span>
-          <span id="gatewayTerm" class="font-medium text-white">—</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="text-slate-400">Order Reference</span>
-          <span id="gatewaySku" class="font-mono text-xs text-slate-200 bg-white/10 px-2 py-0.5 rounded tracking-widest">—</span>
-        </div>
-        <div class="flex justify-between items-center pt-3 border-t border-white/10">
-          <span class="text-slate-300 font-medium">Total Price</span>
-          <span id="gatewayTotal" class="text-emeraldGlow font-bold text-lg">—</span>
+        <div class="glass compat-card reveal">
+          <h3>Your phone needs to be:</h3>
+          <ul class="checklist">
+            <li>eSIM-capable</li>
+            <li>Factory unlocked</li>
+            <li>Not a JV or carrier-locked phone. We do not support JV phones.</li>
+          </ul>
+          <p>iPhone XR and newer, many recent Samsung Galaxy S and Z models and Google Pixel phones usually support eSIM. It varies by model and region, and some phones sold in mainland China have no eSIM.</p>
+          <a class="btn btn--outline" href="https://wa.me/923171058812?text=Hi%2C%20I%20want%20to%20check%20if%20my%20phone%20works%20with%20Azaad%20eSIM.%20My%20phone%20model%20is%3A%20" target="_blank" rel="noopener noreferrer">Not sure? Ask us on WhatsApp</a>
         </div>
       </div>
-      
-      <form id="gatewayForm">
-        <div class="mb-4">
-          <label for="gatewayName" class="block text-xs font-semibold text-slate-300 tracking-[0.1em] uppercase mb-2">
-            Full Name <span class="text-slate-500 font-normal normal-case tracking-normal">(Optional)</span>
-          </label>
-          <input id="gatewayName" type="text" placeholder="John Doe"
-                 class="w-full rounded-xl bg-black border border-white/20 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emeraldGlow/50 focus:border-emeraldGlow/50 transition duration-200">
-        </div>
-        <div class="mb-6">
-          <label for="gatewayEmail" class="block text-xs font-semibold text-slate-300 tracking-[0.1em] uppercase mb-2">
-            Customer Email <span class="text-emeraldSoft">*</span>
-          </label>
-          <input id="gatewayEmail" type="email" required placeholder="name@example.com"
-                 class="w-full rounded-xl bg-black border border-white/20 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emeraldGlow/50 focus:border-emeraldGlow/50 transition duration-200">
-        </div>
-        <div class="space-y-4 pt-2">
-          <button id="gatewayProceed" type="submit"
-                  class="btn-premium w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emeraldGlow text-azaadBgDeep px-4 py-3.5 text-sm font-bold tracking-[0.15em] uppercase shadow-glow focus-ring transition-transform">
-            <span>Complete Order</span>
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
-          <div class="text-center rounded-lg bg-emeraldGlow/5 border border-emeraldGlow/10 p-3">
-            <p class="text-[0.7rem] text-slate-400 leading-relaxed">
-              Opening WhatsApp does not automatically charge you. <strong class="text-slate-200">You must send the message to our team to confirm your order.</strong>
-            </p>
-          </div>
-          <div id="whatsappFallback" class="hidden mt-2 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-center">
-            <p class="text-[0.7rem] text-amber-200/80 mb-2">Popup blocked by browser?</p>
-            <a id="fallbackWhatsAppLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-amber-300 focus-ring">
-              Click here to continue
-              <svg class="w-3 h-3" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 10h9M9 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </form>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title" style="padding-top:8px">
+    <div class="faq-layout mx-auto w-full max-w-6xl px-5">
+      <div class="faq-side reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">Questions and answers</h2>
+        <p>Cannot find your answer? Message us on WhatsApp and we will help.</p>
+        <a class="btn btn--outline" href="https://wa.me/923171058812?text=Hi%2C%20I%20have%20a%20question%20about%20Azaad%20eSIM." target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>What is Azaad eSIM?</summary>
+          <p>Azaad eSIM is a data-only eSIM package for compatible Non-PTA phones in Pakistan. It gives your phone mobile internet. It does not come with a phone number.</p>
+        </details>
+        <details>
+          <summary>Will it work on my phone?</summary>
+          <p>Your phone needs to support eSIM, be factory unlocked, and not be a JV (carrier-locked) device. Whether it works also depends on the device and network, so check before you buy. If you are not sure, send us your phone model on WhatsApp.</p>
+        </details>
+        <details>
+          <summary>Can I make calls or send SMS with it?</summary>
+          <p>No. The eSIM is data only, so there is no phone number, calling or SMS. You can use apps such as WhatsApp, FaceTime or Zoom over the data connection.</p>
+        </details>
+        <details>
+          <summary>Do I keep my own SIM?</summary>
+          <p>Yes. Keep your physical SIM for your own number, calls and OTP messages. Use the Azaad eSIM only for mobile data.</p>
+        </details>
+        <details>
+          <summary>Does this register my phone with PTA?</summary>
+          <p>No. Azaad eSIM does not register your phone with PTA and does not change its PTA status. It is a data-only service and does not replace PTA registration.</p>
+        </details>
+        <details>
+          <summary>How do I order and pay?</summary>
+          <p>Choose a plan and tap Order. The order screen shows our SadaPay account details. Transfer the total amount, then tap Confirm Order &amp; Send Screenshot on WhatsApp and attach your payment screenshot in the chat. Our team confirms your order and sends your QR code.</p>
+        </details>
+        <details>
+          <summary>How do I get the QR code?</summary>
+          <!-- CONFIRM WITH OWNER: QR delivery time after payment is checked, and whether it comes by WhatsApp, email or both. -->
+          <p>After your payment is checked and your order is confirmed, we send your eSIM QR code by WhatsApp or email. Scan it from your phone's eSIM settings to install the eSIM.</p>
+        </details>
+        <details>
+          <summary>What if it does not work?</summary>
+          <!-- CONFIRM WITH OWNER: refund window (how many days), how the refund is paid, and any other conditions. Only the two conditions below come from the current site. -->
+          <p>We have a money-back guarantee. If your phone is supported and factory unlocked, and the eSIM does not connect because of a technical error on our side, our team will refund you.</p>
+        </details>
+        <details>
+          <summary>What is a JV phone?</summary>
+          <p>JV phones are carrier-locked phones. We do not support them. Carrier-locked phones usually cannot install eSIM profiles from other providers. Your phone must be factory unlocked and support eSIM.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="support">
+  <div class="mx-auto w-full max-w-6xl px-5">
+    <div class="glass support-block reveal">
+      <div>
+        <h2>Need help before you order?</h2>
+        <!-- CONFIRM WITH OWNER: support hours, if you want to show them. -->
+        <p>Message us on WhatsApp. Send your phone model if you want us to check it for you.</p>
+      </div>
+      <div class="support-actions">
+        <a class="btn btn--neon" href="https://wa.me/923171058812?text=Hi%2C%20I%20need%20help%20with%20Azaad%20eSIM." target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a>
+        <p class="number">WhatsApp: +92 317 1058812</p>
+      </div>
+      <!-- CONFIRM WITH OWNER: support email. The old files disagree (support@azaadesim.com vs info@azaadesim.com). Add the confirmed address here once chosen. -->
+    </div>
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="#top">
+          <svg class="logo-mark" aria-hidden="true" focusable="false"><use href="#logo-mark"/></svg>
+          <span class="wordmark">Azaad <span>eSIM</span></span>
+        </a>
+        <p>Data-only eSIM packages for compatible Non-PTA phones in Pakistan.</p>
+      </div>
+      <div>
+        <h2>Quick links</h2>
+        <ul>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#plans">Plans</a></li>
+          <li><a href="#compare">Compare</a></li>
+          <li><a href="#compatibility">Compatibility</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <p>WhatsApp: +92 317 1058812</p>
+        <p><a class="chat-link" href="https://wa.me/923171058812?text=Hi%2C%20I%20need%20help%20with%20Azaad%20eSIM." target="_blank" rel="noopener noreferrer">Open WhatsApp chat</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Azaad eSIM is a data-only service. It does not register your phone with PTA, does not change its PTA status and does not replace PTA registration. Keep a local physical SIM for calls, SMS and OTPs.</p>
+      <!-- TODO: add Terms, Privacy and Refund policy pages and link them here. -->
+      <p>Terms · Privacy · Refund policy</p>
+      <p>&copy; 2026 Azaad eSIM. All rights reserved.</p>
     </div>
   </div>
+</footer>
 
-  <footer class="relative mt-12 border-t border-white/10 bg-azaadBgDeep pt-16 pb-8 overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-emeraldGlow/30 to-transparent pointer-events-none"></div>
+<a class="wa-float" href="https://wa.me/923171058812?text=Hi%2C%20I%27m%20interested%20in%20purchasing%20an%20Azaad%20eSIM.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer" aria-label="Chat with Azaad eSIM on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false">
+    <path d="M16.04 3.2c-7.07 0-12.82 5.75-12.82 12.82 0 2.26.59 4.47 1.71 6.42L3.2 28.8l6.5-1.7a12.7 12.7 0 0 0 6.34 1.68h.01c7.07 0 12.82-5.75 12.82-12.82 0-3.43-1.33-6.66-3.76-9.08a12.75 12.75 0 0 0-9.07-3.76zm0 23.39h-.01c-1.98 0-3.92-.53-5.61-1.53l-.4-.24-3.86 1.01 1.03-3.76-.26-.39a10.57 10.57 0 0 1-1.62-5.66c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.12 7.52c0 5.87-4.77 10.64-10.63 10.64zm5.84-7.97c-.32-.16-1.89-.93-2.18-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.36-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.64 0 1.56 1.13 3.07 1.29 3.28.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.45.2 2 .12.61-.09 1.89-.77 2.16-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/>
+  </svg>
+</a>
 
-    <div class="mx-auto max-w-6xl px-6 sm:px-10">
-      <div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
-        
-        <div class="flex flex-col gap-4 lg:col-span-1">
-          <a href="#hero" class="flex items-center gap-3 w-fit focus-ring">
-            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-emeraldGlow/10 text-emeraldGlow ring-1 ring-emeraldGlow/30 shadow-glow">
-              <svg viewBox="0 0 32 32" class="h-5 w-5 fill-current" aria-hidden="true">
-                <rect x="4" y="7" width="24" height="18" rx="6" opacity="0.9"></rect>
-                <rect x="8" y="11" width="16" height="10" rx="4" fill="#0a0a0a"></rect>
-                <circle cx="21.5" cy="11.5" r="2"></circle>
-              </svg>
-            </div>
-            <span class="text-xs font-semibold tracking-[0.2em] text-slate-100 uppercase">Azaad eSIM</span>
-          </a>
-          <p class="text-xs leading-relaxed text-slate-400">
-            Premium data-only roaming profiles. Engineered to provide independent connectivity for smartphones securely.
-          </p>
-        </div>
+<div class="toast" id="toast" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="toastMsg"></span></div>
 
-        <div class="lg:col-span-1">
-          <h3 class="text-[0.7rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Sitemap</h3>
-          <ul class="flex flex-col gap-3 text-sm text-slate-400">
-            <li><a href="#plans" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Data Plans</a></li>
-            <li><a href="#features" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Features</a></li>
-            <li><a href="#compatibility" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Compatibility</a></li>
-            <li><a href="#workflow" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">Activation Process</a></li>
-            <li><a href="#faq" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div class="lg:col-span-1">
-          <h3 class="text-[0.7rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Support & Contact</h3>
-          <ul class="flex flex-col gap-4 text-sm text-slate-400">
-            <li>
-              <span class="block text-xs font-semibold text-slate-500 tracking-wider uppercase mb-1">Direct Assistance</span>
-              <a href="https://wa.me/923171058812?text=Hi%2C%20I%20need%20help%20with%20Azaad%20eSIM."
-                 target="_blank" rel="noopener noreferrer"
-                 class="inline-flex items-center gap-2 text-emeraldSoft hover:text-emeraldGlow transition-colors focus-ring">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                  <path d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm0 21.82A9.82 9.82 0 1 1 21.82 12 9.831 9.831 0 0 1 12 21.82z"/>
-                </svg>
-                Chat with our Support Team
-              </a>
-            </li>
-            <li>
-              <span class="block text-xs font-semibold text-slate-500 tracking-wider uppercase mb-1">Email inquiries</span>
-              <a href="mailto:support@azaadesim.com" class="hover:text-emeraldSoft focus-visible:text-emeraldSoft focus-visible:outline-none transition-colors">support@azaadesim.com</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="lg:col-span-1">
-          <h3 class="text-[0.7rem] font-semibold tracking-[0.2em] text-slate-100 uppercase mb-4">Regulatory Notice</h3>
-          <p class="text-[0.7rem] leading-relaxed text-slate-500">
-            Azaad eSIM strictly provides international data routing. It does not replace official PTA registration for cellular voice networks. Retain a local physical SIM for official verification workflows. Services are provided in compliance with our data-only usage policy.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-        <p class="text-xs text-slate-500 uppercase tracking-[0.1em]">
-          &copy; 2026 Azaad eSIM. All rights reserved.
-        </p>
-        <div class="flex gap-4">
-          <span class="text-xs text-slate-500 uppercase tracking-[0.1em] flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emeraldGlow/60"></span>
-            International Data Layer
-          </span>
-        </div>
-      </div>
+<div class="backdrop" id="orderBackdrop">
+  <div class="dialog" id="orderDialog" role="dialog" aria-modal="true" aria-labelledby="orderTitle" tabindex="-1">
+    <div class="sheet-handle" id="sheetHandle" aria-hidden="true"></div>
+    <div class="dialog-head">
+      <svg class="logo-mark" aria-hidden="true" focusable="false"><use href="#logo-mark"/></svg>
+      <h2 id="orderTitle">Order summary and payment</h2>
+      <button class="close-btn" id="orderClose" type="button">Close</button>
     </div>
-  </footer>
+    <dl class="summary">
+      <div><dt>Plan type</dt><dd id="sumGroup"></dd></div>
+      <div><dt>Data</dt><dd id="sumData"></dd></div>
+      <div><dt>Validity</dt><dd id="sumValidity"></dd></div>
+      <div><dt>Total to pay</dt><dd id="sumPrice"></dd></div>
+    </dl>
+    <p class="reminder">Check that your phone supports eSIM and is not a JV device.</p>
+    <div class="pay-card" role="group" aria-labelledby="payTitle">
+      <div class="pay-top">
+        <div>
+          <p class="pay-kicker">Bank transfer</p>
+          <h3 id="payTitle">Pay by SadaPay transfer</h3>
+        </div>
+        <svg class="pay-chip" viewBox="0 0 44 34" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="42" height="32" rx="7" fill="#34d3a4" fill-opacity=".9"/>
+          <path d="M1 12h14v10H1M43 12H29v10h14M15 1v32M29 1v32M15 17h14" fill="none" stroke="#0a0a0a" stroke-opacity=".45" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <dl class="pay-fields">
+        <div class="pay-field"><dt>Bank Name</dt><dd>SadaPay</dd></div>
+        <div class="pay-field"><dt>Account Title</dt><dd>Sudheer Ahmed</dd></div>
+        <div class="pay-field pay-field--wide">
+          <dt>Account No</dt>
+          <dd class="pay-copy"><span class="pay-num" id="payAcc">03171058812</span><button class="copy-btn" type="button" data-copy="payAcc" data-name="Account Number" aria-label="Copy account number"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 3.5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v6.5A1.5 1.5 0 0 0 3 11h.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Copy</button></dd>
+        </div>
+        <div class="pay-field pay-field--wide">
+          <dt>IBAN</dt>
+          <dd class="pay-copy"><span class="pay-num pay-num--iban" id="payIban">PK50SADA0000003171058812</span><button class="copy-btn" type="button" data-copy="payIban" data-name="IBAN" aria-label="Copy IBAN"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 3.5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v6.5A1.5 1.5 0 0 0 3 11h.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Copy</button></dd>
+        </div>
+      </dl>
+      <div class="pay-tear" aria-hidden="true"></div>
+      <div class="pay-total"><span>Total to transfer</span><strong id="payAmount"></strong></div>
+      <p class="pay-help">Please transfer the total amount to the SadaPay account above. Click the button below to confirm your order on WhatsApp, and attach your payment screenshot in the chat to receive your QR code.</p>
+      <span class="sr-only" role="status" id="copyStatus"></span>
+    </div>
+    <form id="orderForm" novalidate>
+      <div class="field">
+        <label for="orderName">Name <span class="opt">(optional)</span></label>
+        <input id="orderName" name="name" type="text" autocomplete="name" maxlength="80">
+      </div>
+      <div class="field">
+        <!-- CONFIRM WITH OWNER: is email required, or can the QR code be sent on WhatsApp only? Email is optional for now. -->
+        <label for="orderEmail">Email <span class="opt">(optional)</span></label>
+        <input id="orderEmail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" aria-describedby="emailError">
+        <p class="error" id="emailError" role="alert" hidden>Enter a valid email address, or leave this field empty.</p>
+      </div>
+      <div class="field">
+        <div class="check">
+          <input id="orderCheck" type="checkbox" aria-describedby="checkError">
+          <label for="orderCheck">My phone supports eSIM and is factory unlocked</label>
+        </div>
+        <p class="error" id="checkError" role="alert" hidden>Please tick this box before sending your order.</p>
+      </div>
+      <button class="btn btn--neon btn--block" type="submit">Confirm Order &amp; Send Screenshot on WhatsApp</button>
+      <p class="dialog-note">This opens WhatsApp with your order details. Attach your payment screenshot in the chat before you send. Your order is confirmed only after our team checks your payment and replies.</p>
+      <p class="status" id="orderStatus" role="status" hidden>Opening WhatsApp... Not opening? <a id="statusLink" href="#" target="_blank" rel="noopener noreferrer">Tap here.</a> Attach your payment screenshot in the chat. Your reference: <strong id="statusRef"></strong></p>
+    </form>
+  </div>
+</div>
 
-  <!-- Floating WhatsApp Chat Button -->
-  <a
-      href="https://wa.me/923171058812?text=Hi%2C%20I%27m%20interested%20in%20purchasing%20an%20Azaad%20eSIM.%20Please%20guide%20me."
-      class="whatsapp-float focus-ring"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat with Azaad eSIM on WhatsApp"
-      title="Chat with us on WhatsApp"
-  >
-      <svg
-          viewBox="0 0 32 32"
-          fill="currentColor"
-          aria-hidden="true"
-      >
-          <path d="M16.04 3.2c-7.07 0-12.82 5.75-12.82 12.82 0 2.26.59 4.47 1.71 6.42L3.2 28.8l6.5-1.7a12.7 12.7 0 0 0 6.34 1.68h.01c7.07 0 12.82-5.75 12.82-12.82 0-3.43-1.33-6.66-3.76-9.08a12.75 12.75 0 0 0-9.07-3.76zm0 23.39h-.01c-1.98 0-3.92-.53-5.61-1.53l-.4-.24-3.86 1.01 1.03-3.76-.26-.39a10.57 10.57 0 0 1-1.62-5.66c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.12 7.52c0 5.87-4.77 10.64-10.63 10.64zm5.84-7.97c-.32-.16-1.89-.93-2.18-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.77-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.36-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.64 0 1.56 1.13 3.07 1.29 3.28.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.45.2 2 .12.61-.09 1.89-.77 2.16-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37z"/>
-      </svg>
-  </a>
+<script>
+(function () {
+  'use strict';
 
-  <!-- Application Logic -->
-  <script>
-    (function () {
-      // 1. Database of all 15 plans
-      const planData = {
-        standard: [
-          { volume: '1 GB', term: '30 Days', price: 1020, label: 'Light usage, emails, and basic maps.', badge: null },
-          { volume: '3 GB', term: '30 Days', price: 1225, label: 'Standard browsing and messaging.', badge: null },
-          { volume: '5 GB', term: '30 Days', price: 1430, label: 'Frequent browsing and social media.', badge: 'Most Popular' },
-          { volume: '10 GB', term: '30 Days', price: 2250, label: 'Moderate video streaming and tethering.', badge: null },
-          { volume: '20 GB', term: '30 Days', price: 3685, label: 'Remote work, files, and daily streaming.', badge: null },
-          { volume: '50 GB', term: '30 Days', price: 8200, label: 'Heavy daily usage and tethering.', badge: null },
-          { volume: '100 GB', term: '30 Days', price: 14350, label: 'Maximum data for extended workflows.', badge: null }
-        ],
-        unlimited: [
-          { volume: 'Unlimited', term: '10 Days', price: 11900, label: 'Worry-free unrestricted data for short trips.', badge: 'Premium' }
-        ],
-        nonexpiring: [
-          { volume: '1 GB', term: 'No Expiration', price: 1225, label: 'Ideal for emergencies and light usage.', badge: null },
-          { volume: '3 GB', term: 'No Expiration', price: 1635, label: 'Occasional travel and standard messaging.', badge: null },
-          { volume: '5 GB', term: 'No Expiration', price: 1840, label: 'Reliable allowance without expiration pressure.', badge: 'Flexible' },
-          { volume: '10 GB', term: 'No Expiration', price: 2660, label: 'Suitable for extended travel and regular use.', badge: null },
-          { volume: '20 GB', term: 'No Expiration', price: 4505, label: 'Extensive data pool for prolonged needs.', badge: null },
-          { volume: '50 GB', term: 'No Expiration', price: 10250, label: 'Large reserve for teams and heavy users.', badge: null },
-          { volume: '100 GB', term: 'No Expiration', price: 16400, label: 'Ultimate long-term data vault.', badge: null }
-        ]
+  var WA_NUMBER = '923171058812';
+
+  // Single source of truth for every plan, price and label on the page.
+  // CONFIRM WITH OWNER: the Unlimited plan and the non-expiring prices are final.
+  // CONFIRM WITH OWNER: set "popular" to the index of the plan you want marked "Most popular" in a group (null = none).
+  var PLANS = {
+    standard: {
+      name: '30-day plan', title: '30-day plans', validity: '30 days', note: 'Each plan is valid for 30 days.', perGb: true, popular: null,
+      items: [
+        { data: '1 GB', gb: 1, price: 1020 },
+        { data: '3 GB', gb: 3, price: 1225 },
+        { data: '5 GB', gb: 5, price: 1430 },
+        { data: '10 GB', gb: 10, price: 2250 },
+        { data: '20 GB', gb: 20, price: 3685 },
+        { data: '50 GB', gb: 50, price: 8200 },
+        { data: '100 GB', gb: 100, price: 14350 }
+      ]
+    },
+    unlimited: {
+      name: 'Unlimited plan', title: 'Unlimited (10 days)', validity: '10 days', note: 'Unlimited data for 10 days.', perGb: false, popular: null,
+      items: [ { data: 'Unlimited', gb: 0, price: 11900 } ]
+    },
+    nonexpiring: {
+      name: 'Non-expiring plan', title: 'Non-expiring', validity: 'No expiry date', note: 'These plans have no expiry date.', perGb: true, popular: null,
+      items: [
+        { data: '1 GB', gb: 1, price: 1225 },
+        { data: '3 GB', gb: 3, price: 1635 },
+        { data: '5 GB', gb: 5, price: 1840 },
+        { data: '10 GB', gb: 10, price: 2660 },
+        { data: '20 GB', gb: 20, price: 4505 },
+        { data: '50 GB', gb: 50, price: 10250 },
+        { data: '100 GB', gb: 100, price: 16400 }
+      ]
+    }
+  };
+
+  function money(n) { return 'Rs ' + n.toLocaleString('en-US'); }
+
+  // The "Lowest per GB" badge is worked out from the prices, so it can never drift.
+  function badgeFor(g, i) {
+    if (g.popular === i) return 'Most popular';
+    if (!g.perGb) return '';
+    var best = 0;
+    g.items.forEach(function (p, k) { if (p.price / p.gb < g.items[best].price / g.items[best].gb) best = k; });
+    return best === i ? 'Lowest per GB' : '';
+  }
+
+  // ---------- Plans and tabs ----------
+  var panel = document.getElementById('plan-panel');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+
+  function renderPlans(groupId) {
+    var g = PLANS[groupId];
+    var html = '<div class="panel-head"><p class="panel-title">' + g.title + '</p><p>' + g.note + '</p></div>' +
+      '<div class="plan-grid" data-group="' + groupId + '">';
+    g.items.forEach(function (p, i) {
+      var badge = badgeFor(g, i);
+      var hot = g.popular === i;
+      var perGb = g.perGb ? money(Math.round(p.price / p.gb)) + ' per GB' : '';
+      var label = 'Order ' + p.data + ', ' + g.validity.toLowerCase() + ', ' + money(p.price);
+      html += '<div class="plan glass' + (hot ? ' plan--popular' : '') + '" style="--i:' + i + '">' +
+        '<div class="plan-badge">' + (badge ? '<span class="badge' + (hot ? ' badge--hot' : '') + '">' + badge + '</span>' : '') + '</div>' +
+        '<h3>' + p.data + '</h3><p class="validity">' + g.validity + '</p>' +
+        '<p class="price">' + money(p.price) + '</p><p class="pergb">' + perGb + '</p>' +
+        '<button class="btn btn--neon btn--sm" type="button" data-group="' + groupId + '" data-index="' + i + '" aria-label="' + label + '">Order</button>' +
+        '</div>';
+    });
+    html += '</div>';
+    panel.innerHTML = html;
+    panel.setAttribute('aria-labelledby', 'tab-' + groupId);
+  }
+
+  function selectTab(groupId, moveFocus) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-group') === groupId;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      if (on && moveFocus) t.focus();
+    });
+    renderPlans(groupId);
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t.getAttribute('data-group'), false); });
+    t.addEventListener('keydown', function (e) {
+      var next = null;
+      if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = tabs.length - 1;
+      if (next !== null) { e.preventDefault(); selectTab(tabs[next].getAttribute('data-group'), true); }
+    });
+  });
+
+  // ---------- Mobile menu ----------
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('siteNav');
+
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  var desktopNav = window.matchMedia('(min-width: 1024px)');
+  if (desktopNav.addEventListener) desktopNav.addEventListener('change', function () { setMenu(false); });
+
+  // ---------- Order dialog ----------
+  var backdrop = document.getElementById('orderBackdrop');
+  var dialog = document.getElementById('orderDialog');
+  var closeBtn = document.getElementById('orderClose');
+  var form = document.getElementById('orderForm');
+  var nameInput = document.getElementById('orderName');
+  var emailInput = document.getElementById('orderEmail');
+  var checkInput = document.getElementById('orderCheck');
+  var emailError = document.getElementById('emailError');
+  var checkError = document.getElementById('checkError');
+  var statusLine = document.getElementById('orderStatus');
+  var statusLink = document.getElementById('statusLink');
+  var statusRef = document.getElementById('statusRef');
+  var copyStatus = document.getElementById('copyStatus');
+  var copyBtns = Array.prototype.slice.call(document.querySelectorAll('.copy-btn'));
+  var background = [document.querySelector('.site-header'), document.getElementById('main'), document.querySelector('.site-footer')];
+
+  var current = null;
+  var opener = null;
+  var sentRef = null;
+  var toastTimer = null;
+  var toastEl = document.getElementById('toast');
+  var toastMsg = document.getElementById('toastMsg');
+
+  function isOpen() { return backdrop.classList.contains('is-open'); }
+
+  function openDialog(groupId, index, trigger) {
+    var g = PLANS[groupId];
+    var p = g.items[index];
+    current = { group: groupId, index: index };
+    opener = trigger;
+    sentRef = null;
+    document.getElementById('sumGroup').textContent = g.name;
+    document.getElementById('sumData').textContent = p.data;
+    document.getElementById('sumValidity').textContent = g.validity;
+    document.getElementById('sumPrice').textContent = money(p.price);
+    document.getElementById('payAmount').textContent = money(p.price);
+    backdrop.classList.add('is-open');
+    document.body.classList.add('dialog-open');
+    background.forEach(function (el) { if (el) el.inert = true; });
+    dialog.scrollTop = 0;
+    dialog.focus();
+  }
+
+  function resetForm() {
+    form.reset();
+    [emailInput, checkInput].forEach(function (el) { el.removeAttribute('aria-invalid'); });
+    emailError.hidden = true;
+    checkError.hidden = true;
+    statusLine.hidden = true;
+    statusLink.href = '#';
+    statusRef.textContent = '';
+  }
+
+  function closeDialog() {
+    if (!isOpen()) return;
+    backdrop.classList.remove('is-open');
+    dialog.style.transition = '';
+    dialog.style.transform = '';
+    document.body.classList.remove('dialog-open');
+    background.forEach(function (el) { if (el) el.inert = false; });
+    resetForm();
+    current = null;
+    sentRef = null;
+    if (opener && document.body.contains(opener)) opener.focus();
+    opener = null;
+  }
+
+  panel.addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-group]');
+    if (!btn) return;
+    openDialog(btn.getAttribute('data-group'), Number(btn.getAttribute('data-index')), btn);
+  });
+  closeBtn.addEventListener('click', closeDialog);
+  backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeDialog(); });
+
+  // Toast: drops from the top, fades out after 2.5 seconds
+  function showToast(msg) {
+    toastMsg.textContent = msg;
+    copyStatus.textContent = '';
+    copyStatus.textContent = msg;
+    toastEl.classList.add('is-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('is-show'); }, 2500);
+  }
+
+  // Copy buttons for the account number and IBAN
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  copyBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = document.getElementById(btn.getAttribute('data-copy')).textContent.trim();
+      var name = btn.getAttribute('data-name');
+      var done = function (ok) {
+        showToast(ok ? name + ' Copied!' : 'Could not copy. Select the ' + name.toLowerCase() + ' and copy it by hand.');
       };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(legacyCopy(text)); });
+      } else { done(legacyCopy(text)); }
+    });
+  });
 
-      const planGrid = document.getElementById('planGrid');
-      const tabBtns = document.querySelectorAll('.tab-btn');
+  // Mobile bottom sheet: drag the handle down to close
+  var sheetMq = window.matchMedia('(max-width: 639px)');
+  var handle = document.getElementById('sheetHandle');
+  var drag = null;
+  handle.addEventListener('pointerdown', function (e) {
+    if (!sheetMq.matches || !isOpen()) return;
+    drag = { y: e.clientY, dy: 0 };
+    try { handle.setPointerCapture(e.pointerId); } catch (err) {}
+    dialog.style.transition = 'none';
+  });
+  handle.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    drag.dy = Math.max(0, e.clientY - drag.y);
+    dialog.style.transform = 'translateY(' + drag.dy + 'px)';
+  });
+  function endDrag() {
+    if (!drag) return;
+    var dy = drag.dy;
+    drag = null;
+    if (dy > 110) {
+      dialog.style.transition = 'transform .22s ease';
+      dialog.style.transform = 'translateY(100%)';
+      setTimeout(closeDialog, 200);
+    } else {
+      dialog.style.transition = '';
+      dialog.style.transform = '';
+    }
+  }
+  handle.addEventListener('pointerup', endDrag);
+  handle.addEventListener('pointercancel', endDrag);
 
-      // 2. DOM Elements for Modal
-      const gatewayModalBackdrop = document.getElementById('gatewayModalBackdrop');
-      const gatewayClose = document.getElementById('gatewayClose');
-      const gatewayVolume = document.getElementById('gatewayVolume');
-      const gatewayTerm = document.getElementById('gatewayTerm');
-      const gatewaySku = document.getElementById('gatewaySku');
-      const gatewayTotal = document.getElementById('gatewayTotal');
-      const gatewayName = document.getElementById('gatewayName');
-      const gatewayEmail = document.getElementById('gatewayEmail');
-      const gatewayForm = document.getElementById('gatewayForm');
-      const whatsappFallback = document.getElementById('whatsappFallback');
-      const fallbackWhatsAppLink = document.getElementById('fallbackWhatsAppLink');
-      
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-
-      let currentCategory = 'standard';
-      let lastFocusedElement = null;
-      let scrollLockCount = 0;
-
-      // 3. Scroll Locking
-      function lockScroll() {
-        scrollLockCount++;
-        document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (isOpen()) { closeDialog(); return; }
+      if (nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+      return;
+    }
+    if (e.key === 'Tab' && isOpen()) {
+      var items = Array.prototype.slice.call(
+        dialog.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+      ).filter(function (el) { return !el.disabled && !el.closest('[hidden]'); });
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
       }
-      function unlockScroll() {
-        scrollLockCount--;
-        if (scrollLockCount <= 0) {
-          scrollLockCount = 0;
-          document.body.style.overflow = '';
-        }
-      }
+    }
+  });
 
-      // 4. Render Engine
-      function formatPrice(num) {
-        return num.toLocaleString('en-US');
-      }
+  function makeRef() {
+    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    var out = 'AZ-';
+    var buf = new Uint8Array(6);
+    if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(buf);
+    else for (var k = 0; k < 6; k++) buf[k] = Math.floor(Math.random() * 256);
+    for (var i = 0; i < 6; i++) out += chars.charAt(buf[i] % chars.length);
+    return out;
+  }
 
-      function calculatePerGB(price, volumeStr) {
-        if (volumeStr === 'Unlimited') return 'Unlimited';
-        const gb = parseInt(volumeStr);
-        if (isNaN(gb) || gb === 0) return '';
-        return 'Rs ' + formatPrice(Math.round(price / gb)) + ' / GB';
-      }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!current) return;
 
-      function renderPlans(category) {
-        planGrid.innerHTML = '';
-        const plans = planData[category] || [];
-        
-        plans.forEach(plan => {
-          const perGbText = calculatePerGB(plan.price, plan.volume);
-          const badgeHTML = plan.badge 
-            ? `<div class="absolute -top-3 left-6"><span class="bg-emeraldGlow text-azaadBgDeep text-[0.6rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-glow">${plan.badge}</span></div>` 
-            : '';
-          const cardClass = plan.badge ? 'border-emeraldGlow/30 shadow-innerGlow' : 'border-white/10';
+    var email = emailInput.value.trim();
+    var name = nameInput.value.trim();
+    var emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var checkOk = checkInput.checked;
 
-          const cardHTML = `
-            <article class="plan-card rounded-2xl bg-black/60 border ${cardClass} p-6 flex flex-col gap-4 cursor-pointer relative"
-                     data-volume="${plan.volume}" data-term="${plan.term}" data-total="${plan.price}" tabindex="0" role="button" aria-label="Select ${plan.volume} plan">
-              ${badgeHTML}
-              <div class="flex justify-between items-start pointer-events-none mt-1">
-                <div>
-                  <h3 class="text-lg font-bold text-slate-50">${plan.volume}</h3>
-                  <p class="text-sm text-slate-400 mt-1">${plan.label}</p>
-                </div>
-                <span class="text-[0.65rem] font-bold ${category === 'unlimited' ? 'text-azaadBgDeep bg-emeraldGlow' : 'text-slate-300 bg-white/10 border border-white/20'} rounded-full px-2.5 py-1 tracking-[0.15em] uppercase text-center min-w-[70px]">
-                  ${category === 'standard' ? '30 Days' : (category === 'unlimited' ? '10 Days' : 'Non-Expiring')}
-                </span>
-              </div>
-              <div class="flex justify-between items-center mt-2 border-t border-white/5 pt-3 pointer-events-none">
-                <span class="text-lg font-semibold text-slate-100">Rs ${formatPrice(plan.price)}</span>
-                <span class="text-emeraldSoft text-xs font-medium">${perGbText}</span>
-              </div>
-              <div class="flex items-center justify-between mt-1 pointer-events-none">
-                <span class="text-[0.65rem] text-slate-500 tracking-[0.1em] uppercase font-medium">Select Plan</span>
-                <div class="inline-flex items-center justify-center w-8 h-8 rounded-full ${plan.badge ? 'bg-emeraldGlow text-azaadBgDeep shadow-glow' : 'bg-white/5 border border-white/20 text-slate-300'}">
-                  <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <path d="M6 4h9v9M6 13l9-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-                  </svg>
-                </div>
-              </div>
-            </article>
-          `;
-          planGrid.insertAdjacentHTML('beforeend', cardHTML);
-        });
-      }
+    emailError.hidden = emailOk;
+    checkError.hidden = checkOk;
+    if (emailOk) emailInput.removeAttribute('aria-invalid'); else emailInput.setAttribute('aria-invalid', 'true');
+    if (checkOk) checkInput.removeAttribute('aria-invalid'); else checkInput.setAttribute('aria-invalid', 'true');
+    if (!emailOk) { emailInput.focus(); return; }
+    if (!checkOk) { checkInput.focus(); return; }
 
-      // 5. Navigation Logic
-      function toggleMobileMenu() {
-        const isHidden = mobileMenu.classList.contains('menu-hidden');
-        if (isHidden) {
-          lastFocusedElement = document.activeElement;
-          mobileMenu.classList.remove('menu-hidden');
-          mobileMenu.classList.add('menu-visible');
-          mobileMenu.setAttribute('aria-hidden', 'false');
-          mobileMenuBtn.setAttribute('aria-expanded', 'true');
-          lockScroll();
-          setTimeout(() => mobileMenuCloseBtn.focus(), 50);
-        } else {
-          mobileMenu.classList.remove('menu-visible');
-          mobileMenu.classList.add('menu-hidden');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-          unlockScroll();
-          if (lastFocusedElement) lastFocusedElement.focus();
-        }
-      }
-      
-      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-      mobileMenuCloseBtn.addEventListener('click', toggleMobileMenu);
-      document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', toggleMobileMenu));
+    var g = PLANS[current.group];
+    var p = g.items[current.index];
+    if (!sentRef) sentRef = makeRef();
 
-      // Tabs Event Listeners
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          tabBtns.forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          const target = e.currentTarget;
-          target.classList.add('active');
-          target.setAttribute('aria-selected', 'true');
-          currentCategory = target.dataset.target;
-          renderPlans(currentCategory);
-        });
+    var lines = [
+      'New Azaad eSIM order request',
+      'Plan: ' + g.name,
+      'Data: ' + p.data,
+      'Validity: ' + g.validity,
+      'Price: ' + money(p.price),
+      'Reference: ' + sentRef
+    ];
+    if (name) lines.push('Name: ' + name);
+    if (email) lines.push('Email: ' + email);
+    lines.push('Customer says the phone supports eSIM and is factory unlocked.');
+    lines.push('I have transferred ' + money(p.price) + ' to your SadaPay account. My screenshot is attached.');
+    lines.push('Please confirm my order and send my QR code.');
+
+    var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    statusLink.href = url;
+    statusRef.textContent = sentRef;
+    statusLine.hidden = false;
+  });
+
+  renderPlans('standard');
+
+  // ---------- Scroll reveal (CSS hides .reveal only while JavaScript runs) ----------
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
       });
-
-      // 6. Checkout Flow
-      function generateUniqueReference() {
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let out = 'REF-';
-        for (let i = 0; i < 6; i++) out += chars.charAt(Math.floor(Math.random() * chars.length));
-        return out;
-      }
-
-      function openGatewayForCard(card) {
-        if (!card) return;
-        lastFocusedElement = document.activeElement;
-        
-        gatewayVolume.textContent = card.dataset.volume;
-        gatewayTerm.textContent = card.dataset.term;
-        gatewayTotal.textContent = 'Rs ' + formatPrice(Number(card.dataset.total));
-        gatewaySku.textContent = generateUniqueReference();
-        whatsappFallback.classList.add('hidden'); // Reset fallback on new open
-        
-        gatewayModalBackdrop.classList.remove('modal-hidden');
-        gatewayModalBackdrop.classList.add('modal-visible');
-        gatewayModalBackdrop.setAttribute('aria-hidden', 'false');
-        lockScroll();
-        
-        setTimeout(() => gatewayName.focus(), 50);
-      }
-
-      function closeGateway() {
-        gatewayModalBackdrop.classList.remove('modal-visible');
-        gatewayModalBackdrop.classList.add('modal-hidden');
-        gatewayModalBackdrop.setAttribute('aria-hidden', 'true');
-        unlockScroll();
-        if (lastFocusedElement) lastFocusedElement.focus();
-      }
-
-      planGrid.addEventListener('click', (event) => {
-        const card = event.target.closest('.plan-card');
-        if (card) openGatewayForCard(card);
-      });
-      
-      planGrid.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          const card = event.target.closest('.plan-card');
-          if (card) {
-            event.preventDefault();
-            openGatewayForCard(card);
-          }
-        }
-      });
-
-      gatewayClose.addEventListener('click', closeGateway);
-      gatewayModalBackdrop.addEventListener('click', (e) => {
-        if (e.target === gatewayModalBackdrop) closeGateway();
-      });
-
-      // Accessibility Trap
-      const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          if (!gatewayModalBackdrop.classList.contains('modal-hidden')) closeGateway();
-          else if (!mobileMenu.classList.contains('menu-hidden')) toggleMobileMenu();
-        }
-        
-        if (e.key !== 'Tab') return;
-
-        let activeOverlay = null;
-        if (!gatewayModalBackdrop.classList.contains('modal-hidden')) activeOverlay = gatewayModalBackdrop;
-        else if (!mobileMenu.classList.contains('menu-hidden')) activeOverlay = mobileMenu;
-
-        if (activeOverlay) {
-          const focusableContent = Array.from(activeOverlay.querySelectorAll(focusableElements)).filter(el => {
-            return !el.closest('.hidden'); // Ignore hidden fallback links
-          });
-          if (focusableContent.length === 0) return;
-          
-          const firstFocusableElement = focusableContent[0];
-          const lastFocusableElement = focusableContent[focusableContent.length - 1];
-
-          if (e.shiftKey && document.activeElement === firstFocusableElement) {
-            lastFocusableElement.focus();
-            e.preventDefault();
-          } else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
-            firstFocusableElement.focus();
-            e.preventDefault();
-          }
-        }
-      });
-
-      // Submit logic
-      gatewayForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = gatewayName.value.trim();
-        const email = gatewayEmail.value.trim();
-        const reference = gatewaySku.textContent;
-
-        const messageLines = [
-          '*NEW AZAAD eSIM ORDER REQUEST*',
-          '--------------------------------',
-          'Package: Azaad Data eSIM',
-          'Data Volume: ' + gatewayVolume.textContent,
-          'Validity: ' + gatewayTerm.textContent,
-          'Total Amount: ' + gatewayTotal.textContent,
-          'Reference Code: ' + reference,
-          name ? 'Customer Name: ' + name : null,
-          'Customer Email: ' + email,
-          '--------------------------------',
-          'Please guide me on payment and activation.'
-        ].filter(Boolean); // Filter out nulls
-        
-        const wpUrl = 'https://wa.me/923171058812?text=' + encodeURIComponent(messageLines.join('\n'));
-        const wpWindow = window.open(wpUrl, '_blank', 'noopener,noreferrer');
-        
-        // Handle popup blocker fallback
-        if (!wpWindow || wpWindow.closed || typeof wpWindow.closed === 'undefined') {
-          whatsappFallback.classList.remove('hidden');
-          fallbackWhatsAppLink.href = wpUrl;
-        }
-      });
-
-      // Initialize
-      window.addEventListener('DOMContentLoaded', () => {
-        renderPlans('standard');
-      });
-    })();
-  </script>
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+})();
+</script>
 </body>
 </html>
