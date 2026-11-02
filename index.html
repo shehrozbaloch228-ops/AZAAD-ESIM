@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B0F0E">
+  <meta name="theme-color" content="#f4f4f4">
   <meta name="description" content="Azaad eSIM gives compatible phones in Pakistan a data-only mobile connection.">
   <title>Azaad eSIM — Data-only eSIM for Pakistan</title>
 
-  <link rel="icon" href="azaad-favicon.svg">
+  <link rel="icon" href="https://i.postimg.cc/ZnNjz5gK/azaad-favicon.jpg" type="image/jpeg">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Organization structured data -->
@@ -17,7 +17,7 @@
     "@type": "Organization",
     "name": "Azaad eSIM",
     "description": "Data-only eSIM service for compatible phones in Pakistan.",
-    "logo": "https://azaadesim.duckdns.org/azaad-logo-dark.svg",
+    "logo": "https://i.postimg.cc/y8yQNWNj/azaad-logo-dark.jpg",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+923171058812",
@@ -156,6 +156,19 @@
     {
       box-sizing: border-box;
     }
+    .site-header .brand {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.site-header img {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
 
     html
     {
@@ -2415,9 +2428,16 @@
     top: 0;
     left: 0;
     width: 100%;
+    padding-top: env(safe-area-inset-top);
+    box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
-  }
+    background: linear-gradient(180deg, rgba(11, 15, 14, 0.85) 0%, rgba(11, 15, 14, 0.6) 100%);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
   .site-header.hidden {
     transform: translateY(-100%);
   }
@@ -2927,7 +2947,7 @@
       <div class="footer__top">
         <div>
           <a class="brand" href="#top" aria-label="Azaad eSIM home">
-            <img src="azaad-logo-dark.svg" alt="Azaad eSIM">
+            <img src="https://i.postimg.cc/y8yQNWNj/azaad-logo-dark.jpg" alt="Azaad eSIM">
           </a>
 
           <p class="footer__brand-copy">
