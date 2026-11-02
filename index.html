@@ -2409,6 +2409,20 @@
       }
     }
   </style>
+  <=style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  .site-header.hidden {
+    transform: translateY(-100%);
+  }
+</style>
+
 </head>
 
 <body>
@@ -4711,4 +4725,19 @@
     }
   </script>
 </body>
+<script>
+  let lastScrollTop = 0;
+  const header = document.querySelector('.site-header');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      header.classList.add('hidden');
+    } else {
+      header.classList.remove('hidden');
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+</script>
+
 </html>
