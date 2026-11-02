@@ -7,7 +7,7 @@
   <meta name="description" content="Azaad eSIM gives compatible phones in Pakistan a data-only mobile connection.">
   <title>Azaad eSIM — Data-only eSIM for Pakistan</title>
 
-  <link rel="icon" href="https://i.postimg.cc/ZnNjz5gK/azaad-favicon.jpg" type="image/jpeg">
+  <link rel="icon" href="azaad-favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Organization structured data -->
@@ -17,7 +17,7 @@
     "@type": "Organization",
     "name": "Azaad eSIM",
     "description": "Data-only eSIM service for compatible phones in Pakistan.",
-    "logo": "https://i.postimg.cc/y8yQNWNj/azaad-logo-dark.jpg",
+    "logo": "https://azaadesim.duckdns.org/azaad-logo-dark.svg",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+923171058812",
@@ -2438,7 +2438,7 @@
   <header class="site-header" id="top">
     <div class="container header__inner">
       <a class="brand" href="#top" aria-label="Azaad eSIM home">
-        <img src="https://i.postimg.cc/y8yQNWNj/azaad-logo-dark.jpg" alt="Azaad eSIM">
+        <img src="azaad-logo-dark.svg" alt="Azaad eSIM">
       </a>
 
       <nav class="desktop-nav" aria-label="Primary navigation">
@@ -2927,7 +2927,7 @@
       <div class="footer__top">
         <div>
           <a class="brand" href="#top" aria-label="Azaad eSIM home">
-            <img src="https://i.postimg.cc/y8yQNWNj/azaad-logo-dark.jpg" alt="Azaad eSIM">
+            <img src="azaad-logo-dark.svg" alt="Azaad eSIM">
           </a>
 
           <p class="footer__brand-copy">
@@ -3073,27 +3073,27 @@
         </div>
       </div>
 
-      <form class="order-form" id="orderForm" novalidate>
+      <form class="order-form" id="orderForm">
         <div class="form-field">
-          <label for="customerName">Name (optional)</label>
+          <label for="customerName">Name <span style="color: red;">*</span></label>
           <input
             id="customerName"
             name="name"
             type="text"
             autocomplete="name"
             placeholder="Your name"
-          >
+          required>
         </div>
 
         <div class="form-field">
-          <label for="customerEmail">Email (optional)</label>
+          <label for="customerEmail">Email <span style="color: red;">*</span></label>
           <input
             id="customerEmail"
             name="email"
             type="email"
             autocomplete="email"
             placeholder="you@example.com"
-          >
+          required>
         </div>
 
         <label class="consent" for="compatibilityConsent">
