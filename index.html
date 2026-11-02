@@ -156,53 +156,26 @@
     {
       box-sizing: border-box;
     }
-   .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: calc(64px + env(safe-area-inset-top));
-  padding-top: env(safe-area-inset-top);
-  box-sizing: border-box;
-  z-index: 1000;
-
-  background: linear-gradient(
-    180deg,
-    rgba(10, 12, 16, 0.85) 0%,
-    rgba(5, 7, 10, 0.70) 100%
-  );
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  backdrop-filter: blur(20px) saturate(160%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-
-  transition: transform 0.3s ease;
-}
-
-.site-header .header__inner {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.site-header .brand {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+    .site-header .brand {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .site-header img {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-html {
-  background: var(--paper);
-  scroll-behavior: smooth;
-}
+    html
+    {
+      background: var(--paper);
+      scroll-behavior: smooth;
+    }
+
     body
     {
       margin: 0;
@@ -2455,7 +2428,6 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(64px + env(safe-area-inset-top));
     padding-top: env(safe-area-inset-top);
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
@@ -2464,19 +2436,13 @@ html {
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: none;
-  }
-  .site-header .header__inner {
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
   .site-header.hidden {
     transform: translateY(-100%);
   }
   body {
-    padding-top: calc(64px + env(safe-area-inset-top));
+    padding-top: 70px;
     margin: 0;
     border: none;
   }
