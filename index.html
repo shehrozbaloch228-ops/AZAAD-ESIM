@@ -2418,9 +2418,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    padding-top: env(safe-area-inset-top);
+    box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
-  }
   .site-header.hidden {
     transform: translateY(-100%);
   }
