@@ -3308,14 +3308,20 @@
      *
      * @returns {string} Generated order reference.
      */
-    function generateReference()
+    function generateReference(planName, dataAmount)
     {
-      const randomPart = Math.random()
-        .toString(36)
-        .slice(2, 8)
-        .toUpperCase();
-
-      return `AZ-${randomPart}`;
+      const dataNum = dataAmount.match(/\d+/)[0]; 
+      const initials = planName.replace(/[^a-zA-Z]/g, ' ')
+                               .split(' ')
+                               .filter(word => word.length > 0)
+                               .slice(0, 2)
+                               .map(word => word[0].toUpperCase())
+                               .join('');
+      
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const randomStr = Array.from({length: 2}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+      
+      return `AZ-${dataNum}${initials}-${randomStr}`;
     }
 
     /**
@@ -4474,7 +4480,7 @@
 
         const name = this.dom.customerName.value.trim();
         const email = this.dom.customerEmail.value.trim();
-        const reference = generateReference();
+        const reference = generateReference(group.name, item.data);
 
         const url = this.buildWhatsAppUrl({
           reference,
@@ -4516,9 +4522,8 @@
           : "";
 
         const message = [
-          "New Azaad eSIM order request",
-          `Plan: ${group.name}`,
-          `Data: ${item.data}`,
+          "New Azaad eSIM order request\n",
+          `Plan: ${item.data} ${group.name}`,
           `Reference: ${reference}`,
           `Name: ${name}`,
           `Email: ${email}`,
