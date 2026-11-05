@@ -3308,21 +3308,23 @@
      *
      * @returns {string} Generated order reference.
      */
-    function generateReference(planName, dataAmount)
-    {
-      const dataNum = dataAmount.match(/\d+/)[0]; 
-      const initials = planName.replace(/[^a-zA-Z]/g, ' ')
-                               .split(' ')
-                               .filter(word => word.length > 0)
-                               .slice(0, 2)
-                               .map(word => word[0].toUpperCase())
-                               .join('');
-      
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      const randomStr = Array.from({length: 2}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-      
-      return `AZ-${dataNum}${initials}-${randomStr}`;
-    }
+    function generateReference(planName, dataAmount) {
+  const match = String(dataAmount || "").match(/\d+/);
+  const dataNum = match ? match[0] : "00"; 
+  
+  const initials = String(planName || "")
+    .replace(/[^a-zA-Z]/g, ' ')
+    .split(' ')
+    .filter(word => word.length > 0)
+    .slice(0, 2)
+    .map(word => word[0].toUpperCase())
+    .join('');
+  
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const randomStr = Array.from({length: 2}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  
+  return `AZ-${dataNum}${initials}-${randomStr}`;
+}
 
     /**
      * ================================================================
@@ -4521,18 +4523,16 @@
           ? `Email: ${email}\n`
           : "";
 
-        const message = [
-          "New Azaad eSIM order request\n",
-          `Plan: ${item.data} ${group.name}`,
-          `Reference: ${reference}`,
-          `Name: ${name}`,
-          `Email: ${email}`,
-          "\nCustomer confirms the phone supports eSIM and is factory unlocked.",
-          `\nI have transferred Rs ${formattedPrice} to your Bank account. My screenshot is attached.`,
-          "Please confirm my order and send my QR code."
-        ]
-          .filter((line) => line !== "")
-          .join("\n");
+          const message = [
+      "New Azaad eSIM order request\n",
+      `Plan: ${item.data} ${group.name}`,
+      `Reference: ${reference}`,
+      `Name: ${name}`,
+      `Email: ${email}`,
+      "\nCustomer confirms the phone supports eSIM and is factory unlocked.",
+      `\nI have transferred Rs ${formattedPrice} to your Bank account. My screenshot is attached.`,
+      "Please confirm my order and send my QR code."
+    ].join("\n");
 
         return `https://wa.me/${APP_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
       }
