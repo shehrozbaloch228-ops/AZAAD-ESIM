@@ -3308,23 +3308,15 @@
      *
      * @returns {string} Generated order reference.
      */
-    function generateReference(planName, dataAmount) {
-  const match = String(dataAmount || "").match(/\d+/);
-  const dataNum = match ? match[0] : "00"; 
-  
-  const initials = String(planName || "")
-    .replace(/[^a-zA-Z]/g, ' ')
-    .split(' ')
-    .filter(word => word.length > 0)
-    .slice(0, 2)
-    .map(word => word[0].toUpperCase())
-    .join('');
-  
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  const randomStr = Array.from({length: 2}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-  
-  return `AZ-${dataNum}${initials}-${randomStr}`;
-}
+    function generateReference()
+    {
+      const randomPart = Math.random()
+        .toString(36)
+        .slice(2, 8)
+        .toUpperCase();
+
+      return `AZ-${randomPart}`;
+    }
 
     /**
      * ================================================================
@@ -4482,7 +4474,7 @@
 
         const name = this.dom.customerName.value.trim();
         const email = this.dom.customerEmail.value.trim();
-        const reference = generateReference(group.name, item.data);
+        const reference = generateReference();
 
         const url = this.buildWhatsAppUrl({
           reference,
@@ -4523,16 +4515,19 @@
           ? `Email: ${email}\n`
           : "";
 
-          const message = [
-      "New Azaad eSIM order request\n",
-      `Plan: ${item.data} ${group.name}`,
-      `Reference: ${reference}`,
-      `Name: ${name}`,
-      `Email: ${email}`,
-      "\nCustomer confirms the phone supports eSIM and is factory unlocked.",
-      `\nI have transferred Rs ${formattedPrice} to your Bank account. My screenshot is attached.`,
-      "Please confirm my order and send my QR code."
-    ].join("\n");
+        const message = [
+          "New Azaad eSIM order request",
+          `Plan: ${group.name}`,
+          `Data: ${item.data}`,
+          `Reference: ${reference}`,
+          `Name: ${name}`,
+          `Email: ${email}`,
+          "\nCustomer confirms the phone supports eSIM and is factory unlocked.",
+          `\nI have transferred Rs ${formattedPrice} to your Bank account. My screenshot is attached.`,
+          "Please confirm my order and send my QR code."
+        ]
+          .filter((line) => line !== "")
+          .join("\n");
 
         return `https://wa.me/${APP_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
       }
