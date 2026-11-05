@@ -4519,13 +4519,11 @@
           "New Azaad eSIM order request",
           `Plan: ${group.name}`,
           `Data: ${item.data}`,
-          `Validity: ${group.validity}`,
-          `Price: Rs ${formattedPrice}`,
           `Reference: ${reference}`,
-          optionalName.trimEnd(),
-          optionalEmail.trimEnd(),
-          "Customer says the phone supports eSIM and is factory unlocked.",
-          `I have transferred Rs ${formattedPrice} to your Bank account. My screenshot is attached.`,
+          `Name: ${name}`,
+          `Email: ${email}`,
+          "\nCustomer confirms the phone supports eSIM and is factory unlocked.",
+          `\nI have transferred Rs ${formattedPrice} to your Bank account. My screenshot is attached.`,
           "Please confirm my order and send my QR code."
         ]
           .filter((line) => line !== "")
